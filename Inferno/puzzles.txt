@@ -1,0 +1,49 @@
+P1
+1
+Who is the Commander in Chief of the military?
+	a. The President
+	b. Secretary of State
+	c. Secretary of Defense
+	d. Vice President
+-----
+CorrectAnswer: a
+
+P2
+4
+What is the highest court in the United States?
+	a. Article I court
+	b. District court
+	c. Supreme court
+	d. Circuit court
+-----
+CorrectAnswer: c
+
+P3
+3
+The Java operator used to indicate the English idea of "and" in a boolean expression is:
+	a. &
+	b. &&
+	c. AND
+	d. None of the above
+-----
+CorrectAnswer: b
+
+P4
+2
+How many years do we elect a President?
+	a. One
+	b. Two
+	c. Three
+	d. Four
+-----
+CorrectAnswer: d
+
+P5
+5
+What ocean is on the West coast of the United States?
+	a. Pacific Ocean
+	b. Atlantic Ocean
+	c. Indian Ocean
+	d. Arctic Ocean
+-----
+CorrectAnswer: a
