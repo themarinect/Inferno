@@ -1,63 +1,404 @@
 Welcome to Adventure Game!!!
-1
-Living Room
-You are standing at a front door in a room
-At your feet, there is a door mat saying "Welcome"
-There is a door to another room in the north of the room.
-There is a door to another room in the east of the room.
-Nothing in the west of the room, just a wall with some message on it.
+R0
+Room 0
+You walk into the room and hear an eerie snore. 
+You look to see a grotesque sleeping monster. 
+The monster must be the demon of laziness, Sloth.
 -----
-north: 2
-east: 3
+east: R1
+south: R6
 quit: 0
 
-2
-Kitchen
-This room has an unbearable smell. It is very dark.
-There is a door in the west side of the room.
-There is a hallway in the east side of the room.
-The previous room is to the south, right behind you.
+R1
+Room R1
+You walk into an empty room, and a voice suddenly enters your head. 
+“Brave hero, welcome to the puzzle of Sloth & Pride. 
+To solve this puzzle, the player traverses every tile in the room EXACTLY once. 
+If you fail, you shall repeat from the beginning. 
+When it is solved, you shall bestow with the dungeon’s prize possession.”
 -----
-west: 3
-east: 4
-south: 1
+west: R0
+east: R2
+south: R7
 quit: 0
 
-3
-Bedroom
-This room is so quiet
-There is a door in the north side of the room.
-The Kitchen is to the east.
-The living room is to the west
+R2
+Room R2
+You walk into the room and notice craters and signs of struggle all over the room. 
+You then notice a hulking ripped demon in the middle of the room. 
+The veins in his head look like they could pop anytime from pure rage. 
+He notices you and gets into position to charge. That must be the monster Wrath.
 -----
-north: 4
-east: 2
-west: 1
+west: R1
+east: R3
+south: R8
 quit: 0
 
-4
-Bathroom
-There are a window right above the toilet in the north side of the room
-To get out of the bathroom, go south
+R3
+Room R3
+You can see a sea of endless lava towards the north. 
+In the middle of the room lies a potion. 
+In the corner of the room lies the bodies of fallen warriors.
 -----
-south: 3
-north: 5
+west: R2
+east: R4
+south: R9
 quit: 0
 
-5
-Right Porch
-You are at the right porch outside the house
-The window to the south is the only open port of entry to the house
-There is a pathway to the forest ahead of you.
+R4
+Room R4
+You enter the room, and a voice enters your head. 
+“Brave Hero, welcome to the puzzle of Gluttony. 
+Here you must throw food found on room on the four altars located at the 4 corners of the room. 
+Complete this task, and receive the item to aid you in your oncoming battle with the insatiable beast.”
 -----
-south: 3
-north: 6
+west: R3
+east: R5
+south: R10
 quit: 0
 
-6
-Dark Forest
-Forest. Nothing here
-Head south to go back to the house
+R5
+Room R5
+The overwhelming stench of human corps and animals strikes your nose. 
+Waiting in the middle lies a sizeable foul demon. 
+He glares at you with hungry eyes...
 -----
-south: 5
+west: R4
+south: R11
+quit: 0
+
+R6
+Room R6
+To the west, you can see a sea of lava. 
+In the middle of the room, you see a portion lying on the floor.
+-----
+north: R0
+south: RR12
+east: R7
+quit: 0
+
+R7
+Room R7
+You enter the room, and you see a blonde Japanese man 
+in a purple suit eating at a table with a severed hand sitting across from him. 
+They both have sandwiches.
+-----
+north: R1
+south: R13
+west: R6
+east: R8
+quit: 0
+
+R8
+Room R8
+You enter an empty room except for a couple of bones and unlit torches lying on the ground.
+-----
+north: R2
+south: R14
+west: R7
+east: R9
+quit: 0
+
+R9
+Room R9
+To the south-west of the room, you can see a pit of lava. 
+You also see a potion in the room.
+-----
+north: R3
+south: R15
+west: R8
+east: R10
+quit: 0
+
+R10
+Room R10
+You see a man in a bloody toga standing in the middle of the room. 
+His face looks like he lost it all...
+-----
+north: R4
+south: R16
+west: R9
+east: R11
+quit: 0
+
+R11
+Room R11
+You enter the room, and to the east, there is lava as far as the eye can see. 
+You can feel the heat. You notice a potion lying on the floor.
+-----
+north: R5
+south: R17
+west: R10
+quit: 0
+
+R12
+Room R12
+A room christened by golden tiles in the middle sits the demon of avarice, Greed.
+-----
+north: R6
+south: R18
+east: R13
+quit: 0
+
+R13
+Room R13
+You enter the room, and there is a thick fog that surrounds you. 
+A voice enters your head. “Brave Hero, Welcome to the puzzle of Greed! 
+To solve this puzzle, you must return the items the various people in hell are seeking. 
+When this task is complete, receive the item that the demon Greed seeks.”
+-----
+north: R7
+south: R19
+west: R12
+east: R14
+quit: 0
+
+R14
+Room R14
+The player’s starting room. A high heat awakens you. 
+You look around to see yourself surrounded by pits of lava. 
+3 items are lying on the ground. 
+The overbearing presence of evil lies ahead cannot be ignored. 
+Rooms can be seen going either east, west, north, or south. 
+A bag lies in the corner. It could be useful for storing things.
+-----
+north: R8
+south: R20
+west: R13
+east: R15
+quit: 0
+
+R15
+Room R15
+A room lies east of you. You can see that it has a strange maze-like structure. 
+In the middle of the room lies a potion in between some rocks. 
+Up north, you can see a pit of lava.  
+South of you lies another room, and something interesting catches your eye.
+-----
+north: R9
+south: R21
+west: R14
+east: R16
+quit: 0
+
+R16
+Room R16
+A room with a maze with an altar at the center the maze is directly proportional to the number of bosses slain. 
+The maze starts smaller based on remaining bosses.
+-----
+north: R10
+south: R22
+west: R15
+east: R17
+quit: 0
+
+R17
+Room R17
+You enter the room, and you hear haughty laughter. 
+‘You must be here to bow to my greatness!’ a voice rings out. 
+There is a demon with a crown in the middle of the room. 
+There is an oppressive air surrounding you…
+-----
+north: R11
+south: R23
+west: R16
+quit: 0
+
+R18
+Room R18
+Up north, you feel the strange presence of a man and see golden tiles. 
+In the east, you can see a gorgeous woman.  Maybe you should talk to her. 
+South you can feel an evil presence, but you see a puzzle in the room. 
+In the corner lies a potion covered in dust.
+-----
+north: R12
+south: R24
+east: R19
+quit: 0
+
+R19
+Room R19
+North you can barely make out a room from all the fog covering it. 
+In the east, you can see an older man with a sinister smile. 
+In the center of the room and notice a stylish, beautiful Egyptian woman. She seems to be looking for something.
+-----
+north: R13
+south: R25
+west: R18
+east: R20
+quit: 0
+
+R20
+Room R20
+You enter the room, and you notice a man wearing a double-breasted suit and tie with neatly parted hair and a familiar face. 
+His mustache that looks like someone pulled a “Dirty Sanchez” on him while he was asleep. 
+He looks at you as if he has a request...
+-----
+north: R14
+south: R26
+west: R19
+east: R21
+quit: 0
+
+R21
+Room R21
+You enter the room and see a pit of lava towards the north-west of the room. 
+There is a potion in the center of the room.
+-----
+north: R15
+south: R27
+west: R20
+east: R22
+quit: 0
+
+R22
+Room R22
+You enter the room and notice a young man in a loincloth muttering to himself. 
+You overhear him saw “screw you Abel…” he then turns to you as if he has a request.
+-----
+north: R16
+south: R28
+west: R21
+east: R23
+quit: 0
+
+R23
+Room R23
+There appears to be a hat in this room. 
+The hat looks oddly familiar. Takes you back to a history class took way back...
+-----
+north: R17
+south: R29
+west: R22
+quit: 0
+
+R24
+Room R24
+You walk into a room and see 8 pillars. 
+A voice enters your head. “Brave Hero welcome to the puzzle of Lust! 
+In this room, you must attack the 8 pillars to solve the puzzle. 
+Each pillar has a particular chime to it finding the correct order is the key. 
+When solved, the puzzle gives the player an item to aid them in their fight with the irresistibly beautiful demon.
+-----
+north: R18
+south: R30
+east: R25
+quit: 0
+
+R25
+Room R25
+You enter the room and notice a valley of lava towards the south-east of the room. 
+There appears to be a potion on the floor.
+-----
+north: R19
+south: R31
+west: R24
+east: R26
+quit: 0
+
+R26
+Room R26
+“7 altars lie nearby. Down South, a large door you can see, but it doesn't seem to budge open. 
+Perhaps 7 important artifacts need to be placed here to open this door...”
+-----
+north: R20
+south: R32
+west: R25
+east: R27
+quit: 0
+
+R27
+Room R27
+You enter the room an item is in the center of the room lava surrounds the southwest portion of the room.
+-----
+north: R21
+south: R33
+west: R26
+east: R28
+quit: 0
+
+R28
+Room R28
+You walk into a barren room with a potion in the center. 
+Up north in the next room, you see a strange man. 
+East, you can see a room with a puzzle. 
+South you can see a pit of lava and east you see something that catches your eye.
+-----
+north: R22
+south: R34
+west: R27
+east: R29
+quit: 0
+
+R29
+Room R29
+You enter the room and notice 2 rows of 3 pillars in the middle of the room. 
+A voice enters your head. “Brave Hero welcome to the puzzle of Envy. 
+To solve this puzzle, the top row of pillars arranged in a particular pattern. 
+You must match the bottom row of pillars to the top row of pillars.”
+-----
+north: R23
+south: R35
+west: R28
+quit: 0
+
+R30
+Room R30
+You see a hundred candles laid all-around lighting up the dimly lit room. 
+In the center of the room, there are 3 pillars and a beautiful busty woman calling you. 
+You better watch out this is most likely the demon Lust.
+-----
+north: R24
+east: R31
+quit: 0
+
+R31
+Room R31
+You enter the room and see a potion at the center, the south filled with a sea of lava. 
+Towards the west you see a valley of lava.
+However past the lava you see a plateau with what seems to be a Demon King  yelling ”MUDA!, MUDA!, MUDA!, MUDA!!!!”
+-----
+north: R25
+west: R30
+quit: 0
+
+R32
+Room R32
+You enter a room Surrounded by lava. The door behind you closes. There is nowhere to run. 
+At the end of the room, you see a blond man with a black crop top and bright yellow pants. 
+You hear him let out a loud WRYYYYYYYYYY. He looks at you menacingly. You understand this is your last trial. 
+Thus, you approach.
+-----
+north: R26
+quit: 0
+
+R33
+Room R33
+You enter the room, and you look to the west. You can see a menacing figure across the valley of lava.
+To the south, there is an endless sea of lava swarming with all manner of beasts. 
+There is a potion lying on the ground.
+-----
+north: R27
+east: R34
+quit: 0
+
+R34
+Room R34
+You enter the room, and you can view the endless sea of lava towards the south. 
+You can hear something plotting in the room towards the east. 
+There is a potion on the floor.
+-----
+north: R28
+west: R33
+east: R35
+quit: 0
+
+R35
+Room R35
+The monster of Envy stands in the middle of the room. 
+You can not tell whether the demon is male or female,
+but before you can figure it out, you are staring at yourself...
+-----
+north: R29
+west: R34
 quit: 0
