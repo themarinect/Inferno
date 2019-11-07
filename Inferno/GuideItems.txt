@@ -1,0 +1,6 @@
+id:A4
+name:Map
+type:Guide
+desc:The edges are a little rough, but it contains a map to the entire cave system. It can prove useful for when you feel lost.
+location:R14
+strength:0
