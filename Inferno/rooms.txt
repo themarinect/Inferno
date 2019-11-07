@@ -7,7 +7,6 @@ The monster must be the demon of laziness, Sloth.
 -----
 east: R1
 south: R6
-quit: 0
 
 R1
 Room R1
@@ -20,7 +19,6 @@ When it is solved, you shall bestow with the dungeon’s prize possession.”
 west: R0
 east: R2
 south: R7
-quit: 0
 
 R2
 Room R2
@@ -32,7 +30,6 @@ He notices you and gets into position to charge. That must be the monster Wrath.
 west: R1
 east: R3
 south: R8
-quit: 0
 
 R3
 Room R3
@@ -43,7 +40,6 @@ In the corner of the room lies the bodies of fallen warriors.
 west: R2
 east: R4
 south: R9
-quit: 0
 
 R4
 Room R4
@@ -55,7 +51,6 @@ Complete this task, and receive the item to aid you in your oncoming battle with
 west: R3
 east: R5
 south: R10
-quit: 0
 
 R5
 Room R5
@@ -65,7 +60,6 @@ He glares at you with hungry eyes...
 -----
 west: R4
 south: R11
-quit: 0
 
 R6
 Room R6
@@ -75,7 +69,6 @@ In the middle of the room, you see a portion lying on the floor.
 north: R0
 south: RR12
 east: R7
-quit: 0
 
 R7
 Room R7
@@ -87,7 +80,6 @@ north: R1
 south: R13
 west: R6
 east: R8
-quit: 0
 
 R8
 Room R8
@@ -97,7 +89,6 @@ north: R2
 south: R14
 west: R7
 east: R9
-quit: 0
 
 R9
 Room R9
@@ -108,7 +99,6 @@ north: R3
 south: R15
 west: R8
 east: R10
-quit: 0
 
 R10
 Room R10
@@ -119,7 +109,6 @@ north: R4
 south: R16
 west: R9
 east: R11
-quit: 0
 
 R11
 Room R11
@@ -129,7 +118,6 @@ You can feel the heat. You notice a potion lying on the floor.
 north: R5
 south: R17
 west: R10
-quit: 0
 
 R12
 Room R12
@@ -138,7 +126,6 @@ A room christened by golden tiles in the middle sits the demon of avarice, Greed
 north: R6
 south: R18
 east: R13
-quit: 0
 
 R13
 Room R13
@@ -151,7 +138,6 @@ north: R7
 south: R19
 west: R12
 east: R14
-quit: 0
 
 R14
 Room R14
@@ -166,7 +152,6 @@ north: R8
 south: R20
 west: R13
 east: R15
-quit: 0
 
 R15
 Room R15
@@ -179,7 +164,6 @@ north: R9
 south: R21
 west: R14
 east: R16
-quit: 0
 
 R16
 Room R16
@@ -190,7 +174,6 @@ north: R10
 south: R22
 west: R15
 east: R17
-quit: 0
 
 R17
 Room R17
@@ -202,7 +185,6 @@ There is an oppressive air surrounding you…
 north: R11
 south: R23
 west: R16
-quit: 0
 
 R18
 Room R18
@@ -214,7 +196,6 @@ In the corner lies a potion covered in dust.
 north: R12
 south: R24
 east: R19
-quit: 0
 
 R19
 Room R19
@@ -226,7 +207,6 @@ north: R13
 south: R25
 west: R18
 east: R20
-quit: 0
 
 R20
 Room R20
@@ -238,7 +218,6 @@ north: R14
 south: R26
 west: R19
 east: R21
-quit: 0
 
 R21
 Room R21
@@ -249,7 +228,6 @@ north: R15
 south: R27
 west: R20
 east: R22
-quit: 0
 
 R22
 Room R22
@@ -260,7 +238,6 @@ north: R16
 south: R28
 west: R21
 east: R23
-quit: 0
 
 R23
 Room R23
@@ -270,7 +247,6 @@ The hat looks oddly familiar. Takes you back to a history class took way back...
 north: R17
 south: R29
 west: R22
-quit: 0
 
 R24
 Room R24
@@ -283,7 +259,6 @@ When solved, the puzzle gives the player an item to aid them in their fight with
 north: R18
 south: R30
 east: R25
-quit: 0
 
 R25
 Room R25
@@ -294,7 +269,6 @@ north: R19
 south: R31
 west: R24
 east: R26
-quit: 0
 
 R26
 Room R26
@@ -305,7 +279,6 @@ north: R20
 south: R32
 west: R25
 east: R27
-quit: 0
 
 R27
 Room R27
@@ -315,7 +288,6 @@ north: R21
 south: R33
 west: R26
 east: R28
-quit: 0
 
 R28
 Room R28
@@ -328,7 +300,6 @@ north: R22
 south: R34
 west: R27
 east: R29
-quit: 0
 
 R29
 Room R29
@@ -340,7 +311,6 @@ You must match the bottom row of pillars to the top row of pillars.”
 north: R23
 south: R35
 west: R28
-quit: 0
 
 R30
 Room R30
@@ -350,7 +320,6 @@ You better watch out this is most likely the demon Lust.
 -----
 north: R24
 east: R31
-quit: 0
 
 R31
 Room R31
@@ -360,7 +329,6 @@ However past the lava you see a plateau with what seems to be a Demon King  yell
 -----
 north: R25
 west: R30
-quit: 0
 
 R32
 Room R32
@@ -370,7 +338,6 @@ You hear him let out a loud WRYYYYYYYYYY. He looks at you menacingly. You unders
 Thus, you approach.
 -----
 north: R26
-quit: 0
 
 R33
 Room R33
@@ -380,7 +347,6 @@ There is a potion lying on the ground.
 -----
 north: R27
 east: R34
-quit: 0
 
 R34
 Room R34
@@ -391,7 +357,6 @@ There is a potion on the floor.
 north: R28
 west: R33
 east: R35
-quit: 0
 
 R35
 Room R35
@@ -401,4 +366,3 @@ but before you can figure it out, you are staring at yourself...
 -----
 north: R29
 west: R34
-quit: 0
