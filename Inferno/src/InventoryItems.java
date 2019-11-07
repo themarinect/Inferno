@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-import models.Item;
+import models.Item.Item;
 
 public class InventoryItems extends Item
 {
