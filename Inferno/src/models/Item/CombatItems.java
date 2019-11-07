@@ -1,5 +1,4 @@
-package models;
-
+package models.Item;
 import java.util.ArrayList;
 
 public class CombatItems extends Item
