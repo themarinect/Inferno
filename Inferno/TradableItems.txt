@@ -3,32 +3,32 @@ name:Sinister Hat
 type:Tradable
 desc:A hat that looks like belonging to a Dictator form a ruthless nation.
 location:R23
-strength:0
+NPC:N4
 
 id:A12
 name:Lace Stockings
 type:Tradable
 desc:Scantily, scented stockings who could these belong to?
 location:R20
-strength:0
+NPC:N0
 
 id:A13
 name:Stained Rock
 type:Tradable
 desc:A sinister-looking rock with a red stain on it.
 location:R19
-strength:0
+NPC:N1
 
 id:A14
 name:Broken Dagger
 type:Tradable
 desc:A broken dagger. It doesn't look like it can be used and still has some blood on it.
 location:R22
-strength:0
+NPC:N2
 
 id:A15
 name:Tribal Bandana
 type:Tradable
 desc:A bandana that once belonged to a noble warrior. Take good care.
 location:R10
-strength:0
+NPC:N3
