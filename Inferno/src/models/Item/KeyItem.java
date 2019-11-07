@@ -2,16 +2,16 @@ package models.Item;
 
 import java.util.ArrayList;
 
-public class KeyItems extends Item
+public class KeyItem extends Item
 {
 	private String associatedMonster;
 
-	public KeyItems()
+	public KeyItem()
 	{
 		
 	}
 
-	public KeyItems(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
+	public KeyItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
 			ArrayList<String> _itemLocation, String _associatedMonster)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 
-public class GuideItems extends Item
+public class GuideItem extends Item
 {
 	private Image image;
 	
-	public GuideItems()
+	public GuideItem()
 	{
 
 	}
 
-	public GuideItems(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
+	public GuideItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
 			ArrayList<String> _itemLocation, Image _image)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);

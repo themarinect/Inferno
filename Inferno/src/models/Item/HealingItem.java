@@ -2,17 +2,17 @@ package models.Item;
 
 import java.util.ArrayList;
 
-public class HealingItems extends Item
+public class HealingItem extends Item
 {
 
 	private int strength;
 	
-	public HealingItems()
+	public HealingItem()
 	{
 		
 	}
 
-	public HealingItems(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
+	public HealingItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
 			ArrayList<String> _itemLocation, int _strength)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
