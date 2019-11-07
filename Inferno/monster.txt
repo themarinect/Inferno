@@ -1,0 +1,94 @@
+id:M0
+name:Lust
+desc:“A beautiful gorgeous woman with a radiating glow.
+Her charm is unlike anything you’ve seen and can easily sway people with her looks’
+Although, do not let looks deceive you. Underneath all that beauty lies a genuinely evil soul.”
+Lust is in a room with pillars to defeat lust. The player must choose the right pillar and attack lust.
+If the player chooses the wrong pillar Lust damages and heals the amount of damage Lust deals.
+The Lens of Truth is a particularly useful item here.
+health:30/40/50/60/70/80/90/100
+attack:10/15/20/25/30/35/40/50
+location:R30
+item:A16
+
+id:M1
+name:Gluttony
+desc:“A large foul beast with a striking stench.
+Having been asleep for so long, he isn’t too happy being woken up from his slumber.
+He looks to eat anything and anybody without hesitation.”
+The Gluttony fight is on an open field surrounded by lava.
+The player can regularly attack; however, due to Gluttony’s enormous HP and Attack, it’s quite risky.
+To finish the fight effectively, the player must EQUIP FOOD and THROW or DROP onto a tile that isn’t where Gluttony.
+When the player places FOOD is on a tile Gluttony rushes on that tile and eats the food while in this state Gluttony is sated,
+and the player deals 4x typical damage. Endless Feast is particularly useful here.
+health:50/60/80/90/100/120/130/150
+attack:30/40/50/ 60/70/80/90/100
+location:R5
+item:A17
+
+id:M2
+name:Greed
+desc:“A rather large, muscular, and cocky man.
+He desires everything the world has to offer, including money, power, and woman.
+He sees you as a rather worthy foe and is eager to fight you.” Greed doesn’t deal damage instead.
+Greed inflicts a the Midas infection if the player stays on a tile after 3 turns the player turns to gold resulting in a GAME OVER.
+The player must be prompted after the second turn to MOVE.
+health:50/60/70/80/90/100/100/110/120/130/140
+attack:50
+location:R12
+item:A18
+
+id:M3
+name:Envy
+desc:“A rather pretentious and cruel person.
+He is secretly jealous of your strength and kills without hesitation.”
+The room starts as a standard room; however, the room size increases based on monsters slain.
+Envy copies your stats and inventory and creates weak clones that flood the room.
+If the player has defeated the Envy puzzle Envy cannot create clones but clones the Players current state and inventory.
+health:
+attack:
+location:R35
+item:A19
+
+id:M4
+name:Sloth
+desc:“A large, heavy enemy, the biggest out of all the monsters.
+Despite being very big, he is the fastest one out of all the seven sins.”
+Standard Room. Sloth does not move.
+Sloth stores the damage is taken from the player and unleashes an attack that hits every tile for 2x damage taken.
+(Wrath/Sloth Puzzle makes this super simple)
+health:100
+attack:15
+location:R0
+item:A20
+
+id:M5
+name:Pride
+desc:Pride is the hardest boss if taken on first.
+Pride is the only boss that is hard early and gets more comfortable with each monster slain.
+Prides the player next to him at the start of the fight and triggers every 30 health loss.
+health:200/175/150/125/110/100/75/50
+attack:80/75/70/65/60/50/40/30
+location:R17
+item:A21
+
+id:M6
+name:Wrath
+desc:Wrath has the potential to be the strongest boss when fought.
+Wrath charges for 3 turn at the player periodically.
+The system prompts MOVE if the player in danger.
+If the player fails to move the charge deals double damage proportionally to current Attack Power of Wrath.
+health:40/50/60/100
+attack:10/20/30/40/50/60/70
+location:R2
+item:A22
+
+id:M7
+name:DIO
+desc:DIO starts at the center of the room.
+DIO does everything the other bosses can do but must use all the boss moves before recycling the same boss moves.
+On occasion DIO can do the move ZA WARUDO, allowing him to 2 turns to do whatever he wants.
+health:300
+attack:80
+location:R32
+item:
