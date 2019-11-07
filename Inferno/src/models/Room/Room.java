@@ -1,8 +1,11 @@
-package models;
+package models.Room;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import models.Item.Item;
+import models.Puzzle.Puzzle;
 
 public class Room
 {
