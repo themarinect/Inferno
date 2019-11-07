@@ -1,19 +1,160 @@
-KEY
-The Scarlet Key is used to open both Armory and Cathedral wings of Scarlet Monastery
-1
+id:A0
+name:Potion
+type:Healing
+desc:A pretty good healing potion capable of healing 50 of your HP.
+strength:50
+location:R3/R6/R9/R11/R15/R18/R21/R25/R27/R28/R31/R33/R34
 
-POTATO
-The potato is a root vegetable, a starchy tuber of the plant Solanum tuberosum
-2
+id:A1
+name:Lens Of Truth
+type:Combat
+desc:Reveals Lusts exact location when used during a fight.
+strength:0
+location:R24
 
-LAMP
-Oil lamps are a form of lighting, and were used as an alternative to candles
-3
+id:A2
+name:Endless Feast
+type:Healing
+desc:A cornucopia that endlessly produces any food the heart desires. Can heal for 25 HP and has infinite use. (Can only be used during a battle).
+strength:25
+location:R4
 
-SWORD
-The Sword of Sargeras is a weapon "crafted from hatred made manifest"
-4
+id:A3
+name:Brown Bag
+type:inventory
+desc:A worn brown bag made up of burlap. It can be used to store valuable items found along the journey.
+strength:20
+location:R14
 
-ROD
-The sole known use of this item is in the creation of the Ashbringer
-5
+id:A4
+name:Map
+type:Guide
+desc:The edges are a little rough, but it contains a map to the entire cave system. It can prove useful for when you feel lost.
+strength:0
+location:R14
+
+id:A5
+name:Pure Bow
+type:Weapon
+desc:A legendary bow that radiates powerful energy. The ability to control it depends on the strength and the will of the player.
+strength:10
+location:R14
+
+id:A6
+name:Ultimate Bow
+type:Weapon
+desc:The bow that will pierce the heavens! It is said that those who can control it posses the ultimate will to fight and live. Its purity can pierce even the strongest demon king. 
+strength:30
+location:R1
+
+id:A7
+name:Golden Experience
+type:Combat
+desc:When in the player's inventory the player with receive 50% less damage from monsters. “They will never arrive at the truth.”
+strength:0
+location:R7
+
+id:A8
+name:Mirror of Dismissal
+type:Combat
+desc:All illusions of Envy are dispelled within the current room. Used to reveal the answer of the puzzle in the room.
+strength:0
+location:R29
+
+id:A9
+name:Angelic Blessing
+type:Healing
+desc:An item that resurrects the player from death to max health.
+strength:100
+location:R16
+
+id:A10
+name:Grand Key
+type:Key
+desc:This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
+strength:0
+location:R26
+
+id:A11
+name:Sinister Hat
+type:Tradable
+desc:A hat that looks like belonging to a Dictator form a ruthless nation.
+strength:0
+location:R23
+
+id:A12
+name:Lace Stockings
+type:Tradable
+desc:Scantily, scented stockings who could these belong to?
+strength:0
+location:R20
+
+id:A13
+name:Stained Rock
+type:Tradable
+desc:A sinister-looking rock with a red stain on it.
+strength:0
+location:R19
+
+id:A14
+name:Broken Dagger
+type:Tradable
+desc:A broken dagger. It doesn't look like it can be used and still has some blood on it.
+strength:0
+location:R22
+
+id:A15
+name:Tribal Bandana
+type:Tradable
+desc:A bandana that once belonged to a noble warrior. Take good care.
+strength:0
+location:R10
+
+id:A16
+name:Relic of Chastity
+type:Key
+desc:A relic dropped by the demon Lust. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R30
+
+id:A17
+name:Relic of Temperance
+type:Key
+desc:A relic dropped by the demon Gluttony. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R5
+
+id:A18
+name:Relic of Charity
+type:Key
+desc:A relic dropped/gained by the demon Greed. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R12
+
+id:A19
+name:Relic of Kindness
+type:Key
+desc:A relic dropped by the demon Envy. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R35
+
+id:A20
+name:Relic of Diligence
+type:Key
+desc:A relic dropped by the demon Sloth. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R0
+
+id:A21
+name:Relic of Humility
+type:Key
+desc:A relic dropped by the demon Pride. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R17
+
+id:A22
+name:Relic of Patience
+type:Key
+desc:A relic dropped by the demon Wrath. Combine this with the other 6 relics to obtain the grand key.
+strength:0
+location:R2
