@@ -3,18 +3,18 @@ name:Lens Of Truth
 type:Combat
 desc:Reveals Lusts exact location when used during a fight.
 location:R24
-strength:0
+usage:west
 
 id:A7
 name:Golden Experience
 type:Combat
 desc:When in the player's inventory the player with receive 50% less damage from monsters. “They will never arrive at the truth.”
 location:R7
-strength:0
+usage:50%
 
 id:A8
 name:Mirror of Dismissal
 type:Combat
 desc:All illusions of Envy are dispelled within the current room. Used to reveal the answer of the puzzle in the room.
 location:R29
-strength:0
+usage:reveals answer
