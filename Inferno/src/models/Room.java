@@ -7,12 +7,12 @@ import java.util.HashMap;
 public class Room
 {
 	//Room attributes
-	private int roomNumber;
+	private String roomID;
 	private String roomName;
 	private String[] roomDesc;
 	private boolean isVisited;
 	//stores directions and associated Room number
-	private HashMap<String,Integer> navigationTable;
+	private HashMap<String,String> navigationTable;
 	
 	//A list of Items in the Room
 	private ArrayList<Item> itemList = new ArrayList<Item>();
@@ -33,7 +33,7 @@ public class Room
 			String line = reader.readLine();
 			if(line == null)
 				return null;
-			room.roomNumber = Integer.parseInt(line); //reads Room number from txt file
+			room.roomID = line; //reads Room ID from txt file
 			room.roomName = reader.readLine(); //reads Room name from txt file
 			
 			ArrayList<String> roomDescList = new ArrayList<String>(); 
@@ -49,13 +49,13 @@ public class Room
 			for(String descLine : roomDescList) //iterates ArrayList
 				room.roomDesc[i++] = descLine; //puts Room description from ArrayList into an array
 			
-			room.navigationTable = new HashMap<String, Integer>(); //initializes a HashMap for each Room
+			room.navigationTable = new HashMap<String, String>(); //initializes a HashMap for each Room
 			while(true)
 			{
 				line = reader.readLine();
 				if(line == null || line.equals(""))
 					break;
-				parseNavigation(room, line); //reads directions and associated Room number from txt file 
+				parseNavigation(room, line); //reads directions and associated Room ID from txt file 
 			}
 		}catch (IOException ex)
 		{
@@ -68,22 +68,22 @@ public class Room
 		return room;
 	}
 	
-	//puts directions and associated Room number from txt file to HashMap
+	//puts directions and associated Room ID from txt file to HashMap
 	public static void parseNavigation(Room room, String line)
 	{
 		line = line.trim(); //deletes spaces
 		int colon = line.indexOf(":");
 		String direction = line.substring(0,colon).trim(); //gets direction
-		int destinationRoom = Integer.parseInt(line.substring(colon+1).trim()); //get associated Room number
+		String destinationRoom = line.substring(colon+1).trim(); //get associated Room ID
 		room.navigationTable.put(direction, destinationRoom);
 	}
 	
-	//looks up directions and associated Room number based on user's input
-	public int lookupNavigation(String choice)
+	//looks up directions and associated Room ID based on user's input
+	public String lookupNavigation(String choice)
 	{
-		Integer value = navigationTable.get(choice); //gets value based on key
+		String value = navigationTable.get(choice); //gets value based on key
 		if(value == null) //if no value matches
-			return -1;
+			return null;
 		return value;
 	}
 	
@@ -145,9 +145,9 @@ public class Room
 	
 	
 	//getters and setters
-	public int getRoomNumber()
+	public String getRoomID()
 	{
-		return roomNumber;
+		return roomID;
 	}
 
 	public String getRoomName()
