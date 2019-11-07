@@ -17,39 +17,14 @@ public class Item
 	
 	public Item(String _itemID, String _itemName, String _itemType, String[] _itemDesc, ArrayList<String> _itemLocation)
 	{
-		this.itemID = _itemID;
-		this.itemName = _itemName;
-		this.itemType = _itemType;
-		this.itemDesc = _itemDesc;
-		this.itemLocation = _itemLocation;
+		this.setItemID(_itemID);
+		this.setItemName(_itemName);
+		this.setItemType(_itemType);
+		this.setItemDesc(_itemDesc);
+		this.setItemLocation(_itemLocation);
 	}
-	/*public static Item readItem(BufferedReader reader)
-	{
-		Item item = new Item();
-		try
-		{
-			String line = reader.readLine();
-			if(line == null)
-				return null;
-			if(line.equals("") || line.length() == 0)
-				line = reader.readLine();
-			item.itemName = line;
-			
-			line = reader.readLine();
-			item.itemDesc = line;
-			
-			line = reader.readLine();
-			item.itemInitialRoom = Integer.parseInt(line);
-		}catch(IOException ex)
-		{
-			ex.getMessage();
-		}
-		
-		return item;
-	}*/
 	
-	
-	//getters
+	//getters and setters
 	public String getItemID()
 	{
 		return itemID;
@@ -69,5 +44,30 @@ public class Item
 	public ArrayList<String> getItemLocation()
 	{
 		return itemLocation;
+	}
+
+	public void setItemID(String itemID)
+	{
+		this.itemID = itemID;
+	}
+
+	public void setItemName(String itemName)
+	{
+		this.itemName = itemName;
+	}
+
+	public void setItemType(String itemType)
+	{
+		this.itemType = itemType;
+	}
+
+	public void setItemDesc(String[] itemDesc)
+	{
+		this.itemDesc = itemDesc;
+	}
+
+	public void setItemLocation(ArrayList<String> itemLocation)
+	{
+		this.itemLocation = itemLocation;
 	}
 }

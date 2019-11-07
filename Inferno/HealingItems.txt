@@ -1,20 +1,23 @@
-id:A0
-name:Potion
-type:Healing
-desc:A pretty good healing potion capable of healing 50 of your HP.
-location:R3/R6/R9/R11/R15/R18/R21/R25/R27/R28/R31/R33/R34
+A0
+Potion
+Healing
+A pretty good healing potion capable of healing 50 of your HP.
+R3/R6/R9/R11/R15/R18/R21/R25/R27/R28/R31/R33/R34
+-----
 strength:50
 
-id:A2
-name:Endless Feast
-type:Healing
-desc:A cornucopia that endlessly produces any food the heart desires. Can heal for 25 HP and has infinite use. (Can only be used during a battle).
-location:R4
+A2
+Endless Feast
+Healing
+A cornucopia that endlessly produces any food the heart desires. Can heal for 25 HP and has infinite use. (Can only be used during a battle).
+R4
+-----
 strength:25
 
-id:A9
-name:Angelic Blessing
-type:Healing
-desc:An item that resurrects the player from death to max health.
-location:R16
+A9
+Angelic Blessing
+Healing
+An item that resurrects the player from death to max health.
+R16
+-----
 strength:100

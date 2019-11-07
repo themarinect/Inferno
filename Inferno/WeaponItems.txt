@@ -1,13 +1,15 @@
-id:A5
-name:Pure Bow
-type:Weapon
-desc:A legendary bow that radiates powerful energy. The ability to control it depends on the strength and the will of the player.
-location:R14
+A5
+Pure Bow
+Weapon
+A legendary bow that radiates powerful energy. The ability to control it depends on the strength and the will of the player.
+R14
+-----
 attack:10
 
-id:A6
-name:Ultimate Bow
-type:Weapon
-desc:The bow that will pierce the heavens! It is said that those who can control it posses the ultimate will to fight and live. Its purity can pierce even the strongest demon king.
-location:R1 
+A6
+Ultimate Bow
+Weapon
+The bow that will pierce the heavens! It is said that those who can control it posses the ultimate will to fight and live. Its purity can pierce even the strongest demon king.
+R1
+----- 
 attack:30

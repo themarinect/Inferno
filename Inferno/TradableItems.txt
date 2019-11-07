@@ -1,34 +1,39 @@
-id:A11
-name:Sinister Hat
-type:Tradable
-desc:A hat that looks like belonging to a Dictator form a ruthless nation.
-location:R23
+A11
+Sinister Hat
+Tradable
+A hat that looks like belonging to a Dictator form a ruthless nation.
+R23
+-----
 NPC:N4
 
-id:A12
-name:Lace Stockings
-type:Tradable
-desc:Scantily, scented stockings who could these belong to?
-location:R20
+A12
+Lace Stockings
+Tradable
+Scantily, scented stockings who could these belong to?
+R20
+-----
 NPC:N0
 
-id:A13
-name:Stained Rock
-type:Tradable
-desc:A sinister-looking rock with a red stain on it.
-location:R19
+A13
+Stained Rock
+Tradable
+A sinister-looking rock with a red stain on it.
+R19
+-----
 NPC:N1
 
-id:A14
-name:Broken Dagger
-type:Tradable
-desc:A broken dagger. It doesn't look like it can be used and still has some blood on it.
-location:R22
+A14
+Broken Dagger
+Tradable
+A broken dagger. It doesn't look like it can be used and still has some blood on it.
+R22
+-----
 NPC:N2
 
-id:A15
-name:Tribal Bandana
-type:Tradable
-desc:A bandana that once belonged to a noble warrior. Take good care.
-location:R10
+A15
+Tribal Bandana
+Tradable
+A bandana that once belonged to a noble warrior. Take good care.
+R10
+-----
 NPC:N3

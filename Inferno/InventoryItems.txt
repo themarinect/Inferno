@@ -1,6 +1,7 @@
-id:A3
-name:Brown Bag
-type:inventory
-desc:A worn brown bag made up of burlap. It can be used to store valuable items found along the journey.
-location:R14
+A3
+Brown Bag
+inventory
+A worn brown bag made up of burlap. It can be used to store valuable items found along the journey.
+R14
+-----
 capacity:20

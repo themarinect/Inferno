@@ -1,55 +1,63 @@
-id:A10
-name:Grand Key
-type:Key
-desc:This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
-location:R26
+A10
+Grand Key
+Key
+This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
+R26
+-----
 AssociatedMonster:0
 
-id:A16
-name:Relic of Chastity
-type:Key
-desc:A relic dropped by the demon Lust. Combine this with the other 6 relics to obtain the grand key.
-location:R30
+A16
+Relic of Chastity
+Key
+A relic dropped by the demon Lust. Combine this with the other 6 relics to obtain the grand key.
+R30
+-----
 AssociatedMonster:M0
 
-id:A17
-name:Relic of Temperance
-type:Key
-desc:A relic dropped by the demon Gluttony. Combine this with the other 6 relics to obtain the grand key.
-location:R5
+A17
+Relic of Temperance
+Key
+A relic dropped by the demon Gluttony. Combine this with the other 6 relics to obtain the grand key.
+R5
+-----
 AssociatedMonster:M1
 
-id:A18
-name:Relic of Charity
-type:Key
-desc:A relic dropped/gained by the demon Greed. Combine this with the other 6 relics to obtain the grand key.
-location:R12
+A18
+Relic of Charity
+Key
+A relic dropped/gained by the demon Greed. Combine this with the other 6 relics to obtain the grand key.
+R12
+-----
 AssociatedMonster:M2
 
-id:A19
-name:Relic of Kindness
-type:Key
-desc:A relic dropped by the demon Envy. Combine this with the other 6 relics to obtain the grand key.
-location:R35
+A19
+Relic of Kindness
+Key
+A relic dropped by the demon Envy. Combine this with the other 6 relics to obtain the grand key.
+R35
+-----
 AssociatedMonster:M3
 
-id:A20
-name:Relic of Diligence
-type:Key
-desc:A relic dropped by the demon Sloth. Combine this with the other 6 relics to obtain the grand key.
-location:R0
+A20
+Relic of Diligence
+Key
+A relic dropped by the demon Sloth. Combine this with the other 6 relics to obtain the grand key.
+R0
+-----
 AssociatedMonster:M4
 
-id:A21
-name:Relic of Humility
-type:Key
-desc:A relic dropped by the demon Pride. Combine this with the other 6 relics to obtain the grand key.
-location:R17
+A21
+Relic of Humility
+Key
+A relic dropped by the demon Pride. Combine this with the other 6 relics to obtain the grand key.
+R17
+-----
 AssociatedMonster:M5
 
-id:A22
-name:Relic of Patience
-type:Key
-desc:A relic dropped by the demon Wrath. Combine this with the other 6 relics to obtain the grand key.
-location:R2
+A22
+Relic of Patience
+Key
+A relic dropped by the demon Wrath. Combine this with the other 6 relics to obtain the grand key.
+R2
+-----
 AssociatedMonster:M6
