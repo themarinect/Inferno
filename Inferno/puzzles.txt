@@ -1,5 +1,5 @@
 id:P1
-room:R24
+location:R24
 item:A1
 name:Lust Puzzle
 desc:There are 8 pillars that you must attack to solve the puzzle each pillar has a particular chime to it finding the correct order is the key. 
@@ -9,7 +9,7 @@ hint:The Tonal Scale.
 CorrectAnswer: DO->RE->MI->FA->SO->LA->TI->DO
 
 id:P2
-room:R4
+location:R4
 item:A2
 name:Gluttony Puzzle
 desc:All four corners of the room have an empty altar in the surrounded by bottomless pits
@@ -20,7 +20,7 @@ hint:Why are these altars empty try putting an item on the altars?
 CorrectAnswer: THROW
 
 id:P3
-room:R13
+location:R13
 item:A18
 name:Greed Puzzle
 desc:The empty room prompts the player to a mission of higher purpose. 
@@ -29,7 +29,7 @@ hint:Try socializing for once!
 CorrectAnswer: Give the Greed the Golden Experience.
 
 id:P4
-room:R29
+location:R29
 item:A8
 name:Envy Puzzle
 desc:The room is set up exactly like Lust’s Puzzle. The top row of 3 pillars gives the correct response order.
@@ -40,7 +40,7 @@ hint:Try looking up. That's where the answer lies!
 CorrectAnswer: Copy the responses from the 3 top pillars to the bottom 3 pillars in order.
 
 id:P5
-room:R1
+location:R1
 item:A6
 name:Wrath Puzzle/Sloth Puzzle
 desc:Standard empty room. The player must navigate every tile in the room EXACTLY once. 
@@ -50,7 +50,7 @@ hint:Walk the room without looking back at the long trail is here!
 CorrectAnswer: The player must go over every tile without retracing their steps.
 
 id:P6
-room:R16
+location:R16
 item:A9
 name:Pride Puzzle
 desc:The room consists of a maze. 
@@ -63,7 +63,7 @@ hint:Follow the way to the center!
 CorrectAnswer: Navigate the correct path.
 
 id:P7
-room:R26
+location:R26
 item:A10
 name:Grand Puzzle
 desc:There are seven altars the player must place the relics earned by beating the 7 previous bosses.
