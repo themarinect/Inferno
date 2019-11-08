@@ -1,4 +1,3 @@
-Welcome to Adventure Game!!!
 R0
 Room 0
 You walk into the room and hear an eerie snore. 
