@@ -1,72 +1,72 @@
-id:P1
-location:R24
-item:A1
-name:Lust Puzzle
-desc:There are 8 pillars that you must attack to solve the puzzle each pillar has a particular chime to it finding the correct order is the key. 
-Each time the player enters the room the chimes randomized to each pillar.
+P1
+R24
+A1
+Lust Puzzle
 hint:The Tonal Scale.
+There are 8 pillars that you must attack to solve the puzzle each pillar has a particular chime to it finding the correct order is the key. 
+Each time the player enters the room the chimes randomized to each pillar.
 -----
-CorrectAnswer: DO->RE->MI->FA->SO->LA->TI->DO
+CorrectAnswer:DO->RE->MI->FA->SO->LA->TI->DO
 
-id:P2
-location:R4
-item:A2
-name:Gluttony Puzzle
-desc:All four corners of the room have an empty altar in the surrounded by bottomless pits
+P2
+R4
+A2
+Gluttony Puzzle
+hint:Why are these altars empty try putting an item on the altars?
+All four corners of the room have an empty altar in the surrounded by bottomless pits
 In the middle of the room, there is another altar which has an endless supply of food
 the player must use the proper THROW command to throw the food into the empty altars.
-hint:Why are these altars empty try putting an item on the altars?
 -----
-CorrectAnswer: THROW
+CorrectAnswer:THROW
 
-id:P3
-location:R13
-item:A18
-name:Greed Puzzle
-desc:The empty room prompts the player to a mission of higher purpose. 
+P3
+R13
+A18
+Greed Puzzle
 hint:Try socializing for once!
+The empty room prompts the player to a mission of higher purpose. 
 -----
-CorrectAnswer: Give the Greed the Golden Experience.
+CorrectAnswer:Give the Greed the Golden Experience.
 
-id:P4
-location:R29
-item:A8
-name:Envy Puzzle
-desc:The room is set up exactly like Lust’s Puzzle. The top row of 3 pillars gives the correct response order.
+P4
+R29
+A8
+Envy Puzzle
+hint:Try looking up. That's where the answer lies!
+The room is set up exactly like Lust’s Puzzle. The top row of 3 pillars gives the correct response order.
 The bottom row of 3 pillars has a different response order. The responses each time are randomized.
 Each pillar upon using the INSPECT command prompts the player 3 different responses.
-hint:Try looking up. That's where the answer lies!
 -----
-CorrectAnswer: Copy the responses from the 3 top pillars to the bottom 3 pillars in order.
+CorrectAnswer:Copy the responses from the 3 top pillars to the bottom 3 pillars in order.
 
-id:P5
-location:R1
-item:A6
-name:Wrath Puzzle/Sloth Puzzle
-desc:Standard empty room. The player must navigate every tile in the room EXACTLY once. 
-If the player redoes any of the tiles, he loses the puzzle and must restart.
+P5
+R1
+A6
+Wrath Puzzle/Sloth Puzzle
 hint:Walk the room without looking back at the long trail is here!
+Standard empty room. The player must navigate every tile in the room EXACTLY once. 
+If the player redoes any of the tiles, he loses the puzzle and must restart.
 -----
-CorrectAnswer: The player must go over every tile without retracing their steps.
+CorrectAnswer:The player must go over every tile without retracing their steps.
 
-id:P6
-location:R16
-item:A9
-name:Pride Puzzle
-desc:The room consists of a maze. 
+P6
+R16
+A9
+Pride Puzzle
+hint:Follow the way to the center!
+The room consists of a maze. 
 The size of the maze is directly determined by how many bosses the player has beaten save the final boss.
 So the room starts as a 9x9 ->8x8… However, if the player has completed all the other puzzles before this one.
 This room is blank, and the player will not have done anything.
 At all times, the player in this room may use the EXIT command to exit the room.
-hint:Follow the way to the center!
 -----
-CorrectAnswer: Navigate the correct path.
+CorrectAnswer:Navigate the correct path.
 
-id:P7
-location:R26
-item:A10
-name:Grand Puzzle
-desc:There are seven altars the player must place the relics earned by beating the 7 previous bosses.
+P7
+R26
+A10
+Grand Puzzle
 hint:Give the altars what you courageously gained!
+There are seven altars the player must place the relics earned by beating the 7 previous bosses.
 -----
-CorrectAnswer: Place relics in the altar.
+CorrectAnswer:Place relics in the altar.

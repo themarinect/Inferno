@@ -7,8 +7,11 @@ import java.util.HashMap;
 public class Puzzle
 {
 	private String puzzleID;
-	private int roomNumber;
-	private ArrayList<String> question;
+	private String location;
+	private String itemDrop;
+	private String puzzleName;
+	private ArrayList<String> puzzleDesc;
+	private String puzzleHint;
 	
 	private HashMap<String,String> answer;
 	
@@ -21,17 +24,28 @@ public class Puzzle
 			if(line == null)
 				return null;
 			puzzle.puzzleID = line;
-			puzzle.roomNumber = Integer.parseInt(reader.readLine());
+			puzzle.location = reader.readLine();
+			puzzle.itemDrop = reader.readLine();
+			puzzle.puzzleName = reader.readLine();
 			
-			puzzle.question = new ArrayList<String>();
+			//reads hint
+			line = reader.readLine();
+			line = line.trim();
+			int colon = line.indexOf(":");
+			String hint = line.substring(colon+1).trim();
+			puzzle.puzzleHint = hint;
+			
+			//reads description
+			puzzle.puzzleDesc = new ArrayList<>();
 			while(true)
 			{
 				line = reader.readLine();
 				if(line.equals("-----"))
 					break;
-				puzzle.question.add(line);
+				puzzle.puzzleDesc.add(line);
 			}
 			
+			//reads answer
 			puzzle.answer = new HashMap<String, String>();
 			while(true)
 			{
@@ -40,9 +54,12 @@ public class Puzzle
 					break;
 				parseAnswer(puzzle, line);
 			}
-		}catch(IOException e)
+		}catch (IOException ex)
 		{
-			e.getMessage();
+			ex.getMessage();
+		}catch (NumberFormatException ex)
+		{
+			ex.getMessage();
 		}
 		return puzzle;
 	}
@@ -53,31 +70,50 @@ public class Puzzle
 		int colon = line.indexOf(":");
 		String label = line.substring(0,colon).trim();
 		String correctAnswer = line.substring(colon+1).trim();
-		puzzle.answer.put(label, correctAnswer);
+		puzzle.getAnswer().put(label, correctAnswer);
 	}
 	
 	public String lookupAnswer(String choice)
 	{
-		String value = answer.get(choice);
+		String value = getAnswer().get(choice);
 		if(value == null)
 			return null;
 		return value;
 	}
+
 	
 	//getters
 	public String getPuzzleID()
 	{
 		return puzzleID;
 	}
-	public int getRoomNumber()
+
+	public String getLocation()
 	{
-		return roomNumber;
+		return location;
 	}
-	public ArrayList<String> getQuestion()
+
+	public String getItemDrop()
 	{
-		return question;
+		return itemDrop;
 	}
-	public HashMap<String,String> getAnswer()
+
+	public String getPuzzleName()
+	{
+		return puzzleName;
+	}
+
+	public ArrayList<String> getPuzzleDesc()
+	{
+		return puzzleDesc;
+	}
+
+	public String getPuzzleHint()
+	{
+		return puzzleHint;
+	}
+
+	private HashMap<String,String> getAnswer()
 	{
 		return answer;
 	}
