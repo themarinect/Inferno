@@ -1,36 +1,37 @@
 package models.Item;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class KeyItem extends Item
-{
-	private String associatedMonster;
+import models.Item.Item;
 
-	public KeyItem()
+public class InventoryItem extends Item
+{
+	private int capacity;
+	
+	public InventoryItem()
 	{
-		
+
 	}
 
-	public KeyItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _associatedMonster)
+	public InventoryItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
+			ArrayList<String> _itemLocation, int _capacity)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.associatedMonster = _associatedMonster;
+		this.capacity = _capacity;
 	}
 	
-	public static KeyItem readKeyItem(BufferedReader reader)
+	public static InventoryItem readInventoryItem(BufferedReader reader)
 	{
-		KeyItem keyItem = new KeyItem();
+		InventoryItem inventoryItem = new InventoryItem();
 		try
 		{
 			String line = reader.readLine();
 			if(line == null)
 				return null;
-			keyItem.setItemID(line);
-			keyItem.setItemName(reader.readLine());
-			keyItem.setItemType(reader.readLine());
+			inventoryItem.setItemID(line);
+			inventoryItem.setItemName(reader.readLine());
+			inventoryItem.setItemType(reader.readLine());
 			
 			//reads description
 			line = reader.readLine();
@@ -41,7 +42,7 @@ public class KeyItem extends Item
 			int i = 0;
 			for(String descLine : itemDescList)
 				temp[i++] = descLine;
-			keyItem.setItemDesc(temp);
+			inventoryItem.setItemDesc(temp);
 			
 			//reads location(s)
 			String data = reader.readLine();
@@ -49,11 +50,11 @@ public class KeyItem extends Item
 			ArrayList<String> locationList = new ArrayList<>();
 			for(String a : location)
 				locationList.add(a);
-			keyItem.setItemLocation(locationList);
+			inventoryItem.setItemLocation(locationList);
 			
 			/*-------------------------------------------------------*/
 			
-			//reads associated monster
+			//reads capacity
 			while(true)
 			{
 				line = reader.readLine();
@@ -61,7 +62,7 @@ public class KeyItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				keyItem.associatedMonster = line.substring(colon+1).trim();
+				inventoryItem.capacity = Integer.parseInt(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -71,13 +72,13 @@ public class KeyItem extends Item
 			ex.getMessage();
 		}
 		
-		return keyItem;
+		return inventoryItem;
 	}
 
-	//getter
-	public String getAssociatedMonster()
+	//getters
+	public int getCapacity()
 	{
-		return associatedMonster;
+		return capacity;
 	}
 
 }
