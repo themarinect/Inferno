@@ -17,7 +17,7 @@ public class KeyItem extends Item
 			ArrayList<String> _itemLocation, String _associatedMonster)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.associatedMonster = _associatedMonster;
+		this.setAssociatedMonster(_associatedMonster);
 	}
 	
 	public static KeyItem readKeyItem(BufferedReader reader)
@@ -61,7 +61,7 @@ public class KeyItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				keyItem.associatedMonster = line.substring(colon+1).trim();
+				keyItem.setAssociatedMonster(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -74,10 +74,15 @@ public class KeyItem extends Item
 		return keyItem;
 	}
 
-	//getter
+	//getter and setters
 	public String getAssociatedMonster()
 	{
 		return associatedMonster;
+	}
+
+	public void setAssociatedMonster(String associatedMonster)
+	{
+		this.associatedMonster = associatedMonster;
 	}
 
 }

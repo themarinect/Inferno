@@ -17,7 +17,7 @@ public class GuideItem extends Item
 			ArrayList<String> _itemLocation, String _imagePath)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.imagePath = _imagePath;
+		this.setImagePath(_imagePath);
 	}
 	
 	public static GuideItem readGuideItem(BufferedReader reader)
@@ -61,7 +61,7 @@ public class GuideItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				guideItem.imagePath = line.substring(colon+1).trim();
+				guideItem.setImagePath(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -73,10 +73,15 @@ public class GuideItem extends Item
 		return guideItem;
 	}
 
-	//getters
+	//getters and getters
 	public String getImagePath()
 	{
 		return imagePath;
+	}
+
+	public void setImagePath(String imagePath)
+	{
+		this.imagePath = imagePath;
 	}
 
 }

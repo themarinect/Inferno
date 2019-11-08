@@ -18,7 +18,7 @@ public class HealingItem extends Item
 			ArrayList<String> _itemLocation, int _strength)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.strength = _strength;
+		this.setStrength(_strength);
 	}
 
 	public static HealingItem readHealingItem(BufferedReader reader)
@@ -62,7 +62,7 @@ public class HealingItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				healingItem.strength = Integer.parseInt( line.substring(colon+1).trim());
+				healingItem.setStrength(Integer.parseInt( line.substring(colon+1).trim()));
 			}
 		}catch (IOException ex)
 		{
@@ -75,10 +75,15 @@ public class HealingItem extends Item
 		return healingItem;
 	}
 	
-	//getters
+	//getters and setters
 	public int getStrength()
 	{
 		return strength;
+	}
+
+	public void setStrength(int strength)
+	{
+		this.strength = strength;
 	}
 
 }

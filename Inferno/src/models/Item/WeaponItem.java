@@ -17,7 +17,7 @@ public class WeaponItem extends Item
 			ArrayList<String> _itemLocation, int _attack)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.attack = _attack;
+		this.setAttack(_attack);
 	}
 
 	public static WeaponItem readWeaponItem(BufferedReader reader)
@@ -61,7 +61,7 @@ public class WeaponItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				weaponItem.attack = Integer.parseInt(line.substring(colon+1).trim());
+				weaponItem.setAttack(Integer.parseInt(line.substring(colon+1).trim()));
 			}
 		}catch (IOException ex)
 		{
@@ -74,10 +74,15 @@ public class WeaponItem extends Item
 		return weaponItem;
 	}
 	
-	//getter
+	//getter and setter
 	public int getAttack()
 	{
 		return attack;
+	}
+
+	public void setAttack(int attack)
+	{
+		this.attack = attack;
 	}
 
 }

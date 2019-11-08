@@ -17,7 +17,7 @@ public class TradableItem extends Item
 			ArrayList<String> _itemLocation, String _NPC)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.NPC = _NPC;
+		this.setNPC(_NPC);
 	}
 
 	public static TradableItem readTradableItem(BufferedReader reader)
@@ -61,7 +61,7 @@ public class TradableItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				tradableItem.NPC = line.substring(colon+1).trim();
+				tradableItem.setNPC(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -74,10 +74,15 @@ public class TradableItem extends Item
 		return tradableItem;
 	}
 	
-	//getter
+	//getter and setter
 	public String getNPC()
 	{
 		return NPC;
+	}
+
+	public void setNPC(String nPC)
+	{
+		NPC = nPC;
 	}
 
 }

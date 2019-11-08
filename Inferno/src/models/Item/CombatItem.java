@@ -16,7 +16,7 @@ public class CombatItem extends Item
 			ArrayList<String> _itemLocation, String _usage)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.usage = _usage;
+		this.setUsage(_usage);
 	}
 	
 	public static CombatItem readCombatItem(BufferedReader reader)
@@ -60,7 +60,7 @@ public class CombatItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				combatItem.usage = line.substring(colon+1).trim();
+				combatItem.setUsage(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -73,10 +73,15 @@ public class CombatItem extends Item
 		return combatItem;
 	}
 	
-	//getter
+	//getter and setters
 	public String getUsage()
 	{
 		return usage;
+	}
+
+	public void setUsage(String usage)
+	{
+		this.usage = usage;
 	}
 
 }

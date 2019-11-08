@@ -18,7 +18,7 @@ public class InventoryItem extends Item
 			ArrayList<String> _itemLocation, int _capacity)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.capacity = _capacity;
+		this.setCapacity(_capacity);
 	}
 	
 	public static InventoryItem readInventoryItem(BufferedReader reader)
@@ -62,7 +62,7 @@ public class InventoryItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				inventoryItem.capacity = Integer.parseInt(line.substring(colon+1).trim());
+				inventoryItem.setCapacity(Integer.parseInt(line.substring(colon+1).trim()));
 			}
 		}catch (IOException ex)
 		{
@@ -75,10 +75,15 @@ public class InventoryItem extends Item
 		return inventoryItem;
 	}
 
-	//getters
+	//getters and setters
 	public int getCapacity()
 	{
 		return capacity;
+	}
+
+	public void setCapacity(int capacity)
+	{
+		this.capacity = capacity;
 	}
 
 }
