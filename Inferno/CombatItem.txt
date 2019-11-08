@@ -4,7 +4,7 @@ Combat
 Reveals Lusts exact location when used during a fight.
 R24
 -----
-usage:west
+usage:Lust is at west side of the room
 
 A7
 Golden Experience
