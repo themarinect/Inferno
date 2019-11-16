@@ -13,27 +13,38 @@ import models.Item.Item;
 public class Player extends Character
 {
 	
-	private String currentRoom;
+	private SimpleStringProperty currentRoom;
 	private SimpleIntegerProperty HP;
 	private SimpleStringProperty weapon;
 	private ArrayList<Item> inventory = new ArrayList<Item>();
 	
 	public Player()
 	{
+		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
-		setWeapon(new SimpleStringProperty("Sword"));
+		weapon = new SimpleStringProperty("Sword");
 	}
 	
-	public Player(String _id, String _name, String _currentRoom, SimpleIntegerProperty _HP)
+	public Player(String _id, String _name, SimpleStringProperty _currentRoom, SimpleIntegerProperty _HP)
 	{
 		super(_id, _name);
-		this.currentRoom = _currentRoom;
+		this.setCurrentRoom(_currentRoom);
 		this.HP = _HP;
 	}
 
+	public StringProperty currentRoomProperty()
+	{
+		return currentRoom;
+	}
+	
 	public IntegerProperty HPProperty()
 	{
 		return HP;
+	}
+	
+	public StringProperty weaponProperty()
+	{
+		return weapon;
 	}
 	
 	public void displayInventory()
@@ -49,9 +60,15 @@ public class Player extends Character
 	}
 	
 	//getters & setters
-	public String getCurrentRoom()
+
+	public SimpleStringProperty getCurrentRoom()
 	{
 		return currentRoom;
+	}
+
+	public void setCurrentRoom(SimpleStringProperty currentRoom)
+	{
+		this.currentRoom = currentRoom;
 	}
 
 	public ArrayList<Item> getInventory()
@@ -78,5 +95,4 @@ public class Player extends Character
 	{
 		this.weapon = weapon;
 	}
-
 }
