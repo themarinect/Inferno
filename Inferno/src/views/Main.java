@@ -21,7 +21,7 @@ public class Main extends Application {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/views/gui_layout.fxml"));
+			loader.setLocation(Main.class.getResource("/views/main.fxml"));
 			AnchorPane pane = loader.load();
 			
 			BorderPane root = new BorderPane();

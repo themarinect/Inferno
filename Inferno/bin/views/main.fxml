@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="462.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <children>
-      <TextArea editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
+      <TextArea id="txtGame" fx:id="txtGame" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
       <TitledPane id="tpNavigation" animated="false" layoutX="206.0" layoutY="347.0" prefHeight="132.0" prefWidth="166.0" text="Navigation">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="149.0">
@@ -66,12 +66,12 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <Label id="lblHP" layoutX="64.0" layoutY="511.0" textFill="RED">
+      <Label id="lblHP" fx:id="lblHP" layoutX="63.0" layoutY="505.0" text="" textFill="RED">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label id="lblWeapon" layoutX="141.0" layoutY="543.0" textFill="RED">
+      <Label id="lblWeapon" fx:id="lblWeapon" layoutX="143.0" layoutY="536.0" text="" textFill="RED">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
