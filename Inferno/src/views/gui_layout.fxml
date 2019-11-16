@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:controller="controller.GameController" prefHeight="462.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
+      <TitledPane id="tpNavigation" animated="false" layoutX="206.0" layoutY="347.0" prefHeight="132.0" prefWidth="166.0" text="Navigation">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="149.0">
+               <children>
+                  <Button id="btnSouth" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" text="South" />
+                  <Button id="btnEast" layoutX="110.0" layoutY="39.0" mnemonicParsing="false" text="East" />
+                  <Button id="btnWest" layoutX="7.0" layoutY="39.0" mnemonicParsing="false" text="West" />
+                  <Button id="btnNorth" layoutX="57.0" layoutY="14.0" mnemonicParsing="false" text="North" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="14.0" layoutY="234.0" prefHeight="106.0" prefWidth="168.0" text="Item">
+        <content>
+          <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefWidth="166.0">
+               <children>
+                  <Button id="btnPickup" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Pickup" />
+                  <Button id="btnDrop" layoutX="13.0" layoutY="39.0" mnemonicParsing="false" text="Drop" />
+                  <Button id="btnExamine" layoutX="75.0" layoutY="8.0" mnemonicParsing="false" text="Examine" />
+                  <Button id="btnTrade" layoutX="83.0" layoutY="39.0" mnemonicParsing="false" text="Trade" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane id="tpMonster" animated="false" layoutX="420.0" layoutY="234.0" prefHeight="73.0" prefWidth="203.0" text="Monster">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="201.0">
+               <children>
+                  <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" text="Inspect" />
+                  <Button id="btnAttack" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" text="Attack" />
+                  <Button id="btnFlee" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" text="Flee" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane id="tpPuzzle" animated="false" layoutX="222.0" layoutY="234.0" prefHeight="106.0" prefWidth="134.0" text="Puzzle">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="132.0">
+               <children>
+                  <Button id="btnLook" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Look" />
+                  <Button id="btnSolve" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" text="Solve" />
+                  <Button id="btnHint" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" text="Hint" />
+                  <Button id="btnForfeit" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" text="Forfeit" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <Text fill="RED" layoutX="14.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="14.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEAPON:">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Label id="lblHP" layoutX="64.0" layoutY="511.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label id="lblWeapon" layoutX="141.0" layoutY="543.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" text="Inventory" />
+      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" text="Map" onAction="#openMap"/>
+   </children>
+</AnchorPane>
