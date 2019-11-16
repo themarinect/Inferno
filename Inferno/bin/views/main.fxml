@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="controller.GameController" prefHeight="462.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="462.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <children>
-      <TextArea layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
+      <TextArea editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
       <TitledPane id="tpNavigation" animated="false" layoutX="206.0" layoutY="347.0" prefHeight="132.0" prefWidth="166.0" text="Navigation">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="149.0">
@@ -77,6 +77,6 @@
          </font>
       </Label>
       <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" text="Inventory" />
-      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" text="Map" onAction="#openMap"/>
+      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" />
    </children>
 </AnchorPane>
