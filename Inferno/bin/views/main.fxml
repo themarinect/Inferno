@@ -14,7 +14,7 @@
             <Image url="@../data/inferno.jpg" />
          </image>
       </ImageView>
-      <TextArea id="txtGame" fx:id="txtGame" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" wrapText="true" style="-fx-control-inner-background:#000000; -fx-hightlight-text-fill:#00ff00; -fx-text-fill:#00ff00;">
+      <TextArea id="txtGame" fx:id="txtGame" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" style="-fx-control-inner-background:#000000; -fx-font-family: Comic Sans MS; -fx-hightlight-text-fill:#00ff00; -fx-text-fill:#00ff00;" wrapText="true">
          <font>
             <Font name="System Italic" size="13.0" />
          </font></TextArea>
@@ -30,14 +30,11 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane animated="false" layoutX="14.0" layoutY="234.0" prefHeight="106.0" prefWidth="168.0" text="Item">
+      <TitledPane animated="false" layoutX="14.0" layoutY="234.0" prefHeight="73.0" prefWidth="168.0" text="Item">
         <content>
-          <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefWidth="166.0">
+          <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="166.0">
                <children>
-                  <Button id="btnPickup" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Pickup" />
-                  <Button id="btnDrop" layoutX="13.0" layoutY="39.0" mnemonicParsing="false" text="Drop" />
-                  <Button id="btnExamine" layoutX="75.0" layoutY="8.0" mnemonicParsing="false" text="Examine" />
-                  <Button id="btnTrade" layoutX="83.0" layoutY="39.0" mnemonicParsing="false" text="Trade" />
+                  <Button id="btnPickup" layoutX="33.0" layoutY="8.0" mnemonicParsing="false" prefWidth="100.0" text="Pickup" />
                </children>
             </AnchorPane>
         </content>
