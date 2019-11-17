@@ -25,6 +25,7 @@ public class Menu extends Application {
 			
 			Scene scene = new Scene(root,600,420);
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 			primaryStage.setTitle("Inferno Adventure Game");
 			primaryStage.show();
 		} catch(IOException e) {

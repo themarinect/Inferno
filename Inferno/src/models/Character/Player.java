@@ -19,8 +19,6 @@ public class Player extends Character
 	
 	public Player()
 	{
-		Map newMap = readTextFile();
-		
 		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
 		weapon = new SimpleStringProperty("Sword");
@@ -31,16 +29,6 @@ public class Player extends Character
 		super(_id, _name);
 		this.setCurrentRoom(_currentRoom);
 		this.HP = _HP;
-	}
-	
-	////Creates a new game/map with txt file
-	public static Map readTextFile()
-	{
-		while(true)
-		{
-			String filename = "rooms.txt";
-			return new Map(filename);
-		}
 	}
 	
 	public void displayInventory()

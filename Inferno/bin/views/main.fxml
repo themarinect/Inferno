@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,15 +9,23 @@
 
 <AnchorPane prefHeight="462.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <children>
-      <TextArea id="txtGame" fx:id="txtGame" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" />
+      <ImageView fitHeight="566.0" fitWidth="637.0">
+         <image>
+            <Image url="@../data/inferno.jpg" />
+         </image>
+      </ImageView>
+      <TextArea id="txtGame" fx:id="txtGame" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="212.0" prefWidth="610.0" wrapText="true" style="-fx-control-inner-background:#000000; -fx-hightlight-text-fill:#00ff00; -fx-text-fill:#00ff00;">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font></TextArea>
       <TitledPane id="tpNavigation" animated="false" layoutX="206.0" layoutY="347.0" prefHeight="132.0" prefWidth="166.0" text="Navigation">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="149.0">
                <children>
-                  <Button id="btnSouth" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" text="South" />
-                  <Button id="btnEast" layoutX="110.0" layoutY="39.0" mnemonicParsing="false" text="East" />
-                  <Button id="btnWest" layoutX="7.0" layoutY="39.0" mnemonicParsing="false" text="West" />
-                  <Button id="btnNorth" layoutX="57.0" layoutY="14.0" mnemonicParsing="false" text="North" />
+                  <Button id="btnSouth" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" onAction="#south" text="South" />
+                  <Button id="btnEast" layoutX="110.0" layoutY="39.0" mnemonicParsing="false" onAction="#east" text="East" />
+                  <Button id="btnWest" layoutX="7.0" layoutY="39.0" mnemonicParsing="false" onAction="#west" text="West" />
+                  <Button id="btnNorth" layoutX="57.0" layoutY="14.0" mnemonicParsing="false" onAction="#north" text="North" />
                </children>
             </AnchorPane>
         </content>
@@ -56,27 +65,27 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Text fill="RED" layoutX="14.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
+      <Text fill="#c91313" layoutX="14.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <Text fill="RED" layoutX="14.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEAPON:">
+      <Text fill="#c91313" layoutX="14.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEAPON:">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <Label id="lblHP" fx:id="lblHP" layoutX="63.0" layoutY="505.0" text="" textFill="RED">
+      <Label id="lblHP" fx:id="lblHP" layoutX="63.0" layoutY="505.0" text="" textFill="#c91313">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label id="lblWeapon" fx:id="lblWeapon" layoutX="143.0" layoutY="536.0" text="" textFill="RED">
+      <Label id="lblWeapon" fx:id="lblWeapon" layoutX="143.0" layoutY="536.0" text="" textFill="#c91313">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button id="btnInventory" onAction="#openInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" text="Inventory" />
-      <Button id="btnMap" onAction="#openMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" text="Map" />
+      <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" text="Inventory" />
+      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" />
    </children>
 </AnchorPane>

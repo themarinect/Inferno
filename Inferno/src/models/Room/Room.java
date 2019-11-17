@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
+import models.Character.Monster;
 import models.Item.Item;
 import models.Puzzle.Puzzle;
 
@@ -18,10 +21,14 @@ public class Room
 	private HashMap<String,String> navigationTable;
 	
 	//A list of Items in the Room
-	private ArrayList<Item> itemList = new ArrayList<Item>();
+	private ArrayList<Item> itemList = new ArrayList<>();
 	
 	//A list of Puzzles in the Room
-	private ArrayList<Puzzle> puzzleList = new ArrayList<Puzzle>();
+	private ArrayList<Puzzle> puzzleList = new ArrayList<>();
+	
+	//A list of Monsters in the Room
+	private ArrayList<Monster> monsterList = new ArrayList<>();
+	
 	
 	public Room()
 	{
@@ -90,24 +97,22 @@ public class Room
 		return value;
 	}
 	
+	/*-----For Item-----*/
 	//Adds an item to Item list in the Room
 	public void addItem(Item item)
 	{
 		itemList.add(item);
 	}
-	
 	//Removes an item from Item list in the Room
 	public void removeItem(Item item)
 	{
 		itemList.remove(item);
 	}
-	
 	//Checks if an item is in the Room
 	public boolean containsItem(Item item)
 	{
 		return itemList.contains(item);
 	}
-	
 	//Returns an array of all items in the Room
 	public Item[] getItems()
 	{
@@ -118,12 +123,22 @@ public class Room
 		return itemArray;
 	}
 	
+	/*-----For Puzzle-----*/
 	//Adds a puzzle to Puzzle list in the Room
 	public void addPuzzle(Puzzle puzzle)
 	{
 		puzzleList.add(puzzle);
 	}
-	
+	//Removes an item from Item list in the Room
+	public void removePuzzle(Puzzle puzzle)
+	{
+		puzzleList.remove(puzzle);
+	}
+	//Checks if a puzzle is in the Room
+	public boolean containsPuzzle(Puzzle puzzle)
+	{
+		return puzzleList.contains(puzzle);
+	}
 	//Returns an array of all items in the Room
 	public Puzzle[] getPuzzles()
 	{
@@ -133,19 +148,31 @@ public class Room
 			puzzleArray[i++] = tempPuzzle;
 		return puzzleArray;
 	}
-		
-	//Checks if a puzzle is in the Room
-	public boolean containsPuzzle(Puzzle puzzle)
-	{
-		return puzzleList.contains(puzzle);
-	}	
 	
-	//Removes a puzzle from Puzzle list in the Room
-	public void removePuzzle(Puzzle puzzle)
+	/*-----For Monster-----*/
+	//Adds a monster to Monster list in the Room
+	public void addMonster(Monster monster)
 	{
-		puzzleList.remove(puzzle);
+		monsterList.add(monster);
 	}
-	
+	//Removes a monster from Monster list in the Room
+	public void removeMonster(Monster monster)
+	{
+		monsterList.remove(monster);
+	}
+	public boolean containsMonster(Monster monster)
+	{
+		return monsterList.contains(monster);
+	}
+	//Returns an array of all monsters in the Room
+	public Monster[] getMonsters()
+	{
+		Monster[] monsterArray = new Monster[monsterList.size()];
+		int i = 0;
+		for(Monster tempMonster : monsterList)
+			monsterArray[i++] = tempMonster;
+		return monsterArray;
+	}
 	
 	//getters and setters
 	public String getRoomID()

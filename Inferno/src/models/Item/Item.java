@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import models.Character.Player;
+import models.Room.Room;
+
 public class Item
 {
 	private String itemID;
@@ -25,6 +28,22 @@ public class Item
 		this.setItemType(_itemType);
 		this.setItemDesc(_itemDesc);
 		this.setItemLocation(_itemLocation);
+	}
+	
+	public void pickup(Room room)
+	{
+		Player player = new Player();
+		for(Item item : room.getItems())
+		{
+			if(room.containsItem(item))
+			{
+				room.removeItem(item);
+				player.getInventory().add(item);
+				System.out.println("The " + item.getItemName() + " has been added to inventory.\n");
+			}
+			else
+				System.out.println("No item here.");
+		}
 	}
 	
 //	public static Item readItem(BufferedReader reader)
