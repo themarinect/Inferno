@@ -64,22 +64,22 @@
       </TitledPane>
       <Text fill="#c91313" layoutX="14.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="American Typewriter Semibold" size="29.0" />
          </font>
       </Text>
       <Text fill="#c91313" layoutX="14.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEAPON:">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="American Typewriter Semibold" size="29.0" />
          </font>
       </Text>
-      <Label id="lblHP" fx:id="lblHP" layoutX="63.0" layoutY="505.0" text="" textFill="#c91313">
+      <Label id="lblHP" fx:id="lblHP" layoutX="81.0" layoutY="502.0" text="" textFill="#c91313">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="American Typewriter Semibold" size="29.0" />
          </font>
       </Label>
-      <Label id="lblWeapon" fx:id="lblWeapon" layoutX="143.0" layoutY="536.0" text="" textFill="#c91313">
+      <Label id="lblWeapon" fx:id="lblWeapon" layoutX="160.0" layoutY="533.0" text="" textFill="#c91313">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="American Typewriter Semibold" size="29.0" />
          </font>
       </Label>
       <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" text="Inventory" />
