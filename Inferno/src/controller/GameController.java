@@ -9,6 +9,8 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,8 +24,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -88,11 +92,12 @@ public class GameController implements Initializable
 			currentRoom = northRoom;
 			player.CurrentRoomProperty().set(currentRoom);
 			room = map.getRooms(currentRoom);
-			//System.out.println(currentRoom);
-			room.setVisited(true);
 			txtGame.setText(room.getRoomName() + "\n");
 			for(String roomDesc : room.getRoomDesc())
 				txtGame.appendText(roomDesc + "\n");
+			if(room.isVisited())
+				txtGame.appendText("\nYou have visited this room.");
+			room.setVisited(true);
 		}
 	}
 	//When player clicks south
@@ -108,11 +113,12 @@ public class GameController implements Initializable
 			currentRoom = southRoom;
 			player.CurrentRoomProperty().set(currentRoom);
 			room = map.getRooms(currentRoom);
-			//System.out.println(currentRoom);
-			room.setVisited(true);
 			txtGame.setText(room.getRoomName() + "\n");
 			for(String roomDesc : room.getRoomDesc())
 				txtGame.appendText(roomDesc + "\n");
+			if(room.isVisited())
+				txtGame.appendText("\nYou have visited this room.");
+			room.setVisited(true);
 		}
 	}
 	//When player clicks west
@@ -128,11 +134,12 @@ public class GameController implements Initializable
 			currentRoom = westRoom;
 			player.CurrentRoomProperty().set(currentRoom);
 			room = map.getRooms(currentRoom);
-			//System.out.println(currentRoom);
-			room.setVisited(true);
 			txtGame.setText(room.getRoomName() + "\n");
 			for(String roomDesc : room.getRoomDesc())
 				txtGame.appendText(roomDesc + "\n");
+			if(room.isVisited())
+				txtGame.appendText("\nYou have visited this room.");
+			room.setVisited(true);
 		}
 	}
 	//When player clicks east
@@ -148,14 +155,29 @@ public class GameController implements Initializable
 			currentRoom = eastRoom;
 			player.CurrentRoomProperty().set(currentRoom);
 			room = map.getRooms(currentRoom);
-			//System.out.println(currentRoom);
-			room.setVisited(true);
 			txtGame.setText(room.getRoomName() + "\n");
 			for(String roomDesc : room.getRoomDesc())
 				txtGame.appendText(roomDesc + "\n");
+			if(room.isVisited())
+				txtGame.appendText("\nYou have visited this room.");
+			room.setVisited(true);
+			
 		}
 	}
 	
+	public void addTableData(TableView<Item> tableView, SortedList<Item> sortedData)
+	{
+        TableColumn<Item,String> name = new TableColumn<>("Name");
+        name.setCellValueFactory(new PropertyValueFactory<Item,String>("itemName"));
+        tableView.getColumns().add(name);
+        
+        TableColumn<Item,String> type = new TableColumn<>("Type");
+        type.setCellValueFactory(new PropertyValueFactory<Item,String>("itemType"));
+        tableView.getColumns().add(type);
+        
+        //sets the data for table using the sorted list of MP3 files
+        tableView.setItems(sortedData);
+	}
 	//When player clicks Inventory
 	@FXML private Button btnInventory;
 	public void openInventory(ActionEvent event)
@@ -167,6 +189,17 @@ public class GameController implements Initializable
 		
 		//creates an ObservableList object which keeps track of a list of Item in inventory
 		ObservableList<Item> data = FXCollections.observableArrayList(player.getInventory());
+		
+		//creates a filtered list of Item
+        FilteredList<Item> filteredData = new FilteredList<>(data);
+        
+        //creates a sorted list of Item from filtered list
+        SortedList<Item> sortedData = new SortedList<>(filteredData);
+        //sorts the list ascending or descending when user clicks the column headings
+        sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+        
+        //calls the method with tableview control and sorted list as parameters
+        addTableData(tableView, sortedData);
 		
 		//Creates a ScrollPane
 		ScrollPane scrollPane = new ScrollPane();
