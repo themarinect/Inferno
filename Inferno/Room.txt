@@ -66,7 +66,7 @@ To the west, you can see a sea of lava.
 In the middle of the room, you see a portion lying on the floor.
 -----
 north: R0
-south: RR12
+south: R12
 east: R7
 
 R7
