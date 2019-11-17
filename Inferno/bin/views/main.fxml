@@ -76,7 +76,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" text="Inventory" />
-      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" />
+      <Button id="btnInventory" onAction="#openInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" text="Inventory" />
+      <Button id="btnMap" onAction="#openMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" text="Map" />
    </children>
 </AnchorPane>

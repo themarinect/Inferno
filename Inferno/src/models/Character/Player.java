@@ -2,17 +2,16 @@ package models.Character;
 
 import java.util.ArrayList;
 
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import models.Item.Item;
+import models.Map.Map;
+import models.Room.Room;
 
 
 
 public class Player extends Character
 {
-	
 	private SimpleStringProperty currentRoom;
 	private SimpleIntegerProperty HP;
 	private SimpleStringProperty weapon;
@@ -20,6 +19,8 @@ public class Player extends Character
 	
 	public Player()
 	{
+		Map newMap = readTextFile();
+		
 		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
 		weapon = new SimpleStringProperty("Sword");
@@ -31,20 +32,15 @@ public class Player extends Character
 		this.setCurrentRoom(_currentRoom);
 		this.HP = _HP;
 	}
-
-	public StringProperty currentRoomProperty()
-	{
-		return currentRoom;
-	}
 	
-	public IntegerProperty HPProperty()
+	////Creates a new game/map with txt file
+	public static Map readTextFile()
 	{
-		return HP;
-	}
-	
-	public StringProperty weaponProperty()
-	{
-		return weapon;
+		while(true)
+		{
+			String filename = "rooms.txt";
+			return new Map(filename);
+		}
 	}
 	
 	public void displayInventory()
@@ -58,27 +54,31 @@ public class Player extends Character
 				System.out.println(inventory.get(i).getItemName() + ": " + inventory.get(i).getItemDesc() + "\n");
 		}
 	}
-	
 	//getters & setters
 
-	public SimpleStringProperty getCurrentRoom()
+	public SimpleStringProperty CurrentRoomProperty()
 	{
 		return currentRoom;
+	}
+	
+	public String getCurrentRoom()
+	{
+		return currentRoom.get();
 	}
 
 	public void setCurrentRoom(SimpleStringProperty currentRoom)
 	{
 		this.currentRoom = currentRoom;
 	}
-
-	public ArrayList<Item> getInventory()
-	{
-		return inventory;
-	}
 	
-	public SimpleIntegerProperty getHP()
+	public SimpleIntegerProperty HPProperty()
 	{
 		return HP;
+	}
+	
+	public int getHP()
+	{
+		return HP.get();
 	}
 
 	public void setHP(SimpleIntegerProperty hP)
@@ -86,13 +86,23 @@ public class Player extends Character
 		HP = hP;
 	}
 
-	public SimpleStringProperty getWeapon()
+	public SimpleStringProperty weaponProperty()
 	{
 		return weapon;
+	}
+	
+	public String getWeapon()
+	{
+		return weapon.get();
 	}
 
 	public void setWeapon(SimpleStringProperty weapon)
 	{
 		this.weapon = weapon;
+	}
+	
+	public ArrayList<Item> getInventory()
+	{
+		return inventory;
 	}
 }

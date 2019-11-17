@@ -47,5 +47,14 @@ public class Map
 	{
 		return rooms.get(roomID);
 	}
+	
+	public static Map readTextFile()
+	{
+		while(true)
+		{
+			String filename = "rooms.txt";
+			return new Map(filename);
+		}
+	}
 
 }
