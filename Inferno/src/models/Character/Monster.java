@@ -9,9 +9,9 @@ import models.Item.CombatItem;
 public class Monster extends Character
 {
 	private ArrayList<String> desc;
+	private String monsterLocation;
 	private ArrayList<Integer> health;
 	private ArrayList<Integer> attack;
-	private String location;
 	private String itemDrop;
 
 	public Monster()
@@ -19,14 +19,14 @@ public class Monster extends Character
 
 	}
 
-	public Monster(String _id, String _name, ArrayList<String> _desc, ArrayList<Integer> _health, 
-			ArrayList<Integer> _attack, String _location, String _itemDrop)
+	public Monster(String _id, String _name, ArrayList<String> _desc, String _monsterLocation, ArrayList<Integer> _health, 
+			ArrayList<Integer> _attack, String _itemDrop)
 	{
 		super(_id, _name);
 		this.desc = _desc;
+		this.monsterLocation = _monsterLocation;
 		this.health = _health;
 		this.attack = _attack;
-		this.location = _location;
 		this.itemDrop = _itemDrop;
 	}
 	
@@ -49,9 +49,12 @@ public class Monster extends Character
 				if(line.equals("-----"))
 					break;
 				monster.desc.add(line);
-			} 
+			}
 			
 			/*-------------------------------------------------------*/
+			
+			//reads location
+			monster.monsterLocation = reader.readLine();
 			
 			//reads health
 			monster.health = new ArrayList<Integer>();
@@ -70,12 +73,6 @@ public class Monster extends Character
 			String[] attack = line.substring(colon2+1).trim().split("/",-2);
 			for(String a : attack)
 				monster.attack.add(Integer.parseInt(a));
-			
-			//reads location
-			line = reader.readLine();
-			line = line.trim();
-			int colon3 = line.indexOf(":");
-			monster.location = line.substring(colon3+1).trim();
 			
 			//reads item drops
 			while(true)
@@ -104,6 +101,16 @@ public class Monster extends Character
 		return desc;
 	}
 
+	public String getMonsterLocation()
+	{
+		return monsterLocation;
+	}
+
+	public void setMonsterLocation(String monsterLocation)
+	{
+		this.monsterLocation = monsterLocation;
+	}
+
 	public ArrayList<Integer> getHealth()
 	{
 		return health;
@@ -112,11 +119,6 @@ public class Monster extends Character
 	public ArrayList<Integer> getAttack()
 	{
 		return attack;
-	}
-
-	public String getLocation()
-	{
-		return location;
 	}
 
 	public String getItemDrop()

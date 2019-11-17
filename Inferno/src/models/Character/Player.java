@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import models.Item.CombatItem;
+import models.Item.GuideItem;
 import models.Item.Item;
 import models.Map.Map;
 import models.Room.Room;
@@ -22,18 +23,13 @@ public class Player extends Character
 	{
 		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
-		weapon = new SimpleStringProperty("Sword");
-//		Item combatItem = new CombatItem();
-//		combatItem.setItemID("I01");
-//		combatItem.setItemName("Sword");
-//		combatItem.setItemType("Combat");
-//		inventory.add(combatItem);
+		weapon = new SimpleStringProperty(null);
 	}
 	
 	public Player(String _id, String _name, SimpleStringProperty _currentRoom, SimpleIntegerProperty _HP)
 	{
 		super(_id, _name);
-		this.setCurrentRoom(_currentRoom);
+		this.currentRoom = _currentRoom;
 		this.HP = _HP;
 	}
 	

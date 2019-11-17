@@ -29,16 +29,6 @@ public class Map
 	public Map(String filename)
 	{
 		initRoom(filename);
-		//initPuzzle();
-		//initMonster();
-		
-		initCombatItem();
-		initGuideItem();
-		//initHealingItem();
-		//initInventoryItem();
-		initKeyItem();
-		initTradableItem();
-		//initWeaponItem();
 	}
 	
 	//init Room
@@ -60,61 +50,73 @@ public class Map
 		{
 			ex.getMessage();
 		}
+		
+		//Add Puzzles into the Room
+		initPuzzle(rooms);
+		
+		//Add Monsters into the Room
+		initMonster(rooms);
+		
+		//Add Items into the Room
+		initCombatItem(rooms);
+		initGuideItem(rooms);
+		//initHealingItem(rooms);
+		//initInventoryItem(rooms);
+		initKeyItem(rooms);
+		initTradableItem(rooms);
+		//initWeaponItem(rooms);
 	}
 	
 	//init Puzzle
-//	public void initPuzzle()
-//	{
-//		puzzles = new TreeMap<String, Puzzle>();
-//		try
-//		{
-//			String filename = "Puzzle.txt";
-//			BufferedReader reader = new BufferedReader(new FileReader(filename));
-//			while(true)
-//			{
-//				Puzzle puzzle = Puzzle.readPuzzle(reader);
-//				if(puzzle == null)
-//					break;
-//				puzzles.put(puzzle.getPuzzleID(), puzzle);
-//				rooms.get(puzzle.getPuzzleID()).addPuzzle(puzzle);
-//			}
-//			reader.close();
-//		}catch(IOException e)
-//		{
-//			e.getMessage();
-//		}
-//	}
+	public void initPuzzle(TreeMap<String, Room> rooms)
+	{
+		puzzles = new TreeMap<String, Puzzle>();
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("Puzzle.txt"));
+			while(true)
+			{
+				Puzzle puzzle = Puzzle.readPuzzle(reader);
+				if(puzzle == null)
+					break;
+				puzzles.put(puzzle.getPuzzleID(), puzzle);
+				rooms.get(puzzle.getLocation()).addPuzzle(puzzle);
+			}
+			reader.close();
+		}catch(IOException e)
+		{
+			e.getMessage();
+		}
+	}
 	
 	//init Monster
-//	public void initMonster()
-//	{
-//		monsters = new TreeMap<String, Monster>();
-//		try
-//		{
-//			String filename = "Monster.txt";
-//			BufferedReader reader = new BufferedReader(new FileReader(filename));
-//			while(true)
-//			{
-//				Monster monster = Monster.readMonster(reader);
-//				if(monster == null)
-//					break;
-//				monsters.put(monster.getId(), monster);
-//				rooms.get(monster.getId()).addMonster(monster);
-//			}
-//			reader.close();
-//		}catch(IOException e)
-//		{
-//			e.getMessage();
-//		}
-//	}
+	public void initMonster(TreeMap<String, Room> rooms)
+	{
+		monsters = new TreeMap<String, Monster>();
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("Monster.txt"));
+			while(true)
+			{
+				Monster monster = Monster.readMonster(reader);
+				if(monster == null)
+					break;
+				monsters.put(monster.getId(), monster);
+				rooms.get(monster.getMonsterLocation()).addMonster(monster);
+			}
+			reader.close();
+		}catch(IOException e)
+		{
+			e.getMessage();
+		}
+	}
 	
 	//init Combat Item
-	public void initCombatItem()
+	public void initCombatItem(TreeMap<String, Room> rooms)
 	{
 		try
 		{
-			String filename = "CombatItem.txt";
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			BufferedReader reader = new BufferedReader(new FileReader("CombatItem.txt"));
 			while(true)
 			{
 				Item combatItem = CombatItem.readCombatItem(reader);
@@ -130,12 +132,11 @@ public class Map
 		}
 	}
 	//init Guide Item
-	public void initGuideItem()
+	public void initGuideItem(TreeMap<String, Room> rooms)
 	{
 		try
 		{
-			String filename = "GuideItem.txt";
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			BufferedReader reader = new BufferedReader(new FileReader("GuideItem.txt"));
 			while(true)
 			{
 				Item guideItem = GuideItem.readGuideItem(reader);
@@ -151,12 +152,11 @@ public class Map
 		}
 	}
 	//init Healing Item
-//	public void initHealingItem()
+//	public void initHealingItem(TreeMap<String, Room> rooms)
 //	{
 //		try
 //		{
-//			String filename = "HealingItem.txt";
-//			BufferedReader reader = new BufferedReader(new FileReader(filename));
+//			BufferedReader reader = new BufferedReader(new FileReader("HealingItem.txt"));
 //			while(true)
 //			{
 //				Item healingItem = HealingItem.readHealingItem(reader);
@@ -172,12 +172,11 @@ public class Map
 //		}
 //	}
 	//init Inventory Item
-//	public void initInventoryItem()
+//	public void initInventoryItem(TreeMap<String, Room> rooms)
 //	{
 //		try
 //		{
-//			String filename = "InventoryItem.txt";
-//			BufferedReader reader = new BufferedReader(new FileReader(filename));
+//			BufferedReader reader = new BufferedReader(new FileReader("InventoryItem.txt"));
 //			while(true)
 //			{
 //				Item inventoryItem = InventoryItem.readInventoryItem(reader);
@@ -193,12 +192,11 @@ public class Map
 //		}
 //	}
 	//init Key Item
-	public void initKeyItem()
+	public void initKeyItem(TreeMap<String, Room> rooms)
 	{
 		try
 		{
-			String filename = "KeyItem.txt";
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			BufferedReader reader = new BufferedReader(new FileReader("KeyItem.txt"));
 			while(true)
 			{
 				Item keyItem = KeyItem.readKeyItem(reader);
@@ -214,12 +212,11 @@ public class Map
 		}
 	}
 	//init Tradable Item
-	public void initTradableItem()
+	public void initTradableItem(TreeMap<String, Room> rooms)
 	{
 		try
 		{
-			String filename = "TradableItem.txt";
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			BufferedReader reader = new BufferedReader(new FileReader("TradableItem.txt"));
 			while(true)
 			{
 				Item tradableItem =  TradableItem.readTradableItem(reader);
@@ -235,12 +232,11 @@ public class Map
 		}
 	}
 	//init Tradable Item
-//	public void initWeaponItem()
+//	public void initWeaponItem(TreeMap<String, Room> rooms)
 //	{
 //		try
 //		{
-//			String filename = "WeaponItem.txt";
-//			BufferedReader reader = new BufferedReader(new FileReader(filename));
+//			BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
 //			while(true)
 //			{
 //				Item weaponItem =  WeaponItem.readWeaponItem(reader);
