@@ -17,13 +17,14 @@ public class Player extends Character
 	private SimpleStringProperty currentRoom;
 	private SimpleIntegerProperty HP;
 	private SimpleStringProperty weapon;
-	private ArrayList<Item> inventory = new ArrayList<Item>();
+	private ArrayList<Item> inventory;
 	
 	public Player()
 	{
 		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
 		weapon = new SimpleStringProperty(null);
+		inventory = new ArrayList<Item>();
 	}
 	
 	public Player(String _id, String _name, SimpleStringProperty _currentRoom, SimpleIntegerProperty _HP)
