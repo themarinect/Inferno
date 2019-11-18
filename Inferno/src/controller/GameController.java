@@ -275,7 +275,17 @@ public class GameController implements Initializable
 				int index = tableView.getSelectionModel().getFocusedIndex();
 				if(index >= 0)
 				{
-					player.weaponProperty().set(tableView.getItems().get(index).getItemName());
+					Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+					if(selectedItem instanceof TradableItem)
+					{
+						alert = new Alert(AlertType.NONE);
+						alert.setAlertType(AlertType.ERROR);
+						String info = "Tradable item cannot be equipped.";
+						alert.setContentText(info);
+						alert.show();
+					}
+					else
+						player.weaponProperty().set(tableView.getItems().get(index).getItemName());
 				}
 			}
 		});
