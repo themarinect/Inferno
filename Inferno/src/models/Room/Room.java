@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 import models.Character.Monster;
+import models.Character.NPC;
 import models.Item.Item;
 import models.Puzzle.Puzzle;
 
@@ -29,6 +30,8 @@ public class Room
 	//A list of Monsters in the Room
 	private ArrayList<Monster> monsterList = new ArrayList<>();
 	
+	//A list of NPC in the Room
+	private ArrayList<NPC> npcList = new ArrayList<>();
 	
 	public Room()
 	{
@@ -172,6 +175,22 @@ public class Room
 		for(Monster tempMonster : monsterList)
 			monsterArray[i++] = tempMonster;
 		return monsterArray;
+	}
+	
+	/*-----For NPC-----*/
+	//Adds a NPC to NPC list in the Room
+	public void addNPC(NPC npc)
+	{
+		npcList.add(npc);
+	}
+	//Returns an array of all monsters in the Room
+	public NPC[] getNPCs()
+	{
+		NPC[] npcArray = new NPC[npcList.size()];
+		int i = 0;
+		for(NPC tempNPC : npcList)
+			npcArray[i++] = tempNPC;
+		return npcArray;
 	}
 	
 	//getters and setters
