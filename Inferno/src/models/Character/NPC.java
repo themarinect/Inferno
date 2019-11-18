@@ -4,13 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import models.Item.Item;
+import models.Item.TradableItem;
+
 public class NPC extends Character
 {
 	
 	private ArrayList<String> desc;
 	private String npcLocation;
 	private String tradeItem;
-
+	
+	//A list of Tradable Items associated with NPC
+	private ArrayList<TradableItem> itemList = new ArrayList<>();
+	
 	public NPC()
 	{
 	}
@@ -71,6 +77,27 @@ public class NPC extends Character
 		
 		return npc;
 		
+	}
+	
+	/*-----For Tradable Item-----*/
+	//Adds an tradable item to the list
+	public void addItem(TradableItem tradableItem)
+	{
+		itemList.add(tradableItem);
+	}
+	//Removes an tradable item from the list
+	public void removeItem(TradableItem tradableItem)
+	{
+		itemList.remove(tradableItem);
+	}
+	//Returns an array of all tradable items
+	public TradableItem[] getItems()
+	{
+		TradableItem[] itemArray = new TradableItem[itemList.size()];
+		int i = 0;
+		for(TradableItem tempItem : itemList)
+			itemArray[i++] = tempItem;
+		return itemArray;
 	}
 	
 	//getters
