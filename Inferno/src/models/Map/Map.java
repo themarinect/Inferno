@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.TreeMap;
 
 import models.Character.Monster;
+import models.Character.NPC;
 import models.Item.CombatItem;
 import models.Item.GuideItem;
 import models.Item.HealingItem;
@@ -25,6 +26,7 @@ public class Map
 	private TreeMap<String,Item> items = new TreeMap<>();
 	private TreeMap<String,Puzzle> puzzles;
 	private TreeMap<String,Monster> monsters;
+	private TreeMap<String, NPC> NPCs;
 	
 	public Map(String filename)
 	{
@@ -57,13 +59,15 @@ public class Map
 		//Add Monsters into the Room
 		initMonster(rooms);
 		
+		//Add NPC into the Room
+		initNPC(rooms);
+		
 		//Add Items into the Room
 		initCombatItem(rooms);
 		initGuideItem(rooms);
 		//initHealingItem(rooms);
 		//initInventoryItem(rooms);
 		initKeyItem(rooms);
-		initTradableItem(rooms);
 		//initWeaponItem(rooms);
 	}
 	
@@ -109,6 +113,31 @@ public class Map
 		{
 			e.getMessage();
 		}
+	}
+	
+	//init NPC
+	public void initNPC(TreeMap<String, Room> rooms)
+	{
+		NPCs = new TreeMap<String, NPC>();
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("NPC.txt"));
+			while(true)
+			{
+				NPC npc = NPC.readNPC(reader);
+				if(npc == null)
+					break;
+				NPCs.put(npc.getId(), npc);
+				rooms.get(npc.getNpcLocation()).addNPC(npc);
+			}
+			reader.close();
+		}catch(IOException e)
+		{
+			e.getMessage();
+		}
+		
+		//init Tradable item associated to NPC
+		initTradableItem(NPCs);
 	}
 	
 	//init Combat Item
@@ -212,19 +241,18 @@ public class Map
 		}
 	}
 	//init Tradable Item
-	public void initTradableItem(TreeMap<String, Room> rooms)
+	public void initTradableItem(TreeMap<String, NPC> NPCs)
 	{
 		try
 		{
 			BufferedReader reader = new BufferedReader(new FileReader("TradableItem.txt"));
 			while(true)
 			{
-				Item tradableItem =  TradableItem.readTradableItem(reader);
+				TradableItem tradableItem =  TradableItem.readTradableItem(reader);
 				if(tradableItem == null)
 					break;
 				items.put(tradableItem.getItemID(), tradableItem);
-				for(String temp : tradableItem.getItemLocation())
-					rooms.get(temp).addItem(tradableItem);
+				NPCs.get(tradableItem.getNPC()).addItem(tradableItem);
 			}
 		}catch(IOException ex)
 		{
