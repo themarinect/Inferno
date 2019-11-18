@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.text.TabExpander;
@@ -40,8 +41,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Character.Monster;
+import models.Character.NPC;
 import models.Character.Player;
 import models.Item.Item;
+import models.Item.TradableItem;
 import models.Map.Map;
 import models.Puzzle.Puzzle;
 import models.Room.Room;
@@ -54,20 +57,40 @@ public class GameController implements Initializable
 	String currentRoom = player.getCurrentRoom();
 	Room room = map.getRooms(currentRoom);
 	
+	//Alert box used through out the game
+	Alert alert;
+	
 	@FXML private Label lblHP = new Label();
 	@FXML private Label lblWeapon = new Label();
 	@FXML private TextArea txtGame = new TextArea();
 	
 	public void displayRoom(Room room)
 	{
+		//Room's description
 		for(String roomDesc : room.getRoomDesc())
 			txtGame.appendText(roomDesc + "\n");
+		
+		//Puzzle's name
 		for(Puzzle puzzle : room.getPuzzles())
 			txtGame.appendText("PUZZLE: " + puzzle.getPuzzleName().toUpperCase() + " \n");
+		
+		//Item's name
 		for(Item item : room.getItems())
 			txtGame.appendText("ITEM: " + item.getItemName().toUpperCase() + " \n");
+		
+		//Monster's name
 		for(Monster monster : room.getMonsters())
 			txtGame.appendText("MONSTER: " + monster.getName().toUpperCase() + " \n");
+		
+		//NPC's name
+		for(NPC npc : room.getNPCs())
+		{
+			txtGame.appendText("NON-PLAYABLE CHARACTER: " + npc.getName().toUpperCase() + " \n");
+			for(TradableItem tradableItem : npc.getItems()) //Tradable item associated with NPC
+				txtGame.appendText("NPC'S ITEM: " + tradableItem.getItemName().toUpperCase() + " \n");
+		}
+		
+		//Check if room visited
 		if(room.isVisited())
 			txtGame.appendText("\nYou have visited this room.");
 		room.setVisited(true);
@@ -339,36 +362,33 @@ public class GameController implements Initializable
 	@FXML private Button btnMap;
 	public void openMap(ActionEvent event)
 	{	
-		Alert alert = new Alert(AlertType.NONE);
-		
-		for(Item item : player.getInventory())
+		Optional<Item> mapItem = player.getInventory().stream().filter(item->item.getItemName().equals("Map")).findAny();
+		if(mapItem.isPresent())
 		{
-			if(!item.getItemName().equals("Map"))
+			try
 			{
-				alert.setAlertType(AlertType.ERROR);
-				String info = "You need to have Map item in your inventory to use this function.";
-				alert.setContentText(info);
-				alert.show();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Map.fxml"));
+				Parent root = (Parent)loader.load();
+				Stage stage = new Stage();
+				stage.setResizable(false);
+				stage.setTitle("Map");
+				stage.setScene(new Scene(root));
+				stage.show();
+				
+				//if(player.getHP() > 0)
+					//player.HPProperty().set(player.getHP()-10);
+				
+			}catch(IOException ex) {
+				ex.printStackTrace();
 			}
-			else
-			{
-				try
-				{
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Map.fxml"));
-					Parent root = (Parent)loader.load();
-					Stage stage = new Stage();
-					stage.setResizable(false);
-					stage.setTitle("Map");
-					stage.setScene(new Scene(root));
-					stage.show();
-					
-					//if(player.getHP() > 0)
-						//player.HPProperty().set(player.getHP()-10);
-					
-				}catch(IOException ex) {
-					ex.printStackTrace();
-				}
-			}
+		}
+		else
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "You need to have Map item in your inventory to open the Map.";
+			alert.setContentText(info);
+			alert.show();
 		}
 	}
 	
