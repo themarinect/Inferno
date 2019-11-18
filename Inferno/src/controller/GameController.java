@@ -195,7 +195,7 @@ public class GameController implements Initializable
         type.setCellValueFactory(new PropertyValueFactory<Item,String>("itemType"));
         tableView.getColumns().add(type);
         
-        //sets the data for table using the sorted list of MP3 files
+        //sets the data for table using the sorted list of Items
         tableView.setItems(sortedData);
 	}
 	//When player clicks Inventory
