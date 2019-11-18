@@ -1,0 +1,35 @@
+N0
+Dictator
+A man with a mustache that looks like someone pulled a “Dirty Sanchez” on him while he was asleep.
+He claims you wrote a “moving” book.
+-----
+R20
+trade:
+
+N1
+Cleopatra
+A beautiful Egyptian woman who wears too much make-up and overly flirty seeking your stockings.
+-----
+R19
+trade:
+
+N2
+Cain
+A man in an animal pelt. Keeps complaining about his younger brother Abel and how he is the reason he is here.
+-----
+R22
+trade:
+
+N3
+Caesar 
+A beautiful blond-haired warrior who fought until his last breath that wears a blood-stained toga with tears in the fabric.
+-----
+R10
+trade:
+
+N4
+Kira
+A blonde-haired Japanese man is wearing a purple suit. There looks to be a hand in his suit pocket...
+-----
+R7
+trade:
