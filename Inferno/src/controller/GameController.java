@@ -6,6 +6,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.text.TabExpander;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -25,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
@@ -100,6 +103,7 @@ public class GameController implements Initializable
 		}
 	}
 	
+	/*----------------FOR NAVIGATION----------------*/
 	//When player clicks north
 	@FXML private Button btnNorth;
 	public void north(ActionEvent event)
@@ -168,7 +172,10 @@ public class GameController implements Initializable
 			displayRoom(room);
 		}
 	}
+	/*----------------------------------------------*/
 	
+	
+	/*----------------FOR ITEM----------------------*/
 	//When player clicks Pickup
 	@FXML private Button btnPickup;
 	public void pickup(ActionEvent event)
@@ -199,6 +206,7 @@ public class GameController implements Initializable
 		TableView<Item> tableView = new TableView<>();
 		tableView.setMinWidth(400);
 		tableView.setMinHeight(150);
+		tableView.setEditable(true);
 		
 		//creates an ObservableList object which keeps track of a list of Item in inventory
 		ObservableList<Item> data = FXCollections.observableArrayList(player.getInventory());
@@ -265,14 +273,16 @@ public class GameController implements Initializable
         	@Override
 			public void handle(ActionEvent event)
 			{
-        		int index = tableView.getSelectionModel().getFocusedIndex();
-				if(index >= 0)
-				{
-					Item item = tableView.getItems().get(index);
-					room.addItem(item);
-					player.getInventory().remove(item);
-					txtGame.appendText("\nItem dropped");
-				}
+        		Item item = tableView.getSelectionModel().getSelectedItem();
+        		room.addItem(item);
+        		player.getInventory().remove(item);
+        		txtGame.appendText("\nItem " + item.getItemName().toUpperCase() + " has been dropped");
+        		
+        		//index of the filtered and sorted list
+        		int sortedIndex = tableView.getSelectionModel().getSelectedIndex();
+        		//index of actual data
+        		int sourceIndex = sortedData.getSourceIndexFor(data, sortedIndex);
+        		data.remove(sourceIndex);
 			}
 		});
         
@@ -282,7 +292,16 @@ public class GameController implements Initializable
         	@Override
 			public void handle(ActionEvent event)
 			{
-				
+        		Item item = tableView.getSelectionModel().getSelectedItem();
+        		String itemDesc = "";
+        		for(String temp : item.getItemDesc())
+        			itemDesc = temp;
+        		Alert itemInfo = new Alert(AlertType.INFORMATION);
+        		itemInfo.setTitle("Item Description");
+        		String itemName = tableView.getSelectionModel().getSelectedItem().getItemName();
+        		itemInfo.setHeaderText(itemName);
+        		itemInfo.setContentText(itemDesc);
+        		itemInfo.show();
 			}
 		});
         
@@ -313,6 +332,8 @@ public class GameController implements Initializable
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.show();
 	}
+	/*----------------------------------------------*/
+	
 	
 	//When player clicks Map
 	@FXML private Button btnMap;
@@ -325,7 +346,8 @@ public class GameController implements Initializable
 			if(!item.getItemName().equals("Map"))
 			{
 				alert.setAlertType(AlertType.ERROR);
-				alert.setContentText("You don't have Map item in your inventory. Please pick it up.");
+				String info = "You need to have Map item in your inventory to use this function.";
+				alert.setContentText(info);
 				alert.show();
 			}
 			else
@@ -340,8 +362,8 @@ public class GameController implements Initializable
 					stage.setScene(new Scene(root));
 					stage.show();
 					
-//					if(player.getHP() > 0)
-//						player.HPProperty().set(player.getHP()-10);
+					//if(player.getHP() > 0)
+						//player.HPProperty().set(player.getHP()-10);
 					
 				}catch(IOException ex) {
 					ex.printStackTrace();
