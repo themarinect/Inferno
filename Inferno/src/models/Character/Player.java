@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 import models.Item.CombatItem;
 import models.Item.GuideItem;
 import models.Item.Item;
+import models.Item.TradableItem;
+import models.Item.WeaponItem;
 import models.Map.Map;
 import models.Room.Room;
 
@@ -25,6 +27,11 @@ public class Player extends Character
 		HP = new SimpleIntegerProperty(100);
 		weapon = new SimpleStringProperty(null);
 		inventory = new ArrayList<Item>();
+		Item trade = new TradableItem();
+		trade.setItemID("T01");
+		trade.setItemName("Trade item 1");
+		trade.setItemType("Trade");
+		inventory.add(trade);
 	}
 	
 	public Player(String _id, String _name, SimpleStringProperty _currentRoom, SimpleIntegerProperty _HP)
