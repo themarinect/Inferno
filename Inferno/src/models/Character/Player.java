@@ -26,7 +26,7 @@ public class Player extends Character implements Serializable
 	public Player()
 	{
 		currentRoom = new SimpleStringProperty("R14");
-		HP = new SimpleIntegerProperty(20);
+		HP = new SimpleIntegerProperty(100);
 		currentWeapon = new Item();
 		weaponName = new SimpleStringProperty(null);
 		inventory = new ArrayList<Item>();
