@@ -5,14 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.text.TabExpander;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -116,7 +119,6 @@ public class GameController implements Initializable, Serializable
 		txtGame.appendText("WELCOME TO THE INFERNO ADVENTURE GAME!!!\n\n");
 		txtGame.appendText(room.getRoomName() + "\n");
 		displayRoom(room);
-		
 	}
 	
 	//When player clicks Start New Game
@@ -482,5 +484,36 @@ public class GameController implements Initializable, Serializable
 		Stage stage = Stage.class.cast(((Node) event.getSource()).getScene().getWindow());
 		stage.close();
 	}
+	
+	/*----------------FOR MONSTER----------------------*/
+	@FXML private Button btnInspect;
+	 public void inspectMonster(ActionEvent event) 
+	 {
+		 Monster[] monsters = map.getRooms(currentRoom).getMonsters();
+		 if(monsters.length == 0)
+		 {
+			 alert = new Alert(AlertType.NONE);
+			 alert.setAlertType(AlertType.ERROR);
+			 String info = "No monster in this room";
+			 alert.setContentText(info);
+			 alert.show();
+		 }
+		 else
+		 {
+			 for(Monster m : monsters)
+			 {
+				 if(room.containsMonster(m))
+				 {
+					 txtGame.setText("MONSTER INFORMATION\n\n");
+					 txtGame.appendText(m.getName().toUpperCase() + "\n");
+					 for(String desc : m.getDesc())
+						 txtGame.appendText(desc);
+					 txtGame.appendText("\nHP: " + m.getHealth());
+					 txtGame.appendText("\nAttack Damage: " + m.getAttack());
+				 }
+			 } 
+		 }
+	 }
+	 /*-------------------------------------------------*/
 
 }
