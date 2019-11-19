@@ -36,6 +36,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -236,6 +237,7 @@ public class GameController implements Initializable, Serializable
 	{
 		//creates an instance of TableView control and sets its width and height size
 		TableView<Item> tableView = new TableView<>();
+		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		tableView.setMinWidth(400);
 		tableView.setMinHeight(150);
 		tableView.setEditable(true);

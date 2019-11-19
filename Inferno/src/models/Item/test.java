@@ -3,6 +3,9 @@ package models.Item;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import models.Character.Monster;
 import models.Character.NPC;
@@ -29,15 +32,28 @@ public class test
 				String answer = "CorrectAnswer";
 				System.out.println("Answer: " + puzzle.lookupAnswer(answer));*/
 			
-//			BufferedReader reader = new BufferedReader(new FileReader("HealingItem.txt"));
-//			Item healingItem = HealingItem.readHealingItem(reader);
-//			System.out.println("ID: " + healingItem.getItemID());
-//			System.out.println("Name: " + healingItem.getItemName());
-//			System.out.println("Type: " + healingItem.getItemType());
-//			for(String desc : healingItem.getItemDesc())
-//				System.out.println("Desc: " + desc);
-//			for(String location : healingItem.getItemLocation())
-//				System.out.println(location);
+
+				BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
+				while(true)
+				{
+					WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
+					if(weaponItem == null)
+						break;
+					System.out.println("ID:" + weaponItem.getItemID());
+					System.out.println("Name:" + weaponItem.getItemName());
+					System.out.println("Type:" + weaponItem.getItemType());
+					
+					for(String temp : weaponItem.getItemDesc())
+						System.out.println(temp);
+					
+					System.out.println("Location: ");
+					for(String temp : weaponItem.getItemLocation())
+						System.out.println(temp);
+					
+					System.out.println(weaponItem.getAttack());
+				}
+
+				
 			
 			/*BufferedReader reader = new BufferedReader(new FileReader("Room.txt"));
 			Room room = Room.readRoom(reader);
@@ -61,14 +77,14 @@ public class test
 //				System.out.print(attack + " ");
 //			System.out.println("Item drops: " + monster.getItemDrop());
 			
-			BufferedReader reader = new BufferedReader(new FileReader("NPC.txt"));
-			NPC npc = NPC.readNPC(reader);
-			System.out.println("ID: " + npc.getId());
-			System.out.println("Name: " + npc.getName());
-			for(String desc : npc.getDesc())
-				System.out.println(desc);
-			System.out.println("Location: " + npc.getNpcLocation());
-			System.out.println("Trade: " + npc.getTradeItem());
+//			BufferedReader reader = new BufferedReader(new FileReader("NPC.txt"));
+//			NPC npc = NPC.readNPC(reader);
+//			System.out.println("ID: " + npc.getId());
+//			System.out.println("Name: " + npc.getName());
+//			for(String desc : npc.getDesc())
+//				System.out.println(desc);
+//			System.out.println("Location: " + npc.getNpcLocation());
+//			System.out.println("Trade: " + npc.getTradeItem());
 			
 		} catch (FileNotFoundException e)
 		{
