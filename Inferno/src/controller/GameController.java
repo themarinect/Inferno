@@ -1,6 +1,10 @@
 package controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,6 +15,7 @@ import javax.swing.text.TabExpander;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -43,13 +48,18 @@ import javafx.stage.Stage;
 import models.Character.Monster;
 import models.Character.NPC;
 import models.Character.Player;
+import models.Item.CombatItem;
+import models.Item.GuideItem;
+import models.Item.HealingItem;
 import models.Item.Item;
+import models.Item.KeyItem;
 import models.Item.TradableItem;
+import models.Item.WeaponItem;
 import models.Map.Map;
 import models.Puzzle.Puzzle;
 import models.Room.Room;
 
-public class GameController implements Initializable
+public class GameController implements Initializable, Serializable
 {	
 	
 	Player player = new Player();
@@ -101,7 +111,7 @@ public class GameController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		lblHP.textProperty().bind(player.HPProperty().asString());
-		lblWeapon.textProperty().bind(player.weaponProperty());
+		lblWeapon.textProperty().bind(player.weaponNameProperty());
 		txtGame.appendText("WELCOME TO THE INFERNO ADVENTURE GAME!!!\n\n");
 		txtGame.appendText(room.getRoomName() + "\n");
 		displayRoom(room);
@@ -205,7 +215,6 @@ public class GameController implements Initializable
 	{
 		for(Item item : room.getItems())
 			item.pickup(room, player, txtGame);
-		//displayRoom(room);
 	}
 	
 	public void addTableData(TableView<Item> tableView, SortedList<Item> sortedData)
@@ -265,6 +274,42 @@ public class GameController implements Initializable
         // columns fill out the whole width of the table.  Other policies are possible, too.
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
+        Button btnUse = new Button("Use");
+        btnUse.setOnAction(new EventHandler<ActionEvent>()
+		{
+
+			@Override
+			public void handle(ActionEvent event)
+			{
+				int index = tableView.getSelectionModel().getFocusedIndex();
+				if(index >= 0)
+				{
+					Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+					if(selectedItem instanceof HealingItem)
+					{
+						int strength = Integer.parseInt(((HealingItem)selectedItem).getStrength());
+						if(player.getHP() < 100)
+							player.HPProperty().set(player.getHP() + strength);	
+						
+						//index of the filtered and sorted list
+		        		int sortedIndex = tableView.getSelectionModel().getSelectedIndex();
+		        		//index of actual data
+		        		int sourceIndex = sortedData.getSourceIndexFor(data, sortedIndex);
+		        		data.remove(sourceIndex);
+					}
+					else
+					{
+						alert = new Alert(AlertType.NONE);
+						alert.setAlertType(AlertType.ERROR);
+						String info = "You can only use Healing item.";
+						alert.setContentText(info);
+						alert.show();
+					}
+				}
+			}
+        	
+		});
+        
         Button btnEquip = new Button("Equip");
         btnEquip.setOnAction(new EventHandler<ActionEvent>()
 		{
@@ -276,16 +321,20 @@ public class GameController implements Initializable
 				if(index >= 0)
 				{
 					Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-					if(selectedItem instanceof TradableItem)
+					if(selectedItem instanceof WeaponItem)
+					{
+						selectedItem = (WeaponItem)selectedItem;
+						player.setCurrentWeapon(selectedItem);
+						player.weaponNameProperty().set(tableView.getItems().get(index).getItemName());
+					}
+					else
 					{
 						alert = new Alert(AlertType.NONE);
 						alert.setAlertType(AlertType.ERROR);
-						String info = "Tradable item cannot be equipped.";
+						String info = "You can only equip Weapon item.";
 						alert.setContentText(info);
 						alert.show();
 					}
-					else
-						player.weaponProperty().set(tableView.getItems().get(index).getItemName());
 				}
 			}
 		});
@@ -296,7 +345,7 @@ public class GameController implements Initializable
         	@Override
 			public void handle(ActionEvent event)
 			{
-        		player.weaponProperty().set(null);
+        		player.weaponNameProperty().set(null);
 			}
 		});
         
@@ -309,6 +358,8 @@ public class GameController implements Initializable
         		Item item = tableView.getSelectionModel().getSelectedItem();
         		room.addItem(item);
         		player.getInventory().remove(item);
+        		player.setCurrentWeapon(null);
+        		player.weaponNameProperty().set(null);        		 
         		txtGame.appendText("\nItem " + item.getItemName().toUpperCase() + " has been dropped");
         		
         		//index of the filtered and sorted list
@@ -325,16 +376,16 @@ public class GameController implements Initializable
         	@Override
 			public void handle(ActionEvent event)
 			{
-        		Item item = tableView.getSelectionModel().getSelectedItem();
+        		Item selectedItem = tableView.getSelectionModel().getSelectedItem();
         		String itemDesc = "";
-        		for(String temp : item.getItemDesc())
+        		for(String temp : selectedItem.getItemDesc())
         			itemDesc = temp;
-        		Alert itemInfo = new Alert(AlertType.INFORMATION);
-        		itemInfo.setTitle("Item Description");
+        		alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Item Description");
         		String itemName = tableView.getSelectionModel().getSelectedItem().getItemName();
-        		itemInfo.setHeaderText(itemName);
-        		itemInfo.setContentText(itemDesc);
-        		itemInfo.show();
+        		alert.setHeaderText(itemName);
+        		alert.setContentText(itemDesc);
+        		alert.show();
 			}
 		});
         
@@ -349,7 +400,7 @@ public class GameController implements Initializable
 		});
         
         //adds children nodes from left to right
-        hbox.getChildren().addAll(btnEquip, btnUnequip, btnDrop, btnExamine, btnTrade);
+        hbox.getChildren().addAll(btnUse, btnEquip, btnUnequip, btnDrop, btnExamine, btnTrade);
         
         //creates VBox, which is the top node (root) of the scene
         VBox root = new VBox();
@@ -384,10 +435,6 @@ public class GameController implements Initializable
 				stage.setTitle("Map");
 				stage.setScene(new Scene(root));
 				stage.show();
-				
-				//if(player.getHP() > 0)
-					//player.HPProperty().set(player.getHP()-10);
-				
 			}catch(IOException ex) {
 				ex.printStackTrace();
 			}
@@ -399,6 +446,30 @@ public class GameController implements Initializable
 			String info = "You need to have Map item in your inventory to open the Map.";
 			alert.setContentText(info);
 			alert.show();
+		}
+	}
+	
+	//When player clicks Save Game
+	@FXML private Button btnSave;
+	public void saveGame(ActionEvent event)
+	{
+		File file = new File("game1.txt");
+		
+		try
+		{
+			FileOutputStream fs = new FileOutputStream(file);
+			ObjectOutputStream os = new ObjectOutputStream(fs);
+			
+			if(!file.exists())
+			{
+				file.createNewFile();
+			}
+			os.writeObject(this.getClass());
+			os.flush();
+			os.close();
+			System.out.println(this.getClass());
+		}catch(IOException ex) {
+			ex.printStackTrace();
 		}
 	}
 	
