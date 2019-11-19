@@ -43,9 +43,9 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="201.0">
                <children>
-                  <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" text="Inspect" />
-                  <Button id="btnAttack" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" text="Attack" />
-                  <Button id="btnFlee" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" text="Flee" />
+                  <Button id="btnInspect" onAction="#inspectMonster" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" text="Inspect" />
+                  <Button id="btnAttack" onKeyPressed="#inspectMonster" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" text="Attack" />
+                  <Button id="btnFlee" onKeyPressed="#inspectMonster" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" text="Flee" />
                </children>
             </AnchorPane>
         </content>
