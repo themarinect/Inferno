@@ -23,7 +23,7 @@ public class Map
 {
 
 	private TreeMap<String,Room> rooms;
-	private TreeMap<String,Item> items = new TreeMap<>();
+	private TreeMap<String,Item> items = new TreeMap<String, Item>();
 	private TreeMap<String,Puzzle> puzzles;
 	private TreeMap<String,Monster> monsters;
 	private TreeMap<String, NPC> NPCs;
@@ -65,10 +65,10 @@ public class Map
 		//Add Items into the Room
 		initCombatItem(rooms);
 		initGuideItem(rooms);
-		//initHealingItem(rooms);
-		//initInventoryItem(rooms);
+		initHealingItem(rooms);
+		initInventoryItem(rooms);
 		initKeyItem(rooms);
-		//initWeaponItem(rooms);
+		initWeaponItem(rooms);
 	}
 	
 	//init Puzzle
@@ -148,18 +148,21 @@ public class Map
 			BufferedReader reader = new BufferedReader(new FileReader("CombatItem.txt"));
 			while(true)
 			{
-				Item combatItem = CombatItem.readCombatItem(reader);
+				CombatItem combatItem = CombatItem.readCombatItem(reader);
+				//CombatItem combatItem = Item.readItem(reader);
 				if(combatItem == null)
 					break;
 				items.put(combatItem.getItemID(), combatItem);
 				for(String temp : combatItem.getItemLocation())
 					rooms.get(temp).addItem(combatItem);
 			}
+			reader.close();
 		}catch(IOException ex)
 		{
 			ex.getMessage();
 		}
 	}
+	
 	//init Guide Item
 	public void initGuideItem(TreeMap<String, Room> rooms)
 	{
@@ -168,58 +171,61 @@ public class Map
 			BufferedReader reader = new BufferedReader(new FileReader("GuideItem.txt"));
 			while(true)
 			{
-				Item guideItem = GuideItem.readGuideItem(reader);
+				GuideItem guideItem = GuideItem.readGuideItem(reader);
 				if(guideItem == null)
 					break;
 				items.put(guideItem.getItemID(), guideItem);
 				for(String temp : guideItem.getItemLocation())
 					rooms.get(temp).addItem(guideItem);
 			}
+			reader.close();
 		}catch(IOException ex)
 		{
 			ex.getMessage();
 		}
 	}
+
 	//init Healing Item
-//	public void initHealingItem(TreeMap<String, Room> rooms)
-//	{
-//		try
-//		{
-//			BufferedReader reader = new BufferedReader(new FileReader("HealingItem.txt"));
-//			while(true)
-//			{
-//				Item healingItem = HealingItem.readHealingItem(reader);
-//				if(healingItem == null)
-//					break;
-//				items.put(healingItem.getItemID(), healingItem);
-//				for(String temp : healingItem.getItemLocation())
-//					rooms.get(temp).addItem(healingItem);
-//			}
-//		}catch(IOException ex)
-//		{
-//			ex.getMessage();
-//		}
-//	}
+	public void initHealingItem(TreeMap<String, Room> rooms)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("HealingItem.txt"));
+			while(true)
+			{
+				HealingItem healingItem = HealingItem.readHealingItem(reader);
+				if(healingItem == null)
+					break;
+				items.put(healingItem.getItemID(), healingItem);
+				for(String temp : healingItem.getItemLocation())
+					rooms.get(temp).addItem(healingItem);		
+			}
+			reader.close();
+		}catch(IOException ex)
+		{
+			ex.getMessage();
+		}
+	}
 	//init Inventory Item
-//	public void initInventoryItem(TreeMap<String, Room> rooms)
-//	{
-//		try
-//		{
-//			BufferedReader reader = new BufferedReader(new FileReader("InventoryItem.txt"));
-//			while(true)
-//			{
-//				Item inventoryItem = InventoryItem.readInventoryItem(reader);
-//				if(inventoryItem == null)
-//					break;
-//				items.put(inventoryItem.getItemID(), inventoryItem);
-//				for(String temp : inventoryItem.getItemLocation())
-//					rooms.get(temp).addItem(inventoryItem);
-//			}
-//		}catch(IOException ex)
-//		{
-//			ex.getMessage();
-//		}
-//	}
+	public void initInventoryItem(TreeMap<String, Room> rooms)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("InventoryItem.txt"));
+			while(true)
+			{
+				InventoryItem inventoryItem = InventoryItem.readInventoryItem(reader);
+				if(inventoryItem == null)
+					break;
+				items.put(inventoryItem.getItemID(), inventoryItem);
+				for(String temp : inventoryItem.getItemLocation())
+					rooms.get(temp).addItem(inventoryItem);
+			}
+		}catch(IOException ex)
+		{
+			ex.getMessage();
+		}
+	}
 	//init Key Item
 	public void initKeyItem(TreeMap<String, Room> rooms)
 	{
@@ -228,13 +234,14 @@ public class Map
 			BufferedReader reader = new BufferedReader(new FileReader("KeyItem.txt"));
 			while(true)
 			{
-				Item keyItem = KeyItem.readKeyItem(reader);
+				KeyItem keyItem = KeyItem.readKeyItem(reader);
 				if(keyItem == null)
 					break;
 				items.put(keyItem.getItemID(), keyItem);
 				for(String temp : keyItem.getItemLocation())
 					rooms.get(temp).addItem(keyItem);
 			}
+			reader.close();
 		}catch(IOException ex)
 		{
 			ex.getMessage();
@@ -248,37 +255,38 @@ public class Map
 			BufferedReader reader = new BufferedReader(new FileReader("TradableItem.txt"));
 			while(true)
 			{
-				TradableItem tradableItem =  TradableItem.readTradableItem(reader);
+				TradableItem tradableItem = TradableItem.readTradableItem(reader);				
 				if(tradableItem == null)
 					break;
 				items.put(tradableItem.getItemID(), tradableItem);
 				NPCs.get(tradableItem.getNPC()).addItem(tradableItem);
+			}
+			reader.close();
+		}catch(IOException ex)
+		{
+			ex.getMessage();
+		}
+	}
+	//init Weapon Item
+	public void initWeaponItem(TreeMap<String, Room> rooms)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
+			while(true)
+			{
+				WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
+				if(weaponItem == null)
+					break;
+				items.put(weaponItem.getItemID(), weaponItem);
+				for(String temp : weaponItem.getItemLocation())
+					rooms.get(temp).addItem(weaponItem);
 			}
 		}catch(IOException ex)
 		{
 			ex.getMessage();
 		}
 	}
-	//init Tradable Item
-//	public void initWeaponItem(TreeMap<String, Room> rooms)
-//	{
-//		try
-//		{
-//			BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
-//			while(true)
-//			{
-//				Item weaponItem =  WeaponItem.readWeaponItem(reader);
-//				if(weaponItem == null)
-//					break;
-//				items.put(weaponItem.getItemID(), weaponItem);
-//				for(String temp : weaponItem.getItemLocation())
-//					rooms.get(temp).addItem(weaponItem);
-//			}
-//		}catch(IOException ex)
-//		{
-//			ex.getMessage();
-//		}
-//	}
 	
 	
 	public Room getRooms(String roomID)
