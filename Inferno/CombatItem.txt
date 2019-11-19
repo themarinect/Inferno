@@ -12,7 +12,7 @@ Combat
 When in the player's inventory the player with receive 50% less damage from monsters. “They will never arrive at the truth.”
 R7
 -----
-usage:50%
+usage:50
 
 A8
 Mirror of Dismissal
