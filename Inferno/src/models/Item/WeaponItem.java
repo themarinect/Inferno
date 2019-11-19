@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class WeaponItem extends Item
 {
-	private int attack;
+	private String attack;
 
 	public WeaponItem()
 	{
@@ -14,10 +14,10 @@ public class WeaponItem extends Item
 	}
 
 	public WeaponItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, int _attack)
+			ArrayList<String> _itemLocation, String _attack)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setAttack(_attack);
+		this.attack = _attack;
 	}
 
 	public static WeaponItem readWeaponItem(BufferedReader reader)
@@ -61,7 +61,7 @@ public class WeaponItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				weaponItem.setAttack(Integer.parseInt(line.substring(colon+1).trim()));
+				weaponItem.attack = line.substring(colon+1).trim();
 			}
 		}catch (IOException ex)
 		{
@@ -75,14 +75,13 @@ public class WeaponItem extends Item
 	}
 	
 	//getter and setter
-	public int getAttack()
+	public String getAttack()
 	{
 		return attack;
 	}
 
-	public void setAttack(int attack)
+	public void setAttack(String attack)
 	{
 		this.attack = attack;
 	}
-
 }
