@@ -1,6 +1,6 @@
 A3
 Brown Bag
-inventory
+Inventory
 A worn brown bag made up of burlap. It can be used to store valuable items found along the journey.
 R14
 -----

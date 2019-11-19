@@ -7,7 +7,7 @@ import models.Item.Item;
 
 public class InventoryItem extends Item
 {
-	private int capacity;
+	private String capacity;
 	
 	public InventoryItem()
 	{
@@ -15,10 +15,10 @@ public class InventoryItem extends Item
 	}
 
 	public InventoryItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, int _capacity)
+			ArrayList<String> _itemLocation, String _capacity)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setCapacity(_capacity);
+		this.capacity = _capacity;
 	}
 	
 	public static InventoryItem readInventoryItem(BufferedReader reader)
@@ -62,7 +62,7 @@ public class InventoryItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				inventoryItem.setCapacity(Integer.parseInt(line.substring(colon+1).trim()));
+				inventoryItem.capacity = line.substring(colon+1).trim();
 			}
 		}catch (IOException ex)
 		{
@@ -76,12 +76,12 @@ public class InventoryItem extends Item
 	}
 
 	//getters and setters
-	public int getCapacity()
+	public String getCapacity()
 	{
 		return capacity;
 	}
 
-	public void setCapacity(int capacity)
+	public void setCapacity(String capacity)
 	{
 		this.capacity = capacity;
 	}
