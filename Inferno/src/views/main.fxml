@@ -34,7 +34,7 @@
         <content>
           <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="166.0">
                <children>
-                  <Button id="btnPickup" onAction="#pickup" layoutX="33.0" layoutY="8.0" mnemonicParsing="false" prefWidth="100.0" text="Pickup" />
+                  <Button id="btnPickup" layoutX="33.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" prefWidth="100.0" text="Pickup" />
                </children>
             </AnchorPane>
         </content>
@@ -84,5 +84,6 @@
       </Label>
       <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" text="Inventory" />
       <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" />
+      <Button id="btnSave" layoutX="535.0" layoutY="452.0" mnemonicParsing="false" onAction="#saveGame" text="Save Game" />
    </children>
 </AnchorPane>
