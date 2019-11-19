@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class HealingItem extends Item
 {
 
-	private int strength;
+	private String strength;
 	
 	public HealingItem()
 	{
@@ -15,10 +15,10 @@ public class HealingItem extends Item
 	}
 
 	public HealingItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, int _strength)
+			ArrayList<String> _itemLocation, String _strength)
 	{
 		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setStrength(_strength);
+		this.strength = _strength;
 	}
 
 	public static HealingItem readHealingItem(BufferedReader reader)
@@ -62,7 +62,8 @@ public class HealingItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				healingItem.setStrength(Integer.parseInt( line.substring(colon+1).trim()));
+				healingItem.strength = line.substring(colon+1).trim();
+				//healingItem.setStrength(Integer.parseInt( line.substring(colon+1).trim()));
 			}
 		}catch (IOException ex)
 		{
@@ -76,12 +77,12 @@ public class HealingItem extends Item
 	}
 	
 	//getters and setters
-	public int getStrength()
+	public String getStrength()
 	{
 		return strength;
 	}
 
-	public void setStrength(int strength)
+	public void setStrength(String strength)
 	{
 		this.strength = strength;
 	}
