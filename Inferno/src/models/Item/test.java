@@ -33,25 +33,25 @@ public class test
 				System.out.println("Answer: " + puzzle.lookupAnswer(answer));*/
 			
 
-				BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
-				while(true)
-				{
-					WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
-					if(weaponItem == null)
-						break;
-					System.out.println("ID:" + weaponItem.getItemID());
-					System.out.println("Name:" + weaponItem.getItemName());
-					System.out.println("Type:" + weaponItem.getItemType());
-					
-					for(String temp : weaponItem.getItemDesc())
-						System.out.println(temp);
-					
-					System.out.println("Location: ");
-					for(String temp : weaponItem.getItemLocation())
-						System.out.println(temp);
-					
-					System.out.println(weaponItem.getAttack());
-				}
+//				BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
+//				while(true)
+//				{
+//					WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
+//					if(weaponItem == null)
+//						break;
+//					System.out.println("ID:" + weaponItem.getItemID());
+//					System.out.println("Name:" + weaponItem.getItemName());
+//					System.out.println("Type:" + weaponItem.getItemType());
+//					
+//					for(String temp : weaponItem.getItemDesc())
+//						System.out.println(temp);
+//					
+//					System.out.println("Location: ");
+//					for(String temp : weaponItem.getItemLocation())
+//						System.out.println(temp);
+//					
+//					System.out.println(weaponItem.getAttack());
+//				}
 
 				
 			
@@ -62,20 +62,16 @@ public class test
 			for(String desc : room.getRoomDesc())
 				System.out.println(desc);*/
 			
-//			BufferedReader reader = new BufferedReader(new FileReader("Monster.txt"));
-//			Monster monster = Monster.readMonster(reader);
-//			System.out.println("ID: " + monster.getId());
-//			System.out.println("Name: " + monster.getName());
-//			for(String desc : monster.getDesc())
-//				System.out.println(desc);
-//			System.out.println("Location: " + monster.getMonsterLocation());
-//			System.out.println("Health");
-//			for(int health : monster.getHealth())
-//				System.out.print(health + " ");
-//			System.out.println("Attack");
-//			for(int attack : monster.getAttack())
-//				System.out.print(attack + " ");
-//			System.out.println("Item drops: " + monster.getItemDrop());
+			BufferedReader reader = new BufferedReader(new FileReader("Monster.txt"));
+			Monster monster = Monster.readMonster(reader);
+			System.out.println("ID: " + monster.getId());
+			System.out.println("Name: " + monster.getName());
+			for(String desc : monster.getDesc())
+				System.out.println(desc);
+			System.out.println("Location: " + monster.getMonsterLocation());
+			System.out.println("Health: " + monster.getHP());
+			System.out.println("Attack: " + monster.getAttack());
+			System.out.println("Item drops: " + monster.getItemDrop());
 			
 //			BufferedReader reader = new BufferedReader(new FileReader("NPC.txt"));
 //			NPC npc = NPC.readNPC(reader);

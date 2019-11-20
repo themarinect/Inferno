@@ -5,20 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.swing.text.TabExpander;
-
-import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -36,7 +25,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
@@ -52,11 +40,8 @@ import javafx.stage.Stage;
 import models.Character.Monster;
 import models.Character.NPC;
 import models.Character.Player;
-import models.Item.CombatItem;
-import models.Item.GuideItem;
 import models.Item.HealingItem;
 import models.Item.Item;
-import models.Item.KeyItem;
 import models.Item.TradableItem;
 import models.Item.WeaponItem;
 import models.Map.Map;
@@ -106,14 +91,14 @@ public class GameController implements Initializable, Serializable
 		
 		//Check if room visited
 		if(room.isVisited())
-			txtGame.appendText("\nYou have visited this room.");
+			txtGame.appendText("\nYou have visited this room.\n");
 		room.setVisited(true);
 	}
 	
 	//When the game is loaded
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
-	{
+	{	
 		lblHP.textProperty().bind(player.HPProperty().asString());
 		lblWeapon.textProperty().bind(player.weaponNameProperty());
 		txtGame.appendText("WELCOME TO THE INFERNO ADVENTURE GAME!!!\n\n");
@@ -211,6 +196,29 @@ public class GameController implements Initializable, Serializable
 	/*----------------------------------------------*/
 	
 	
+	/*----------------FOR PUZZLE----------------------*/
+	//When player clicks Look puzzle
+	@FXML private Button btnLook;
+	public void lookPuzzle(ActionEvent event)
+	{
+		for(Puzzle puzzle : room.getPuzzles())
+		{
+			txtGame.appendText("\n" + puzzle.getPuzzleName() + "\n");
+			for(String desc : puzzle.getPuzzleDesc())
+				txtGame.appendText(desc);
+		}
+			
+	}
+	//When player clicks Hint
+	@FXML private Button btnHint;
+	public void hint(ActionEvent event)
+	{
+		for(Puzzle puzzle : room.getPuzzles())
+			txtGame.appendText("\nPuzzle Hint: " + puzzle.getPuzzleHint());
+	}
+	/*----------------------------------------------*/
+	
+	
 	/*----------------FOR ITEM----------------------*/
 	//When player clicks Pickup
 	@FXML private Button btnPickup;
@@ -220,6 +228,25 @@ public class GameController implements Initializable, Serializable
 			item.pickup(room, player, txtGame);
 	}
 	
+	//When player clicks Trade
+	@FXML private Button btnTrade;
+	public void trade(ActionEvent event)
+	{
+		NPC[] NPCs = room.getNPCs();
+		NPC npc = new NPC();
+		for(NPC temp : NPCs)
+			npc = temp;
+		
+		for(Item item : npc.getItems())
+		{
+			npc.removeItem((TradableItem) item);
+			player.getInventory().add(item);
+			txtGame.appendText("\nThe " + item.getItemName().toUpperCase() + " has been traded and added to inventory.\n");
+		}
+	}	
+	
+	//When player clicks Inventory
+	@FXML private Button btnInventory;
 	public void addTableData(TableView<Item> tableView, SortedList<Item> sortedData)
 	{
         TableColumn<Item,String> name = new TableColumn<>("Item Name");
@@ -233,8 +260,6 @@ public class GameController implements Initializable, Serializable
         //sets the data for table using the sorted list of Items
         tableView.setItems(sortedData);
 	}
-	//When player clicks Inventory
-	@FXML private Button btnInventory;
 	public void openInventory(ActionEvent event)
 	{
 		//creates an instance of TableView control and sets its width and height size
@@ -393,18 +418,8 @@ public class GameController implements Initializable, Serializable
 			}
 		});
         
-        Button btnTrade = new Button("Trade");
-        btnTrade.setOnAction(new EventHandler<ActionEvent>()
-		{
-        	@Override
-			public void handle(ActionEvent event)
-			{
-				
-			}
-		});
-        
         //adds children nodes from left to right
-        hbox.getChildren().addAll(btnUse, btnEquip, btnUnequip, btnDrop, btnExamine, btnTrade);
+        hbox.getChildren().addAll(btnUse, btnEquip, btnUnequip, btnDrop, btnExamine);
         
         //creates VBox, which is the top node (root) of the scene
         VBox root = new VBox();
@@ -421,6 +436,126 @@ public class GameController implements Initializable, Serializable
 		stage.show();
 	}
 	/*----------------------------------------------*/
+	
+	
+	/*----------------FOR MONSTER----------------------*/
+	@FXML private Button btnInspect;
+	public void inspectMonster(ActionEvent event) 
+	{
+		Monster[] monsters = room.getMonsters();
+		
+		if(monsters.length == 0)
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "No monster in this room";
+			alert.setContentText(info);
+			alert.show();
+		}
+		else
+		{
+			for(Monster m : monsters)
+			{
+				player.setInCombat(true);
+				txtGame.setText("YOU ARE NOW IN THE COMBAT MODE\n\n");
+				txtGame.appendText("Monster Information\n");
+				txtGame.appendText(m.getName().toUpperCase() + "\n");
+				for(String desc : m.getDesc())
+					txtGame.appendText(desc);
+				txtGame.appendText("\nHP: " + m.getHP());
+				txtGame.appendText("\nAttack Damage: " + m.getAttack());
+			}
+		}
+	}
+	
+	@FXML private Button btnAttack;
+	public void attack(int playerHP, int weaponDmg, Monster currentMonster, int monsterHP, int monsterAttack, ActionEvent event)
+	{
+		int dmgTaken = monsterAttack;
+		int dmgDealt = weaponDmg;
+		monsterHP = monsterHP - dmgDealt;
+		playerHP -= dmgTaken;
+		txtGame.setText("You strike for: " + dmgDealt + "\n");
+		txtGame.appendText("You have been hit for: " + dmgTaken + "\n");
+		txtGame.appendText("You have " + playerHP + " HP left. " + currentMonster.getName().toUpperCase() + " has " + monsterHP + " HP left\n\n");
+		player.HPProperty().set(playerHP);
+		currentMonster.HPProperty().set(monsterHP);
+		if(playerHP < 0)
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "YOU DIED. THE GAME IS OVER!!!";
+			alert.setContentText(info);
+			alert.show();
+			quitGame(event);
+		}
+			
+	}
+	public void attackMonster(ActionEvent event)
+	{
+		if(player.isInCombat())
+		{
+			if(player.getWeaponName() == null)
+			{
+				alert = new Alert(AlertType.NONE);
+				alert.setAlertType(AlertType.ERROR);
+				String info = "Please equip a Weapon item before attacking.";
+				alert.setContentText(info);
+				alert.show();
+			}
+			else
+			{
+				Monster[] monsters = room.getMonsters();
+				Monster currentMonster = new Monster();
+				for(Monster m : monsters)
+				{
+					currentMonster = m;
+				}
+				
+				//Player's info
+				int playerHP = player.getHP();
+				Item item = player.getCurrentWeapon();
+				WeaponItem currentWeapon = new WeaponItem();
+				if(item instanceof WeaponItem)
+					currentWeapon = (WeaponItem) item;
+				int weaponDmg = Integer.parseInt(currentWeapon.getAttack());
+				
+				//Monster's info
+				int monsterHP = currentMonster.getHP();
+				int monsterAttack = currentMonster.getAttack();
+
+				attack(playerHP, weaponDmg, currentMonster, monsterHP, monsterAttack, event);
+			}
+		}
+		else
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "Please Inspect monster before attacking.";
+			alert.setContentText(info);
+			alert.show();
+		}
+	}
+	
+	@FXML private Button btnFlee;
+	public void fleeMonster(ActionEvent event)
+	{
+		if(player.isInCombat())
+		{
+			player.setInCombat(false);
+			txtGame.setText(room.getRoomName() + "\n");
+			displayRoom(room);
+		}
+		else
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "You are not in Combat mode.";
+			alert.setContentText(info);
+			alert.show();
+		}
+	}
+	/*-------------------------------------------------*/
 	
 	
 	//When player clicks Map
@@ -484,36 +619,7 @@ public class GameController implements Initializable, Serializable
 		Stage stage = Stage.class.cast(((Node) event.getSource()).getScene().getWindow());
 		stage.close();
 	}
-	
-	/*----------------FOR MONSTER----------------------*/
-	@FXML private Button btnInspect;
-	 public void inspectMonster(ActionEvent event) 
-	 {
-		 Monster[] monsters = map.getRooms(currentRoom).getMonsters();
-		 if(monsters.length == 0)
-		 {
-			 alert = new Alert(AlertType.NONE);
-			 alert.setAlertType(AlertType.ERROR);
-			 String info = "No monster in this room";
-			 alert.setContentText(info);
-			 alert.show();
-		 }
-		 else
-		 {
-			 for(Monster m : monsters)
-			 {
-				 if(room.containsMonster(m))
-				 {
-					 txtGame.setText("MONSTER INFORMATION\n\n");
-					 txtGame.appendText(m.getName().toUpperCase() + "\n");
-					 for(String desc : m.getDesc())
-						 txtGame.appendText(desc);
-					 txtGame.appendText("\nHP: " + m.getHealth());
-					 txtGame.appendText("\nAttack Damage: " + m.getAttack());
-				 }
-			 } 
-		 }
-	 }
-	 /*-------------------------------------------------*/
-
 }
+	 
+
+

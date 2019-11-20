@@ -3,8 +3,6 @@ package models.Character;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import models.Item.Item;
 import models.Item.TradableItem;
 
 public class NPC extends Character

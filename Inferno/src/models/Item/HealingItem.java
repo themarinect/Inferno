@@ -63,7 +63,6 @@ public class HealingItem extends Item
 				line = line.trim();
 				int colon = line.indexOf(":");
 				healingItem.strength = line.substring(colon+1).trim();
-				//healingItem.setStrength(Integer.parseInt( line.substring(colon+1).trim()));
 			}
 		}catch (IOException ex)
 		{

@@ -3,15 +3,14 @@ package models.Character;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import models.Item.CombatItem;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class Monster extends Character
 {
 	private ArrayList<String> desc;
 	private String monsterLocation;
-	private ArrayList<Integer> health;
-	private ArrayList<Integer> attack;
+	private static SimpleIntegerProperty HP;
+	private int attack;
 	private String itemDrop;
 
 	public Monster()
@@ -19,13 +18,13 @@ public class Monster extends Character
 
 	}
 
-	public Monster(String _id, String _name, ArrayList<String> _desc, String _monsterLocation, ArrayList<Integer> _health, 
-			ArrayList<Integer> _attack, String _itemDrop)
+	public Monster(String _id, String _name, ArrayList<String> _desc, String _monsterLocation, SimpleIntegerProperty _HP, 
+			int _attack, String _itemDrop)
 	{
 		super(_id, _name);
 		this.desc = _desc;
 		this.monsterLocation = _monsterLocation;
-		this.health = _health;
+		this.HP = _HP;
 		this.attack = _attack;
 		this.itemDrop = _itemDrop;
 	}
@@ -57,22 +56,18 @@ public class Monster extends Character
 			monster.monsterLocation = reader.readLine();
 			
 			//reads health
-			monster.health = new ArrayList<Integer>();
 			line = reader.readLine();
 			line = line.trim();
-			int colon1 = line.indexOf(":");
-			String[] health = line.substring(colon1+1).trim().split("/",-2);
-			for(String a : health)
-				monster.health.add(Integer.parseInt(a));
+			int colonHP = line.indexOf(":");
+			int hp = Integer.parseInt(line.substring(colonHP+1).trim());
+			HP = new SimpleIntegerProperty(hp);
 			
 			//reads attack
-			monster.attack = new ArrayList<Integer>();
 			line = reader.readLine();
 			line = line.trim();
-			int colon2 = line.indexOf(":");
-			String[] attack = line.substring(colon2+1).trim().split("/",-2);
-			for(String a : attack)
-				monster.attack.add(Integer.parseInt(a));
+			int colonAtt = line.indexOf(":");
+			monster.attack = Integer.parseInt(line.substring(colonAtt+1).trim());
+			
 			
 			//reads item drops
 			while(true)
@@ -81,8 +76,8 @@ public class Monster extends Character
 				if(line == null || line.length() == 0)
 					break;
 				line = line.trim();
-				int colon4 = line.indexOf(":");
-				monster.itemDrop = line.substring(colon4+1).trim();
+				int colonItem = line.indexOf(":");
+				monster.itemDrop = line.substring(colonItem+1).trim();
 			}
 		}catch (IOException ex)
 		{
@@ -111,18 +106,33 @@ public class Monster extends Character
 		this.monsterLocation = monsterLocation;
 	}
 
-	public ArrayList<Integer> getHealth()
+	public SimpleIntegerProperty HPProperty()
 	{
-		return health;
+		return HP;
 	}
 
-	public ArrayList<Integer> getAttack()
+	public void setHP(SimpleIntegerProperty _HP)
+	{
+		HP = _HP;
+	}
+	public int getHP()
+	{
+		return HP.get();
+	}
+	
+	public int getAttack()
 	{
 		return attack;
 	}
-
+	
+	public void setAttack(int attack)
+	{
+		this.attack = attack;
+	}
+	
 	public String getItemDrop()
 	{
 		return itemDrop;
 	}
+
 }

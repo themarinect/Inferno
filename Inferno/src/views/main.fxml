@@ -34,7 +34,8 @@
         <content>
           <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="166.0">
                <children>
-                  <Button id="btnPickup" layoutX="33.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" prefWidth="100.0" text="Pickup" />
+                  <Button id="btnPickup" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" text="Pickup" />
+                  <Button id="btnTrade" onAction="#trade" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" text="Trade" />
                </children>
             </AnchorPane>
         </content>
@@ -43,9 +44,9 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="201.0">
                <children>
-                  <Button id="btnInspect" onAction="#inspectMonster" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" text="Inspect" />
-                  <Button id="btnAttack" onKeyPressed="#inspectMonster" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" text="Attack" />
-                  <Button id="btnFlee" onKeyPressed="#inspectMonster" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" text="Flee" />
+                  <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#inspectMonster" text="Inspect" />
+                  <Button id="btnAttack" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" onAction="#attackMonster" text="Attack" />
+                  <Button id="btnFlee" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" onAction="#fleeMonster" text="Flee" />
                </children>
             </AnchorPane>
         </content>
@@ -54,9 +55,9 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="132.0">
                <children>
-                  <Button id="btnLook" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Look" />
+                  <Button id="btnLook" onAction="#lookPuzzle" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Look" />
                   <Button id="btnSolve" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" text="Solve" />
-                  <Button id="btnHint" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" text="Hint" />
+                  <Button id="btnHint" onAction="#hint" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" text="Hint" />
                   <Button id="btnForfeit" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" text="Forfeit" />
                </children>
             </AnchorPane>

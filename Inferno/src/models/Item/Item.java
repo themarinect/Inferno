@@ -1,11 +1,6 @@
 package models.Item;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import models.Character.Player;
 import models.Room.Room;

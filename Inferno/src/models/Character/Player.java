@@ -5,13 +5,7 @@ import java.util.ArrayList;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import models.Item.CombatItem;
-import models.Item.GuideItem;
 import models.Item.Item;
-import models.Item.TradableItem;
-import models.Item.WeaponItem;
-import models.Map.Map;
-import models.Room.Room;
 
 
 
@@ -22,13 +16,14 @@ public class Player extends Character implements Serializable
 	private Item currentWeapon;
 	private SimpleStringProperty weaponName;
 	private ArrayList<Item> inventory;
+	private boolean inCombat = false;
 	
 	public Player()
 	{
 		currentRoom = new SimpleStringProperty("R14");
 		HP = new SimpleIntegerProperty(100);
 		currentWeapon = new Item();
-		weaponName = new SimpleStringProperty(null);
+		weaponName = new SimpleStringProperty();
 		inventory = new ArrayList<Item>();
 	}
 	
@@ -38,20 +33,8 @@ public class Player extends Character implements Serializable
 		this.currentRoom = _currentRoom;
 		this.HP = _HP;
 	}
-	
-//	public void displayInventory()
-//	{
-//		System.out.println("Inventory: ");
-//		for(int i = 0; i < inventory.size(); i++)
-//		{
-//			if(inventory.size() == 0)
-//				System.out.println("You have nothing in the inventory.\n");
-//			else
-//				System.out.println(inventory.get(i).getItemName() + ": " + inventory.get(i).getItemDesc() + "\n");
-//		}
-//	}
-	//getters & setters
 
+	//getters & setters
 	public SimpleStringProperty CurrentRoomProperty()
 	{
 		return currentRoom;
@@ -110,5 +93,15 @@ public class Player extends Character implements Serializable
 	public ArrayList<Item> getInventory()
 	{
 		return inventory;
+	}
+
+	public boolean isInCombat()
+	{
+		return inCombat;
+	}
+
+	public void setInCombat(boolean inCombat)
+	{
+		this.inCombat = inCombat;
 	}
 }

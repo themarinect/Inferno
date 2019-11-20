@@ -8,8 +8,8 @@ If the player chooses the wrong pillar Lust damages and heals the amount of dama
 The Lens of Truth is a particularly useful item here.
 -----
 R30
-health:30/40/50/60/70/80/90/100
-attack:10/15/20/25/30/35/40/50
+health:30
+attack:10
 item:A16
 
 M1
@@ -24,8 +24,8 @@ When the player places FOOD is on a tile Gluttony rushes on that tile and eats t
 and the player deals 4x typical damage. Endless Feast is particularly useful here.
 -----
 R5
-health:50/60/80/90/100/120/130/150
-attack:30/40/50/ 60/70/80/90/100
+health:50
+attack:30
 item:A17
 
 M2
@@ -37,7 +37,7 @@ Greed inflicts a the Midas infection if the player stays on a tile after 3 turns
 The player must be prompted after the second turn to MOVE.
 -----
 R12
-health:50/60/70/80/90/100/100/110/120/130/140
+health:50
 attack:50
 item:A18
 
@@ -50,8 +50,8 @@ Envy copies your stats and inventory and creates weak clones that flood the room
 If the player has defeated the Envy puzzle Envy cannot create clones but clones the Players current state and inventory.
 -----
 R35
-health:
-attack:
+health:40
+attack:10
 item:A19
 
 M4
@@ -74,8 +74,8 @@ Pride is the only boss that is hard early and gets more comfortable with each mo
 Prides the player next to him at the start of the fight and triggers every 30 health loss.
 -----
 R17
-health:200/175/150/125/110/100/75/50
-attack:80/75/70/65/60/50/40/30
+health:200
+attack:30
 item:A21
 
 M6
@@ -86,8 +86,8 @@ The system prompts MOVE if the player in danger.
 If the player fails to move the charge deals double damage proportionally to current Attack Power of Wrath.
 -----
 R2
-health:40/50/60/100
-attack:10/20/30/40/50/60/70
+health:40
+attack:10
 item:A22
 
 M7
