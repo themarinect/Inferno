@@ -11,13 +11,6 @@ public class CombatItem extends Item
 	{
 
 	}
-
-	public CombatItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _usage)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setUsage(_usage);
-	}
 	
 	public static CombatItem readCombatItem(BufferedReader reader)
 	{
@@ -49,7 +42,7 @@ public class CombatItem extends Item
 			for(String a : location)
 				locationList.add(a);
 			combatItem.setItemLocation(locationList);
-			
+
 			/*-------------------------------------------------------*/
 			
 			//reads usage

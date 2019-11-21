@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import models.Item.Item;
+import models.Item.KeyItem;
+
 public class Puzzle
 {
 	private String puzzleID;
@@ -14,6 +17,9 @@ public class Puzzle
 	private String puzzleHint;
 	
 	private HashMap<String,String> answer;
+	
+	//A list of key Items associated with Puzzle
+	private ArrayList<Item> itemList = new ArrayList<>();
 	
 	public static Puzzle readPuzzle(BufferedReader reader)
 	{
@@ -81,6 +87,26 @@ public class Puzzle
 		return value;
 	}
 
+	/*-----For Item-----*/
+	//Adds an key item to the list
+	public void addItem(Item item)
+	{
+		itemList.add(item);
+	}
+	//Removes an key item from the list
+	public void removeItem(Item item)
+	{
+		itemList.remove(item);
+	}
+	//Returns an array of all key items
+	public Item[] getItems()
+	{
+		Item[] itemArray = new Item[itemList.size()];
+		int i = 0;
+		for(Item tempItem : itemList)
+			itemArray[i++] = tempItem;
+		return itemArray;
+	}
 	
 	//getters
 	public String getPuzzleID()

@@ -13,13 +13,6 @@ public class TradableItem extends Item
 		
 	}
 
-	public TradableItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _NPC)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setNPC(_NPC);
-	}
-
 	public static TradableItem readTradableItem(BufferedReader reader)
 	{
 		TradableItem tradableItem = new TradableItem();

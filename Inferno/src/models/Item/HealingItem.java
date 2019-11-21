@@ -14,13 +14,6 @@ public class HealingItem extends Item
 		
 	}
 
-	public HealingItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _strength)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.strength = _strength;
-	}
-
 	public static HealingItem readHealingItem(BufferedReader reader)
 	{
 		HealingItem healingItem = new HealingItem();

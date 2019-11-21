@@ -1,11 +1,3 @@
-A10
-Grand Key
-Key
-This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
-R26
------
-AssociatedMonster:M7
-
 A16
 Relic of Chastity
 Key
@@ -61,3 +53,11 @@ A relic dropped by the demon Wrath. Combine this with the other 6 relics to obta
 R2
 -----
 AssociatedMonster:M6
+
+A10
+Grand Key
+Key
+This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
+R26
+-----
+AssociatedMonster:M7

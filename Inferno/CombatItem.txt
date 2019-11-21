@@ -2,22 +2,25 @@ A1
 Lens Of Truth
 Combat
 Reveals Lusts exact location when used during a fight.
-R24
+R1
 -----
+P5
 usage:Lust is at west side of the room
 
 A7
 Golden Experience
 Combat
 When in the player's inventory the player with receive 50% less damage from monsters. “They will never arrive at the truth.”
-R7
+R16
 -----
+P6
 usage:50
 
 A8
 Mirror of Dismissal
 Combat
 All illusions of Envy are dispelled within the current room. Used to reveal the answer of the puzzle in the room.
-R29
+R26
 -----
+P7
 usage:reveals answer

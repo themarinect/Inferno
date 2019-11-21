@@ -12,13 +12,6 @@ public class KeyItem extends Item
 	{
 		
 	}
-
-	public KeyItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _associatedMonster)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setAssociatedMonster(_associatedMonster);
-	}
 	
 	public static KeyItem readKeyItem(BufferedReader reader)
 	{

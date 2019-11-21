@@ -13,13 +13,6 @@ public class InventoryItem extends Item
 	{
 
 	}
-
-	public InventoryItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _capacity)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.capacity = _capacity;
-	}
 	
 	public static InventoryItem readInventoryItem(BufferedReader reader)
 	{

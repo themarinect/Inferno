@@ -18,15 +18,6 @@ public class Item
 		
 	}
 	
-	public Item(String _itemID, String _itemName, String _itemType, String[] _itemDesc, ArrayList<String> _itemLocation)
-	{
-		this.setItemID(_itemID);
-		this.setItemName(_itemName);
-		this.setItemType(_itemType);
-		this.setItemDesc(_itemDesc);
-		this.setItemLocation(_itemLocation);
-	}
-	
 	public void pickup(Room room, Player player, TextArea txtGame)
 	{
 		for(Item item : room.getItems())

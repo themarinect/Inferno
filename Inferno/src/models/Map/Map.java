@@ -63,7 +63,7 @@ public class Map
 		initNPC(rooms);
 		
 		//Add Items into the Room
-		initCombatItem(rooms);
+		
 		initGuideItem(rooms);
 		initHealingItem(rooms);
 		initInventoryItem(rooms);
@@ -91,6 +91,8 @@ public class Map
 		{
 			e.getMessage();
 		}
+		
+		initCombatItem(rooms, puzzles);
 	}
 	
 	//init Monster
@@ -144,7 +146,7 @@ public class Map
 	}
 	
 	//init Combat Item
-	public void initCombatItem(TreeMap<String, Room> rooms)
+	public void initCombatItem(TreeMap<String, Room> rooms, TreeMap<String, Puzzle> puzzles)
 	{
 		try
 		{
@@ -152,7 +154,6 @@ public class Map
 			while(true)
 			{
 				CombatItem combatItem = CombatItem.readCombatItem(reader);
-				//CombatItem combatItem = Item.readItem(reader);
 				if(combatItem == null)
 					break;
 				items.put(combatItem.getItemID(), combatItem);

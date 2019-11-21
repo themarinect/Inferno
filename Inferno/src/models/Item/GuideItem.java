@@ -12,13 +12,6 @@ public class GuideItem extends Item
 	{
 
 	}
-
-	public GuideItem(String _itemID, String _itemName, String _itemType, String[] _itemDesc,
-			ArrayList<String> _itemLocation, String _imagePath)
-	{
-		super(_itemID, _itemName, _itemType, _itemDesc, _itemLocation);
-		this.setImagePath(_imagePath);
-	}
 	
 	public static GuideItem readGuideItem(BufferedReader reader)
 	{
