@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.beans.property.SimpleIntegerProperty;
+import models.Item.KeyItem;
+import models.Item.TradableItem;
 
 public class Monster extends Character
 {
@@ -13,6 +15,9 @@ public class Monster extends Character
 	private int attack;
 	private String itemDrop;
 
+	//A list of key Items associated with Monster
+	private ArrayList<KeyItem> itemList = new ArrayList<>();
+	
 	public Monster()
 	{
 
@@ -79,6 +84,27 @@ public class Monster extends Character
 		return monster;
 	}
 
+	/*-----For Key Item-----*/
+	//Adds an key item to the list
+	public void addItem(KeyItem keyItem)
+	{
+		getItemList().add(keyItem);
+	}
+	//Removes an key item from the list
+	public void removeItem(KeyItem keyItem)
+	{
+		getItemList().remove(keyItem);
+	}
+	//Returns an array of all key items
+	public KeyItem[] getItems()
+	{
+		KeyItem[] itemArray = new KeyItem[getItemList().size()];
+		int i = 0;
+		for(KeyItem tempItem : getItemList())
+			itemArray[i++] = tempItem;
+		return itemArray;
+	}
+	
 	//getters
 	public ArrayList<String> getDesc()
 	{
@@ -118,5 +144,10 @@ public class Monster extends Character
 	public String getItemDrop()
 	{
 		return itemDrop;
+	}
+
+	public ArrayList<KeyItem> getItemList()
+	{
+		return itemList;
 	}
 }
