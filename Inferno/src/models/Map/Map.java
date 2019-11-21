@@ -67,7 +67,7 @@ public class Map
 		initGuideItem(rooms);
 		initHealingItem(rooms);
 		initInventoryItem(rooms);
-		initKeyItem(rooms);
+		
 		initWeaponItem(rooms);
 	}
 	
@@ -113,6 +113,9 @@ public class Map
 		{
 			e.getMessage();
 		}
+		
+		//init Tradable item associated to Monster
+		initKeyItem(monsters);
 	}
 	
 	//init NPC
@@ -227,7 +230,7 @@ public class Map
 		}
 	}
 	//init Key Item
-	public void initKeyItem(TreeMap<String, Room> rooms)
+	public void initKeyItem(TreeMap<String, Monster> monsters)
 	{
 		try
 		{
@@ -238,8 +241,7 @@ public class Map
 				if(keyItem == null)
 					break;
 				items.put(keyItem.getItemID(), keyItem);
-				for(String temp : keyItem.getItemLocation())
-					rooms.get(temp).addItem(keyItem);
+				monsters.get(keyItem.getAssociatedMonster()).addItem(keyItem);
 			}
 			reader.close();
 		}catch(IOException ex)
