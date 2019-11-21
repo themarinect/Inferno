@@ -69,7 +69,7 @@ public class test
 			for(String desc : monster.getDesc())
 				System.out.println(desc);
 			System.out.println("Location: " + monster.getMonsterLocation());
-			System.out.println("Health: " + monster.getHP());
+			System.out.println("Health: " + monster.getHealth());
 			System.out.println("Attack: " + monster.getAttack());
 			System.out.println("Item drops: " + monster.getItemDrop());
 			

@@ -9,24 +9,13 @@ public class Monster extends Character
 {
 	private ArrayList<String> desc;
 	private String monsterLocation;
-	private static SimpleIntegerProperty HP;
+	private int health;
 	private int attack;
 	private String itemDrop;
 
 	public Monster()
 	{
 
-	}
-
-	public Monster(String _id, String _name, ArrayList<String> _desc, String _monsterLocation, SimpleIntegerProperty _HP, 
-			int _attack, String _itemDrop)
-	{
-		super(_id, _name);
-		this.desc = _desc;
-		this.monsterLocation = _monsterLocation;
-		this.HP = _HP;
-		this.attack = _attack;
-		this.itemDrop = _itemDrop;
 	}
 	
 	public static Monster readMonster(BufferedReader reader)
@@ -60,7 +49,7 @@ public class Monster extends Character
 			line = line.trim();
 			int colonHP = line.indexOf(":");
 			int hp = Integer.parseInt(line.substring(colonHP+1).trim());
-			HP = new SimpleIntegerProperty(hp);
+			monster.health = hp;
 			
 			//reads attack
 			line = reader.readLine();
@@ -105,19 +94,15 @@ public class Monster extends Character
 	{
 		this.monsterLocation = monsterLocation;
 	}
-
-	public SimpleIntegerProperty HPProperty()
+	
+	public int getHealth()
 	{
-		return HP;
+		return health;
 	}
 
-	public void setHP(SimpleIntegerProperty _HP)
+	public void setHealth(int health)
 	{
-		HP = _HP;
-	}
-	public int getHP()
-	{
-		return HP.get();
+		this.health = health;
 	}
 	
 	public int getAttack()
@@ -134,5 +119,4 @@ public class Monster extends Character
 	{
 		return itemDrop;
 	}
-
 }

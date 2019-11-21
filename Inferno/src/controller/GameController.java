@@ -129,68 +129,112 @@ public class GameController implements Initializable, Serializable
 	@FXML private Button btnNorth;
 	public void north(ActionEvent event)
 	{
-		String northRoom = "";
-		northRoom = room.lookupNavigation("north");
-		if(northRoom == null)
-			txtGame.setText("Nothing here!!!");
+		if(player.isInCombat())
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "YOU CANNOT GO TO ANOTHER ROOM WHILE IN COMBAT MODE.";
+			alert.setContentText(info);
+			alert.show();
+		}
 		else
 		{
-			currentRoom = northRoom;
-			player.CurrentRoomProperty().set(currentRoom);
-			room = map.getRooms(currentRoom);
-			txtGame.setText(room.getRoomName() + "\n");
-			displayRoom(room);
+			String northRoom = "";
+			northRoom = room.lookupNavigation("north");
+			if(northRoom == null)
+				txtGame.setText("Nothing here!!!");
+			else
+			{
+				currentRoom = northRoom;
+				player.CurrentRoomProperty().set(currentRoom);
+				room = map.getRooms(currentRoom);
+				txtGame.setText(room.getRoomName() + "\n");
+				displayRoom(room);
+			}
 		}
 	}
 	//When player clicks south
 	@FXML private Button btnSouth;
 	public void south(ActionEvent event)
 	{
-		String southRoom = "";
-		southRoom = room.lookupNavigation("south");
-		if(southRoom == null)
-			txtGame.setText("Nothing here!!!");
+		if(player.isInCombat())
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "YOU CANNOT GO TO ANOTHER ROOM WHILE IN COMBAT MODE.";
+			alert.setContentText(info);
+			alert.show();
+		}
 		else
 		{
-			currentRoom = southRoom;
-			player.CurrentRoomProperty().set(currentRoom);
-			room = map.getRooms(currentRoom);
-			txtGame.setText(room.getRoomName() + "\n");
-			displayRoom(room);
+			String southRoom = "";
+			southRoom = room.lookupNavigation("south");
+			if(southRoom == null)
+				txtGame.setText("Nothing here!!!");
+			else
+			{
+				currentRoom = southRoom;
+				player.CurrentRoomProperty().set(currentRoom);
+				room = map.getRooms(currentRoom);
+				txtGame.setText(room.getRoomName() + "\n");
+				displayRoom(room);
+			}
 		}
 	}
 	//When player clicks west
 	@FXML private Button btnWest;
 	public void west(ActionEvent event)
 	{
-		String westRoom = "";
-		westRoom = room.lookupNavigation("west");
-		if(westRoom == null)
-			txtGame.setText("Nothing here!!!");
+		if(player.isInCombat())
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "YOU CANNOT GO TO ANOTHER ROOM WHILE IN COMBAT MODE.";
+			alert.setContentText(info);
+			alert.show();
+		}
 		else
 		{
-			currentRoom = westRoom;
-			player.CurrentRoomProperty().set(currentRoom);
-			room = map.getRooms(currentRoom);
-			txtGame.setText(room.getRoomName() + "\n");
-			displayRoom(room);
+			String westRoom = "";
+			westRoom = room.lookupNavigation("west");
+			if(westRoom == null)
+				txtGame.setText("Nothing here!!!");
+			else
+			{
+				currentRoom = westRoom;
+				player.CurrentRoomProperty().set(currentRoom);
+				room = map.getRooms(currentRoom);
+				txtGame.setText(room.getRoomName() + "\n");
+				displayRoom(room);
+			}
 		}
 	}
 	//When player clicks east
 	@FXML private Button btnEast;
 	public void east(ActionEvent event)
 	{
-		String eastRoom = "";
-		eastRoom = room.lookupNavigation("east");
-		if(eastRoom == null)
-			txtGame.setText("Nothing here!!!");
+		if(player.isInCombat())
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "YOU CANNOT GO TO ANOTHER ROOM WHILE IN COMBAT MODE.";
+			alert.setContentText(info);
+			alert.show();
+		}
 		else
 		{
-			currentRoom = eastRoom;
-			player.CurrentRoomProperty().set(currentRoom);
-			room = map.getRooms(currentRoom);
-			txtGame.setText(room.getRoomName() + "\n");
-			displayRoom(room);
+			String eastRoom = "";
+			eastRoom = room.lookupNavigation("east");
+			if(eastRoom == null)
+				txtGame.setText("Nothing here!!!");
+			else
+			{
+				currentRoom = eastRoom;
+				player.CurrentRoomProperty().set(currentRoom);
+				room = map.getRooms(currentRoom);
+				txtGame.setText(room.getRoomName() + "\n");
+				displayRoom(room);
+			}
 		}
 	}
 	/*----------------------------------------------*/
@@ -462,7 +506,7 @@ public class GameController implements Initializable, Serializable
 				txtGame.appendText(m.getName().toUpperCase() + "\n");
 				for(String desc : m.getDesc())
 					txtGame.appendText(desc);
-				txtGame.appendText("\nHP: " + m.getHP());
+				txtGame.appendText("\nHP: " + m.getHealth());
 				txtGame.appendText("\nAttack Damage: " + m.getAttack());
 			}
 		}
@@ -470,7 +514,7 @@ public class GameController implements Initializable, Serializable
 	
 	@FXML private Button btnAttack;
 	public void attack(int playerHP, int weaponDmg, Monster currentMonster, int monsterHP, int monsterAttack, ActionEvent event)
-	{
+	{	
 		int dmgTaken = monsterAttack;
 		int dmgDealt = weaponDmg;
 		monsterHP = monsterHP - dmgDealt;
@@ -479,8 +523,9 @@ public class GameController implements Initializable, Serializable
 		txtGame.appendText("You have been hit for: " + dmgTaken + "\n");
 		txtGame.appendText("You have " + playerHP + " HP left. " + currentMonster.getName().toUpperCase() + " has " + monsterHP + " HP left\n\n");
 		player.HPProperty().set(playerHP);
-		currentMonster.HPProperty().set(monsterHP);
-		if(playerHP < 0)
+		currentMonster.setHealth(monsterHP);
+		
+		if(playerHP <= 0)
 		{
 			alert = new Alert(AlertType.NONE);
 			alert.setAlertType(AlertType.ERROR);
@@ -489,7 +534,13 @@ public class GameController implements Initializable, Serializable
 			alert.show();
 			quitGame(event);
 		}
-			
+		if(monsterHP <= 0)
+		{
+			player.setInCombat(false);
+			txtGame.setText("CONGRATS!!! THE MONSTER HAS BEEN DEFEATED AND REMOVED FROM THE ROOM\n\n");
+			room.removeMonster(currentMonster);
+			displayRoom(room);
+		}
 	}
 	public void attackMonster(ActionEvent event)
 	{
@@ -521,9 +572,10 @@ public class GameController implements Initializable, Serializable
 				int weaponDmg = Integer.parseInt(currentWeapon.getAttack());
 				
 				//Monster's info
-				int monsterHP = currentMonster.getHP();
+				int monsterHP = currentMonster.getHealth();
 				int monsterAttack = currentMonster.getAttack();
-
+				
+				//attack
 				attack(playerHP, weaponDmg, currentMonster, monsterHP, monsterAttack, event);
 			}
 		}
