@@ -4,7 +4,7 @@ Key
 This key is the result of combining the relics that symbolize the 7 Holy Virtues. Use this key to open the door to the final boss.
 R26
 -----
-AssociatedMonster:0
+AssociatedMonster:M7
 
 A16
 Relic of Chastity
