@@ -40,8 +40,10 @@ import javafx.stage.Stage;
 import models.Character.Monster;
 import models.Character.NPC;
 import models.Character.Player;
+import models.Item.CombatItem;
 import models.Item.HealingItem;
 import models.Item.Item;
+import models.Item.KeyItem;
 import models.Item.TradableItem;
 import models.Item.WeaponItem;
 import models.Map.Map;
@@ -79,7 +81,11 @@ public class GameController implements Initializable, Serializable
 		
 		//Monster's name
 		for(Monster monster : room.getMonsters())
+		{
 			txtGame.appendText("MONSTER: " + monster.getName().toUpperCase() + " \n");
+			for(KeyItem keyItem : monster.getItems())
+				txtGame.appendText("MONSTER'S KEY: " + keyItem.getItemName().toUpperCase() + " \n");
+		}
 		
 		//NPC's name
 		for(NPC npc : room.getNPCs())
@@ -537,7 +543,13 @@ public class GameController implements Initializable, Serializable
 		if(monsterHP <= 0)
 		{
 			player.setInCombat(false);
-			txtGame.setText("CONGRATS!!! THE MONSTER HAS BEEN DEFEATED AND REMOVED FROM THE ROOM\n\n");
+			txtGame.setText("CONGRATS!!! THE MONSTER HAS BEEN DEFEATED\n\n");
+			for(KeyItem keyItem : currentMonster.getItems())
+			{
+				currentMonster.removeItem(keyItem);
+				room.addItem(keyItem);
+				txtGame.setText("A KEY: " + keyItem.getItemName().toUpperCase() + " HAS BEEN DROPPED FROM THE MONSTER\n\n");
+			}
 			room.removeMonster(currentMonster);
 			displayRoom(room);
 		}
