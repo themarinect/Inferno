@@ -63,7 +63,6 @@ public class Map
 		initNPC(rooms);
 		
 		//Add Items into the Room
-		initWeaponItem(rooms);
 		initGuideItem(rooms);
 		initHealingItem(rooms);
 		initInventoryItem(rooms);
@@ -92,7 +91,7 @@ public class Map
 		
 		//Add Combat & Weapon items to associated Puzzle
 		initCombatItem(puzzles);
-		//initWeaponItem(puzzles);
+		initWeaponItem(puzzles);
 		
 	}
 	
@@ -167,7 +166,7 @@ public class Map
 		}
 	}
 	//init Weapon Item
-	public void initWeaponItem(TreeMap<String, Room> rooms)
+	public void initWeaponItem(TreeMap<String, Puzzle> puzzles)
 	{
 		try
 		{
@@ -178,8 +177,7 @@ public class Map
 				if(weaponItem == null)
 					break;
 				items.put(weaponItem.getItemID(), weaponItem);
-				for(String temp : weaponItem.getItemLocation())
-					rooms.get(temp).addItem(weaponItem);
+				puzzles.get(weaponItem.getAssociatedPuzzle()).addItem(weaponItem);
 			}
 			reader.close();
 		}catch(IOException ex)

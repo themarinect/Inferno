@@ -86,10 +86,10 @@ public class GameController implements Initializable, Serializable
 		{
 			txtGame.appendText("PUZZLE: " + puzzle.getPuzzleName().toUpperCase() + " \n");
 			for(Item item : puzzle.getItems())
-				txtGame.appendText("PUZZLE'S ITEM: " + item.getItemName().toUpperCase());
+				txtGame.appendText("PUZZLE'S ITEM: " + item.getItemName().toUpperCase() + "\n");
 		}
 			
-		//diaplay Item's info
+		//display Item's info
 		for(Item item : room.getItems())
 			txtGame.appendText("ITEM: " + item.getItemName().toUpperCase() + " \n");
 		
@@ -377,7 +377,11 @@ public class GameController implements Initializable, Serializable
 	public void pickup(ActionEvent event)
 	{
 		for(Item item : room.getItems())
+		{
 			item.pickup(room, player, txtGame);
+			if(item instanceof KeyItem)
+				numberOfKeyItem++;
+		}
 	}
 	
 	//When player clicks Trade
@@ -411,6 +415,14 @@ public class GameController implements Initializable, Serializable
         
         //sets the data for table using the sorted list of Items
         tableView.setItems(sortedData);
+	}
+	public void removeTableData(TableView<Item> tableView, ObservableList<Item> data, SortedList<Item> sortedData)
+	{
+		//index of the filtered and sorted list
+		int sortedIndex = tableView.getSelectionModel().getSelectedIndex();
+		//index of actual data
+		int sourceIndex = sortedData.getSourceIndexFor(data, sortedIndex);
+		data.remove(sourceIndex);
 	}
 	public void openInventory(ActionEvent event)
 	{
@@ -457,6 +469,7 @@ public class GameController implements Initializable, Serializable
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         Button btnUse = new Button("Use");
+        btnUse.setStyle("-fx-border-color: white; -fx-background-color: black; -fx-text-fill: #ee2571;");
         btnUse.setOnAction(new EventHandler<ActionEvent>()
 		{
 
@@ -473,11 +486,7 @@ public class GameController implements Initializable, Serializable
 						if(player.getHP() < 100)
 							player.HPProperty().set(player.getHP() + strength);	
 						
-						//index of the filtered and sorted list
-		        		int sortedIndex = tableView.getSelectionModel().getSelectedIndex();
-		        		//index of actual data
-		        		int sourceIndex = sortedData.getSourceIndexFor(data, sortedIndex);
-		        		data.remove(sourceIndex);
+						removeTableData(tableView, data, sortedData);
 					}
 					else
 					{
@@ -493,6 +502,7 @@ public class GameController implements Initializable, Serializable
 		});
         
         Button btnEquip = new Button("Equip");
+        btnEquip.setStyle("-fx-border-color: white; -fx-background-color: black; -fx-text-fill: #ee2571;");
         btnEquip.setOnAction(new EventHandler<ActionEvent>()
 		{
 			
@@ -522,6 +532,7 @@ public class GameController implements Initializable, Serializable
 		});
         
         Button btnUnequip = new Button("Unequip");
+        btnUnequip.setStyle("-fx-border-color: white; -fx-background-color: black; -fx-text-fill: #ee2571;");
         btnUnequip.setOnAction(new EventHandler<ActionEvent>()
 		{
         	@Override
@@ -532,6 +543,7 @@ public class GameController implements Initializable, Serializable
 		});
         
         Button btnDrop = new Button("Drop");
+        btnDrop.setStyle("-fx-border-color: white; -fx-background-color: black; -fx-text-fill: #ee2571;");
         btnDrop.setOnAction(new EventHandler<ActionEvent>()
 		{
         	@Override
@@ -544,15 +556,12 @@ public class GameController implements Initializable, Serializable
         		player.weaponNameProperty().set(null);        		 
         		txtGame.appendText("\nItem " + item.getItemName().toUpperCase() + " has been dropped");
         		
-        		//index of the filtered and sorted list
-        		int sortedIndex = tableView.getSelectionModel().getSelectedIndex();
-        		//index of actual data
-        		int sourceIndex = sortedData.getSourceIndexFor(data, sortedIndex);
-        		data.remove(sourceIndex);
+        		removeTableData(tableView, data, sortedData);
 			}
 		});
         
         Button btnExamine = new Button("Examine");
+        btnExamine.setStyle("-fx-border-color: white; -fx-background-color: black; -fx-text-fill: #ee2571;");
         btnExamine.setOnAction(new EventHandler<ActionEvent>()
 		{
         	@Override
@@ -655,10 +664,12 @@ public class GameController implements Initializable, Serializable
 				currentMonster.removeItem(keyItem);
 				room.addItem(keyItem);
 				txtGame.setText("A KEY: " + keyItem.getItemName().toUpperCase() + " HAS BEEN DROPPED FROM THE MONSTER\n\n");
-				numberOfKeyItem++;
 			}
 			room.removeMonster(currentMonster);
 			displayRoom(room);
+			
+			btnAttack.setDisable(true);
+			btnFlee.setDisable(true);
 		}
 	}
 	public void attackMonster(ActionEvent event)
@@ -716,6 +727,9 @@ public class GameController implements Initializable, Serializable
 			player.setInCombat(false);
 			txtGame.setText(room.getRoomName() + "\n");
 			displayRoom(room);
+			
+			btnAttack.setDisable(true);
+			btnFlee.setDisable(true);
 		}
 		else
 		{
