@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class WeaponItem extends Item
 {
+	private String associatedPuzzle;
 	private String attack;
 
 	public WeaponItem()
@@ -37,14 +38,23 @@ public class WeaponItem extends Item
 			weaponItem.setItemDesc(temp);
 			
 			//reads location(s)
-			String data = reader.readLine();
-			String[] location = data.split("/",-2);
-			ArrayList<String> locationList = new ArrayList<>();
-			for(String a : location)
-				locationList.add(a);
-			weaponItem.setItemLocation(locationList);
+			while(true)
+			{
+				String data = reader.readLine();
+				if(data.equals("-----"))
+					break;
+				String[] location = data.split("/",-2);
+				ArrayList<String> locationList = new ArrayList<>();
+				for(String a : location)
+					locationList.add(a);
+				weaponItem.setItemLocation(locationList);
+			}
 			
 			/*-------------------------------------------------------*/
+			
+			//read associated Puzzle
+			line = reader.readLine();
+			weaponItem.associatedPuzzle = line;
 			
 			//reads usage
 			while(true)
@@ -54,7 +64,7 @@ public class WeaponItem extends Item
 					break;
 				line = line.trim();
 				int colon = line.indexOf(":");
-				weaponItem.attack = line.substring(colon+1).trim();
+				weaponItem.setAttack(line.substring(colon+1).trim());
 			}
 		}catch (IOException ex)
 		{
@@ -68,6 +78,11 @@ public class WeaponItem extends Item
 	}
 	
 	//getter and setter
+	public String getAssociatedPuzzle()
+	{
+		return associatedPuzzle;
+	}
+	
 	public String getAttack()
 	{
 		return attack;

@@ -2,7 +2,7 @@ A5
 Pure Bow
 Weapon
 A legendary bow that radiates powerful energy. The ability to control it depends on the strength and the will of the player.
-R24
+R14
 -----
 P1
 attack:10
@@ -25,7 +25,7 @@ R13
 P3
 attack:14
 
-A23
+A24
 Valyrian sword
 Weapon
 Made from Valyrian steel - the strongest and rarest type of steel in the world. The sword has a distinctive rippled pattern.

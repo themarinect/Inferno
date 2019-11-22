@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class CombatItem extends Item
 {
+	private String associatedPuzzle;
 	private String usage;
 	
 	public CombatItem()
@@ -36,14 +37,22 @@ public class CombatItem extends Item
 			combatItem.setItemDesc(temp);
 			
 			//reads location(s)
-			String data = reader.readLine();
-			String[] location = data.split("/",-2);
-			ArrayList<String> locationList = new ArrayList<>();
-			for(String a : location)
-				locationList.add(a);
-			combatItem.setItemLocation(locationList);
-
+			while(true)
+			{
+				String data = reader.readLine();
+				if(data.equals("-----"))
+					break;
+				String[] location = data.split("/",-2);
+				ArrayList<String> locationList = new ArrayList<>();
+				for(String a : location)
+					locationList.add(a);
+				combatItem.setItemLocation(locationList);
+			}
 			/*-------------------------------------------------------*/
+			
+			//read associated Puzzle
+			line = reader.readLine();
+			combatItem.associatedPuzzle = line;
 			
 			//reads usage
 			while(true)
@@ -67,6 +76,11 @@ public class CombatItem extends Item
 	}
 	
 	//getter and setters
+	public String getAssociatedPuzzle()
+	{
+		return associatedPuzzle;
+	}
+	
 	public String getUsage()
 	{
 		return usage;
@@ -76,5 +90,4 @@ public class CombatItem extends Item
 	{
 		this.usage = usage;
 	}
-
 }

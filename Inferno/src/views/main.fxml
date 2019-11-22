@@ -35,7 +35,7 @@
           <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="166.0">
                <children>
                   <Button id="btnPickup" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" text="Pickup" />
-                  <Button id="btnTrade" onAction="#trade" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" text="Trade" />
+                  <Button id="btnTrade" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#trade" text="Trade" />
                </children>
             </AnchorPane>
         </content>
@@ -45,8 +45,8 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="201.0">
                <children>
                   <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#inspectMonster" text="Inspect" />
-                  <Button id="btnAttack" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" onAction="#attackMonster" text="Attack" />
-                  <Button id="btnFlee" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" onAction="#fleeMonster" text="Flee" />
+                  <Button id="btnAttack" fx:id="btnAttack" disable="true" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" onAction="#attackMonster" text="Attack" />
+                  <Button id="btnFlee" fx:id="btnFlee" disable="true" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" onAction="#fleeMonster" text="Flee" />
                </children>
             </AnchorPane>
         </content>
@@ -55,10 +55,10 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="132.0">
                <children>
-                  <Button id="btnLook" onAction="#lookPuzzle" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" text="Look" />
-                  <Button id="btnSolve" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" text="Solve" />
-                  <Button id="btnHint" onAction="#hint" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" text="Hint" />
-                  <Button id="btnForfeit" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" text="Forfeit" />
+                  <Button id="btnLook" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#lookPuzzle" text="Look" />
+                  <Button id="btnSolve" fx:id="btnSolve" disable="true" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" onAction="#solve" text="Solve" />
+                  <Button id="btnHint" fx:id="btnHint" disable="true" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" onAction="#hint" text="Hint" />
+                  <Button id="btnForfeit" fx:id="btnForfeit" disable="true" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" onAction="#forfeit" text="Forfeit" />
                </children>
             </AnchorPane>
         </content>
@@ -86,5 +86,6 @@
       <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" text="Inventory" />
       <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" />
       <Button id="btnSave" layoutX="535.0" layoutY="452.0" mnemonicParsing="false" onAction="#saveGame" text="Save Game" />
+      <ChoiceBox id="cbAnswer" fx:id="cbAnswer" layoutX="557.0" layoutY="189.0" prefHeight="27.0" prefWidth="57.0" visible="false" />
    </children>
 </AnchorPane>

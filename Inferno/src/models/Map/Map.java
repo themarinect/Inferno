@@ -63,12 +63,10 @@ public class Map
 		initNPC(rooms);
 		
 		//Add Items into the Room
-		
+		initWeaponItem(rooms);
 		initGuideItem(rooms);
 		initHealingItem(rooms);
 		initInventoryItem(rooms);
-		
-		initWeaponItem(rooms);
 	}
 	
 	//init Puzzle
@@ -92,7 +90,10 @@ public class Map
 			e.getMessage();
 		}
 		
-		initCombatItem(rooms, puzzles);
+		//Add Combat & Weapon items to associated Puzzle
+		initCombatItem(puzzles);
+		//initWeaponItem(puzzles);
+		
 	}
 	
 	//init Monster
@@ -146,7 +147,7 @@ public class Map
 	}
 	
 	//init Combat Item
-	public void initCombatItem(TreeMap<String, Room> rooms, TreeMap<String, Puzzle> puzzles)
+	public void initCombatItem(TreeMap<String, Puzzle> puzzles)
 	{
 		try
 		{
@@ -157,8 +158,28 @@ public class Map
 				if(combatItem == null)
 					break;
 				items.put(combatItem.getItemID(), combatItem);
-				for(String temp : combatItem.getItemLocation())
-					rooms.get(temp).addItem(combatItem);
+				puzzles.get(combatItem.getAssociatedPuzzle()).addItem(combatItem);
+			}
+			reader.close();
+		}catch(IOException ex)
+		{
+			ex.getMessage();
+		}
+	}
+	//init Weapon Item
+	public void initWeaponItem(TreeMap<String, Room> rooms)
+	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
+			while(true)
+			{
+				WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
+				if(weaponItem == null)
+					break;
+				items.put(weaponItem.getItemID(), weaponItem);
+				for(String temp : weaponItem.getItemLocation())
+					rooms.get(temp).addItem(weaponItem);
 			}
 			reader.close();
 		}catch(IOException ex)
@@ -270,27 +291,6 @@ public class Map
 			ex.getMessage();
 		}
 	}
-	//init Weapon Item
-	public void initWeaponItem(TreeMap<String, Room> rooms)
-	{
-		try
-		{
-			BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
-			while(true)
-			{
-				WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
-				if(weaponItem == null)
-					break;
-				items.put(weaponItem.getItemID(), weaponItem);
-				for(String temp : weaponItem.getItemLocation())
-					rooms.get(temp).addItem(weaponItem);
-			}
-		}catch(IOException ex)
-		{
-			ex.getMessage();
-		}
-	}
-	
 	
 	public Room getRooms(String roomID)
 	{

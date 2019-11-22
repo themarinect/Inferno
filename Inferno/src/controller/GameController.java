@@ -8,10 +8,14 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,12 +29,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -58,6 +65,9 @@ public class GameController implements Initializable, Serializable
 	String currentRoom = player.getCurrentRoom();
 	Room room = map.getRooms(currentRoom);
 	
+	//keep track the number of key item to access room R32
+	int numberOfKeyItem = 0;
+	
 	//Alert box used through out the game
 	Alert alert;
 	
@@ -67,19 +77,23 @@ public class GameController implements Initializable, Serializable
 	
 	public void displayRoom(Room room)
 	{
-		//Room's description
+		//display Room's info
 		for(String roomDesc : room.getRoomDesc())
 			txtGame.appendText(roomDesc + "\n");
 		
-		//Puzzle's name
+		//display Puzzle's info
 		for(Puzzle puzzle : room.getPuzzles())
+		{
 			txtGame.appendText("PUZZLE: " + puzzle.getPuzzleName().toUpperCase() + " \n");
-		
-		//Item's name
+			for(Item item : puzzle.getItems())
+				txtGame.appendText("PUZZLE'S ITEM: " + item.getItemName().toUpperCase());
+		}
+			
+		//diaplay Item's info
 		for(Item item : room.getItems())
 			txtGame.appendText("ITEM: " + item.getItemName().toUpperCase() + " \n");
 		
-		//Monster's name
+		//display Monster's info
 		for(Monster monster : room.getMonsters())
 		{
 			txtGame.appendText("MONSTER: " + monster.getName().toUpperCase() + " \n");
@@ -87,7 +101,7 @@ public class GameController implements Initializable, Serializable
 				txtGame.appendText("MONSTER'S KEY: " + keyItem.getItemName().toUpperCase() + " \n");
 		}
 		
-		//NPC's name
+		//display NPC's info
 		for(NPC npc : room.getNPCs())
 		{
 			txtGame.appendText("NON-PLAYABLE CHARACTER: " + npc.getName().toUpperCase() + " \n");
@@ -177,6 +191,14 @@ public class GameController implements Initializable, Serializable
 			southRoom = room.lookupNavigation("south");
 			if(southRoom == null)
 				txtGame.setText("Nothing here!!!");
+			else if(southRoom.equals("R32") && numberOfKeyItem != 7)
+			{
+				alert = new Alert(AlertType.NONE);
+				alert.setAlertType(AlertType.ERROR);
+				String info = "YOU NEED 7 KEY ITEMS IN THE INVENTORY TO GO INTO THIS ROOM.";
+				alert.setContentText(info);
+				alert.show();	
+			}
 			else
 			{
 				currentRoom = southRoom;
@@ -249,23 +271,103 @@ public class GameController implements Initializable, Serializable
 	/*----------------FOR PUZZLE----------------------*/
 	//When player clicks Look puzzle
 	@FXML private Button btnLook;
+	@FXML private ChoiceBox<String> cbAnswer;
 	public void lookPuzzle(ActionEvent event)
 	{
-		for(Puzzle puzzle : room.getPuzzles())
+		Puzzle[] puzzles = room.getPuzzles();
+		if(puzzles.length == 0)
 		{
-			txtGame.appendText("\n" + puzzle.getPuzzleName() + "\n");
-			for(String desc : puzzle.getPuzzleDesc())
-				txtGame.appendText(desc);
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.ERROR);
+			String info = "No puzzle in this room";
+			alert.setContentText(info);
+			alert.show();
 		}
+		else
+		{
+			for(Puzzle p : puzzles)
+			{
+				txtGame.setText(p.getPuzzleName() + "\n");
+				for(String desc : p.getPuzzleDesc())
+					txtGame.appendText(desc);
+				txtGame.appendText("\n\nPLEASE SELECT YOUR ANSWER IN THE BOX BELOW.\nCLICK 'SOLVE' TO SUBMIT YOUR ANSWER.");
+			}
+
+			cbAnswer.setVisible(true);
+			ObservableList<String> choices = FXCollections.observableArrayList("a","b","c","d");
+			cbAnswer.setItems(choices);
 			
+			btnSolve.setDisable(false);
+			btnHint.setDisable(false);
+			btnForfeit.setDisable(false);
+		}
+	}
+	//When player clicks Solve
+	@FXML private Button btnSolve;
+	public boolean checkAnswer(String choice)
+	{
+		for(Puzzle currentPuzzle : room.getPuzzles())
+		{
+			if(choice.toLowerCase().equals(currentPuzzle.lookupAnswer("CorrectAnswer")))
+			{
+				for(Item item : currentPuzzle.getItems())
+				{
+					currentPuzzle.removeItem(item);
+					room.addItem(item);
+				}
+				room.removePuzzle(currentPuzzle);
+				return true;
+			}
+			else
+				return false;
+		}
+		return false;
+	}
+	public void solve(ActionEvent event)
+	{	
+		boolean isCorrect = checkAnswer(cbAnswer.getSelectionModel().getSelectedItem());
+
+		if(isCorrect)
+		{
+			txtGame.setText("CONGRATS!!!YOU SOLVED THE PUZZLE");
+			txtGame.appendText("\nPUZZLE HAS BEEN REMOVED FROM THE ROOM\n");
+			txtGame.appendText("\nTHERE IS A NEW ITEM DROPPED IN THE ROOM\n\n");
+			txtGame.appendText(room.getRoomName() + "\n");
+			displayRoom(room);
+			
+			cbAnswer.setVisible(false);
+			btnSolve.setDisable(true);
+			btnHint.setDisable(true);
+			btnForfeit.setDisable(true);
+		}
+		else
+		{
+			alert = new Alert(AlertType.NONE);
+			alert.setAlertType(AlertType.INFORMATION);
+			String info = "You answered wrong. Please try again.";
+			alert.setContentText(info);
+			alert.show();
+		}
 	}
 	//When player clicks Hint
 	@FXML private Button btnHint;
 	public void hint(ActionEvent event)
 	{
 		for(Puzzle puzzle : room.getPuzzles())
-			txtGame.appendText("\nPuzzle Hint: " + puzzle.getPuzzleHint());
+			txtGame.appendText("\n\nHINT: " + puzzle.getPuzzleHint().toUpperCase());
 	}
+	//When player clicks Forfeit
+	@FXML private Button btnForfeit;
+	public void forfeit(ActionEvent event)
+	{
+		txtGame.setText("YOU FORFEITED THE PUZZLE.YOU CAN TRY SOLVE IT AGAIN ANYTIME.\n\n");
+		displayRoom(room);
+		
+		cbAnswer.setVisible(false);
+		btnSolve.setDisable(true);
+		btnHint.setDisable(true);
+		btnForfeit.setDisable(true);
+	}	
 	/*----------------------------------------------*/
 	
 	
@@ -312,6 +414,7 @@ public class GameController implements Initializable, Serializable
 	}
 	public void openInventory(ActionEvent event)
 	{
+		
 		//creates an instance of TableView control and sets its width and height size
 		TableView<Item> tableView = new TableView<>();
 		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -515,6 +618,9 @@ public class GameController implements Initializable, Serializable
 				txtGame.appendText("\nHP: " + m.getHealth());
 				txtGame.appendText("\nAttack Damage: " + m.getAttack());
 			}
+			
+			btnAttack.setDisable(false);
+			btnFlee.setDisable(false);
 		}
 	}
 	
@@ -549,6 +655,7 @@ public class GameController implements Initializable, Serializable
 				currentMonster.removeItem(keyItem);
 				room.addItem(keyItem);
 				txtGame.setText("A KEY: " + keyItem.getItemName().toUpperCase() + " HAS BEEN DROPPED FROM THE MONSTER\n\n");
+				numberOfKeyItem++;
 			}
 			room.removeMonster(currentMonster);
 			displayRoom(room);

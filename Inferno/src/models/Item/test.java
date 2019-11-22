@@ -33,25 +33,25 @@ public class test
 				System.out.println("Answer: " + puzzle.lookupAnswer(answer));*/
 			
 
-				BufferedReader reader = new BufferedReader(new FileReader("CombatItem.txt"));
+				BufferedReader reader = new BufferedReader(new FileReader("WeaponItem.txt"));
 				while(true)
 				{
-					CombatItem combatItem = CombatItem.readCombatItem(reader);
-					if(combatItem == null)
+					WeaponItem weaponItem = WeaponItem.readWeaponItem(reader);
+					if(weaponItem == null)
 						break;
-					System.out.println("ID:" + combatItem.getItemID());
-					System.out.println("Name:" + combatItem.getItemName());
-					System.out.println("Type:" + combatItem.getItemType());
+					System.out.println("ID:" + weaponItem.getItemID());
+					System.out.println("Name:" + weaponItem.getItemName());
+					System.out.println("Type:" + weaponItem.getItemType());
 					
-					for(String temp : combatItem.getItemDesc())
+					for(String temp : weaponItem.getItemDesc())
 						System.out.println(temp);
 					
 					System.out.println("Location: ");
-					for(String temp : combatItem.getItemLocation())
+					for(String temp : weaponItem.getItemLocation())
 						System.out.println(temp);
 					
-					
-					System.out.println(combatItem.getUsage());
+					System.out.println("Puzzle: " + weaponItem.getAssociatedPuzzle());
+					System.out.println(weaponItem.getAttack());
 				}
 				String usage = "050";
 				if(usage.matches("\\d+"))

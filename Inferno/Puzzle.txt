@@ -2,71 +2,89 @@ P1
 R24
 A5
 Lust Puzzle
-hint:The Tonal Scale.
-There are 8 pillars that you must attack to solve the puzzle each pillar has a particular chime to it finding the correct order is the key. 
-Each time the player enters the room the chimes randomized to each pillar.
+hint:We vote this person every 4 years.
+Who is the Commander in Chief of the military?
+	a. The President
+	b. Secretary of State
+	c. Secretary of Defense
+	d. Vice President
 -----
-CorrectAnswer:DO->RE->MI->FA->SO->LA->TI->DO
+CorrectAnswer:a
 
 P2
 R4
 A6
 Gluttony Puzzle
-hint:Why are these altars empty try putting an item on the altars?
-All four corners of the room have an empty altar in the surrounded by bottomless pits
-In the middle of the room, there is another altar which has an endless supply of food
-the player must use the proper THROW command to throw the food into the empty altars.
+hint:Supreme
+What is the highest court in the United States?
+	a. Article I court
+	b. District court
+	c. Supreme court
+	d. Circuit court
 -----
-CorrectAnswer:THROW
+CorrectAnswer:c
 
 P3
 R13
 A23
 Greed Puzzle
-hint:Try socializing for once!
-The empty room prompts the player to a mission of higher purpose. 
+hint:The biggest Ocean in the world
+What ocean is on the West coast of the United States?
+	a. Pacific Ocean
+	b. Atlantic Ocean
+	c. Indian Ocean
+	d. Arctic Ocean
 -----
-CorrectAnswer:Give the Greed the Golden Experience.
+CorrectAnswer:a
 
 P4
 R29
-A23
+A24
 Envy Puzzle
-hint:Try looking up. That's where the answer lies!
-The room is set up exactly like Lust’s Puzzle. The top row of 3 pillars gives the correct response order.
-The bottom row of 3 pillars has a different response order. The responses each time are randomized.
-Each pillar upon using the INSPECT command prompts the player 3 different responses.
+hint:AND!!!AND!!!
+The Java operator used to indicate the English idea of "and" in a boolean expression is:
+	a. &
+	b. &&
+	c. AND
+	d. None of the above
 -----
-CorrectAnswer:Copy the responses from the 3 top pillars to the bottom 3 pillars in order.
+CorrectAnswer:b
 
 P5
 R1
 A1
 Wrath Puzzle/Sloth Puzzle
-hint:Walk the room without looking back at the long trail is here!
-Standard empty room. The player must navigate every tile in the room EXACTLY once. 
-If the player redoes any of the tiles, he loses the puzzle and must restart.
+hint:3+1
+How many years do we elect a President?
+	a. One
+	b. Two
+	c. Three
+	d. Four
 -----
-CorrectAnswer:The player must go over every tile without retracing their steps.
+CorrectAnswer:d
 
 P6
 R16
 A7
 Pride Puzzle
-hint:Follow the way to the center!
-The room consists of a maze. 
-The size of the maze is directly determined by how many bosses the player has beaten save the final boss.
-So the room starts as a 9x9 ->8x8… However, if the player has completed all the other puzzles before this one.
-This room is blank, and the player will not have done anything.
-At all times, the player in this room may use the EXIT command to exit the room.
+hint:The atomic number of the second last element is 117
+How many elements are there are the Periodic Table?
+	a. 120
+	b. 117
+	c. 118
+	d. 116
 -----
-CorrectAnswer:Navigate the correct path.
+CorrectAnswer:c
 
 P7
 R26
 A8
 Grand Puzzle
-hint:Give the altars what you courageously gained!
-There are seven altars the player must place the relics earned by beating the 7 previous bosses.
+hint:After the decimal point, the digits go on forever and ever.
+Pi is considered an __ number
+	a. Rational
+	b. Infinite
+	c. Finite
+	d. Prime
 -----
-CorrectAnswer:Place relics in the altar.
+CorrectAnswer:b
