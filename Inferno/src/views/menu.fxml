@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:controller="controller.GameController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../data/game_title.png" />
          </image>
       </ImageView>
-      <Button id="btnStart" layoutX="241.0" layoutY="170.0" mnemonicParsing="false" style="-fx-border-color: white; -fx-background-color: black;" text="Start New Game" textFill="#ee2571" onAction="#startNewGame">
+      <Button id="btnStart" layoutX="241.0" layoutY="170.0" mnemonicParsing="false" onAction="#startNewGame" style="-fx-border-color: white; -fx-background-color: black;" text="Start New Game" textFill="#ee2571">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -27,6 +26,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button id="btnQuit" layoutX="240.0" layoutY="313.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-color: black;" text="Quit Game" textFill="#ee2571" onAction="#quitGame"/>
+      <Button id="btnQuit" layoutX="240.0" layoutY="313.0" mnemonicParsing="false" onAction="#quitGame" prefHeight="29.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-color: black;" text="Quit Game" textFill="#ee2571" />
    </children>
 </AnchorPane>

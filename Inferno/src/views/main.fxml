@@ -22,10 +22,10 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="104.0" prefWidth="149.0">
                <children>
-                  <Button id="btnSouth" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" onAction="#south" text="South" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnEast" layoutX="110.0" layoutY="39.0" mnemonicParsing="false" onAction="#east" text="East" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnWest" layoutX="7.0" layoutY="39.0" mnemonicParsing="false" onAction="#west" text="West" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnNorth" layoutX="57.0" layoutY="14.0" mnemonicParsing="false" onAction="#north" text="North" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
+                  <Button id="btnSouth" layoutX="57.0" layoutY="66.0" mnemonicParsing="false" onAction="#south" style="-fx-border-color: white; -fx-background-color: black;" text="South" textFill="#ee2571" />
+                  <Button id="btnEast" layoutX="110.0" layoutY="39.0" mnemonicParsing="false" onAction="#east" style="-fx-border-color: white; -fx-background-color: black;" text="East" textFill="#ee2571" />
+                  <Button id="btnWest" layoutX="7.0" layoutY="39.0" mnemonicParsing="false" onAction="#west" style="-fx-border-color: white; -fx-background-color: black;" text="West" textFill="#ee2571" />
+                  <Button id="btnNorth" layoutX="57.0" layoutY="14.0" mnemonicParsing="false" onAction="#north" style="-fx-border-color: white; -fx-background-color: black;" text="North" textFill="#ee2571" />
                </children>
             </AnchorPane>
         </content>
@@ -34,8 +34,8 @@
         <content>
           <AnchorPane id="tpItem" minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="166.0">
                <children>
-                  <Button id="btnPickup" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" text="Pickup" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnTrade" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#trade" text="Trade" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
+                  <Button id="btnPickup" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#pickup" style="-fx-border-color: white; -fx-background-color: black;" text="Pickup" textFill="#ee2571" />
+                  <Button id="btnTrade" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#trade" style="-fx-border-color: white; -fx-background-color: black;" text="Trade" textFill="#ee2571" />
                </children>
             </AnchorPane>
         </content>
@@ -44,9 +44,9 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="201.0">
                <children>
-                  <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#inspectMonster" text="Inspect" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnAttack" fx:id="btnAttack" disable="true" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" onAction="#attackMonster" text="Attack" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnFlee" fx:id="btnFlee" disable="true" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" onAction="#fleeMonster" text="Flee" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
+                  <Button id="btnInspect" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#inspectMonster" style="-fx-border-color: white; -fx-background-color: black;" text="Inspect" textFill="#ee2571" />
+                  <Button id="btnAttack" fx:id="btnAttack" disable="true" layoutX="77.0" layoutY="7.0" mnemonicParsing="false" onAction="#attackMonster" style="-fx-border-color: white; -fx-background-color: black;" text="Attack" textFill="#ee2571" />
+                  <Button id="btnFlee" fx:id="btnFlee" disable="true" layoutX="141.0" layoutY="7.0" mnemonicParsing="false" onAction="#fleeMonster" style="-fx-border-color: white; -fx-background-color: black;" text="Flee" textFill="#ee2571" />
                </children>
             </AnchorPane>
         </content>
@@ -55,10 +55,10 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="132.0">
                <children>
-                  <Button id="btnLook" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#lookPuzzle" text="Look" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnSolve" fx:id="btnSolve" disable="true" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" onAction="#solve" text="Solve" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnHint" fx:id="btnHint" disable="true" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" onAction="#hint" text="Hint" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-                  <Button id="btnForfeit" fx:id="btnForfeit" disable="true" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" onAction="#forfeit" text="Forfeit" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
+                  <Button id="btnLook" layoutX="7.0" layoutY="8.0" mnemonicParsing="false" onAction="#lookPuzzle" style="-fx-border-color: white; -fx-background-color: black;" text="Look" textFill="#ee2571" />
+                  <Button id="btnSolve" fx:id="btnSolve" disable="true" layoutX="63.0" layoutY="8.0" mnemonicParsing="false" onAction="#solve" style="-fx-border-color: white; -fx-background-color: black;" text="Solve" textFill="#ee2571" />
+                  <Button id="btnHint" fx:id="btnHint" disable="true" layoutX="9.0" layoutY="43.0" mnemonicParsing="false" onAction="#hint" style="-fx-border-color: white; -fx-background-color: black;" text="Hint" textFill="#ee2571" />
+                  <Button id="btnForfeit" fx:id="btnForfeit" disable="true" layoutX="60.0" layoutY="43.0" mnemonicParsing="false" onAction="#forfeit" style="-fx-border-color: white; -fx-background-color: black;" text="Forfeit" textFill="#ee2571" />
                </children>
             </AnchorPane>
         </content>
@@ -83,9 +83,8 @@
             <Font name="American Typewriter Semibold" size="29.0" />
          </font>
       </Label>
-      <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" text="Inventory" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" text="Map" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-      <Button id="btnSave" layoutX="535.0" layoutY="452.0" mnemonicParsing="false" onAction="#saveGame" text="Save Game" style="-fx-border-color: white; -fx-background-color: black;" textFill="#ee2571"/>
-      <ChoiceBox id="cbAnswer" fx:id="cbAnswer" layoutX="557.0" layoutY="189.0" prefHeight="27.0" prefWidth="57.0" visible="false" style="-fx-border-color: white; -fx-background-color: black;"/>
+      <Button id="btnInventory" layoutX="494.0" layoutY="537.0" mnemonicParsing="false" onAction="#openInventory" style="-fx-border-color: white; -fx-background-color: black;" text="Inventory" textFill="#ee2571" />
+      <Button id="btnMap" layoutX="579.0" layoutY="537.0" mnemonicParsing="false" onAction="#openMap" style="-fx-border-color: white; -fx-background-color: black;" text="Map" textFill="#ee2571" />
+      <ChoiceBox id="cbAnswer" fx:id="cbAnswer" layoutX="557.0" layoutY="189.0" prefHeight="27.0" prefWidth="57.0" style="-fx-border-color: white; -fx-background-color: black;" visible="false" />
    </children>
 </AnchorPane>

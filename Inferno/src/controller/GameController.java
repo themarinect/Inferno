@@ -57,9 +57,8 @@ import models.Map.Map;
 import models.Puzzle.Puzzle;
 import models.Room.Room;
 
-public class GameController implements Initializable, Serializable
+public class GameController implements Initializable
 {	
-	
 	Player player = new Player();
 	Map map = new Map("Room.txt");
 	String currentRoom = player.getCurrentRoom();
@@ -770,30 +769,6 @@ public class GameController implements Initializable, Serializable
 			String info = "You need to have Map item in your inventory to open the Map.";
 			alert.setContentText(info);
 			alert.show();
-		}
-	}
-	
-	//When player clicks Save Game
-	@FXML private Button btnSave;
-	public void saveGame(ActionEvent event)
-	{
-		File file = new File("game1.txt");
-		
-		try
-		{
-			FileOutputStream fs = new FileOutputStream(file);
-			ObjectOutputStream os = new ObjectOutputStream(fs);
-			
-			if(!file.exists())
-			{
-				file.createNewFile();
-			}
-			os.writeObject(this.getClass());
-			os.flush();
-			os.close();
-			System.out.println(this.getClass());
-		}catch(IOException ex) {
-			ex.printStackTrace();
 		}
 	}
 	
